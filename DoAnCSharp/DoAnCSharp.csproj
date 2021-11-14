@@ -222,6 +222,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\Helper.cs" />
     <Compile Include="Utils\SimpleServer.cs" />
     <Compile Include="Utils\SimpleServer2.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -290,6 +291,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8_play_32px_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_pause_32px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DoAnCSharp.Utils;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,10 +18,14 @@ namespace DoAnCSharp
         //Fields
         private int borderSize = 2;
         private Size formSize; //Keep form size when it is minimized and restored.Since the form is resized because it takes into account the size of the title bar and borders.
+        private ResourceManager resource = Properties.Resources.ResourceManager;
+        
+
         public Main()
         {
             InitializeComponent();
             this.Padding = new Padding(borderSize);//Border size
+
         }
 
         //Drag Form
@@ -184,15 +189,21 @@ namespace DoAnCSharp
         {
             if (mPlayer.playState == WMPLib.WMPPlayState.wmppsPlaying)
             {
-                trackBar.MaxValue = (int)mPlayer.Ctlcontrols.currentItem.duration;
+                btnPlay.Image = resource.GetObject("pause") as Image;
+                double duration = mPlayer.Ctlcontrols.currentItem.duration;
+                trackBar.MaxValue = (int)duration;
+                lbEnd.Text = Helper.FormatTime(duration);
+                lbStart.Text = Helper.FormatTime(0);
                 timer1.Start();
             }else if (mPlayer.playState == WMPLib.WMPPlayState.wmppsPaused)
             {
+                btnPlay.Image = resource.GetObject("play") as Image;
                 timer1.Stop();
             }
             else if(mPlayer.playState==WMPLib.WMPPlayState.wmppsStopped)
             {
                 timer1.Stop();
+                btnPlay.Image = resource.GetObject("play") as Image;
                 trackBar.Value = 0;
             }
         }
@@ -201,7 +212,9 @@ namespace DoAnCSharp
         {
             if (mPlayer.playState == WMPLib.WMPPlayState.wmppsPlaying)
             {
-                trackBar.Value = (int)mPlayer.Ctlcontrols.currentPosition;
+                double t = mPlayer.Ctlcontrols.currentPosition;
+                trackBar.Value = (int) t;
+                lbStart.Text = Helper.FormatTime(t);
             }
         }
 
@@ -224,6 +237,19 @@ namespace DoAnCSharp
             timer1.Stop();
             mPlayer.Ctlcontrols.currentPosition=e.X;
             timer1.Start();
+        }
+
+        private void btnPlay_Click(object sender, EventArgs e)
+        {
+            if(mPlayer.playState == WMPLib.WMPPlayState.wmppsPlaying)
+            {
+                timer1.Stop();
+                mPlayer.Ctlcontrols.pause();
+            }else if (mPlayer.playState == WMPLib.WMPPlayState.wmppsPaused)
+            {
+                timer1.Start();
+                mPlayer.Ctlcontrols.play();
+            }
         }
     }
 }

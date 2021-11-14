@@ -36,15 +36,17 @@ namespace DoAnCSharp
             this.panel2 = new System.Windows.Forms.Panel();
             this.trackBar = new ReaLTaiizor.Controls.HopeTrackBar();
             this.button1 = new ReaLTaiizor.Controls.Button();
-            this.royalEllipseButton1 = new ReaLTaiizor.Controls.RoyalEllipseButton();
+            this.btnPlay = new ReaLTaiizor.Controls.RoyalEllipseButton();
             this.panelTitle = new System.Windows.Forms.Panel();
             this.btnMin = new ReaLTaiizor.Controls.ForeverButton();
             this.btnMax = new ReaLTaiizor.Controls.ForeverButton();
             this.btnQuit = new ReaLTaiizor.Controls.ForeverButton();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel5 = new System.Windows.Forms.Panel();
             this.mPlayer = new AxWMPLib.AxWindowsMediaPlayer();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lbEnd = new System.Windows.Forms.Label();
+            this.lbStart = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panelTitle.SuspendLayout();
@@ -82,9 +84,11 @@ namespace DoAnCSharp
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(16)))));
+            this.panel2.Controls.Add(this.lbStart);
+            this.panel2.Controls.Add(this.lbEnd);
             this.panel2.Controls.Add(this.trackBar);
             this.panel2.Controls.Add(this.button1);
-            this.panel2.Controls.Add(this.royalEllipseButton1);
+            this.panel2.Controls.Add(this.btnPlay);
             this.panel2.Location = new System.Drawing.Point(0, 506);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
@@ -94,6 +98,7 @@ namespace DoAnCSharp
             // trackBar
             // 
             this.trackBar.AlwaysValueVisible = false;
+            this.trackBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.trackBar.BallonArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(241)))), ((int)(((byte)(250)))));
             this.trackBar.BallonColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(241)))), ((int)(((byte)(250)))));
             this.trackBar.BarColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(220)))), ((int)(((byte)(223)))));
@@ -104,7 +109,7 @@ namespace DoAnCSharp
             this.trackBar.ForeColor = System.Drawing.Color.White;
             this.trackBar.HeadBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(241)))), ((int)(((byte)(250)))));
             this.trackBar.HeadColor = System.Drawing.Color.Black;
-            this.trackBar.Location = new System.Drawing.Point(271, 60);
+            this.trackBar.Location = new System.Drawing.Point(275, 57);
             this.trackBar.MaxValue = 1000;
             this.trackBar.MinValue = 0;
             this.trackBar.Name = "trackBar";
@@ -127,7 +132,7 @@ namespace DoAnCSharp
             this.button1.Image = null;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.InactiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
-            this.button1.Location = new System.Drawing.Point(769, 35);
+            this.button1.Location = new System.Drawing.Point(821, 9);
             this.button1.Name = "button1";
             this.button1.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.button1.Size = new System.Drawing.Size(120, 40);
@@ -136,25 +141,27 @@ namespace DoAnCSharp
             this.button1.TextAlignment = System.Drawing.StringAlignment.Center;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // royalEllipseButton1
+            // btnPlay
             // 
-            this.royalEllipseButton1.BackColor = System.Drawing.Color.Black;
-            this.royalEllipseButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.royalEllipseButton1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.royalEllipseButton1.BorderThickness = 3;
-            this.royalEllipseButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.royalEllipseButton1.DrawBorder = true;
-            this.royalEllipseButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
-            this.royalEllipseButton1.HotTrackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
-            this.royalEllipseButton1.Image = ((System.Drawing.Image)(resources.GetObject("royalEllipseButton1.Image")));
-            this.royalEllipseButton1.LayoutFlags = ReaLTaiizor.Util.RoyalLayoutFlags.ImageOnly;
-            this.royalEllipseButton1.Location = new System.Drawing.Point(449, 4);
-            this.royalEllipseButton1.Name = "royalEllipseButton1";
-            this.royalEllipseButton1.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(102)))), ((int)(((byte)(255)))));
-            this.royalEllipseButton1.PressedForeColor = System.Drawing.Color.White;
-            this.royalEllipseButton1.Size = new System.Drawing.Size(45, 45);
-            this.royalEllipseButton1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            this.royalEllipseButton1.TabIndex = 0;
+            this.btnPlay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.btnPlay.BackColor = System.Drawing.Color.Black;
+            this.btnPlay.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnPlay.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.btnPlay.BorderThickness = 3;
+            this.btnPlay.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPlay.DrawBorder = true;
+            this.btnPlay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.btnPlay.HotTrackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
+            this.btnPlay.Image = ((System.Drawing.Image)(resources.GetObject("btnPlay.Image")));
+            this.btnPlay.LayoutFlags = ReaLTaiizor.Util.RoyalLayoutFlags.ImageOnly;
+            this.btnPlay.Location = new System.Drawing.Point(449, 4);
+            this.btnPlay.Name = "btnPlay";
+            this.btnPlay.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(102)))), ((int)(((byte)(255)))));
+            this.btnPlay.PressedForeColor = System.Drawing.Color.White;
+            this.btnPlay.Size = new System.Drawing.Size(45, 45);
+            this.btnPlay.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            this.btnPlay.TabIndex = 0;
+            this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
             // 
             // panelTitle
             // 
@@ -175,6 +182,7 @@ namespace DoAnCSharp
             // 
             this.btnMin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMin.BackColor = System.Drawing.Color.Transparent;
+            this.btnMin.BackgroundImage = global::DoAnCSharp.Properties.Resources.minimize;
             this.btnMin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnMin.BaseColor = System.Drawing.Color.Transparent;
             this.btnMin.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -192,6 +200,7 @@ namespace DoAnCSharp
             // 
             this.btnMax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMax.BackColor = System.Drawing.Color.Transparent;
+            this.btnMax.BackgroundImage = global::DoAnCSharp.Properties.Resources.maximize;
             this.btnMax.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnMax.BaseColor = System.Drawing.Color.Transparent;
             this.btnMax.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -209,6 +218,7 @@ namespace DoAnCSharp
             // 
             this.btnQuit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnQuit.BackColor = System.Drawing.Color.Transparent;
+            this.btnQuit.BackgroundImage = global::DoAnCSharp.Properties.Resources.quit;
             this.btnQuit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnQuit.BaseColor = System.Drawing.Color.Transparent;
             this.btnQuit.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -236,27 +246,53 @@ namespace DoAnCSharp
             this.panel3.TabIndex = 7;
             this.panel3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTitleBar_MouseDown);
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // panel5
             // 
             this.panel5.Controls.Add(this.mPlayer);
-            this.panel5.Location = new System.Drawing.Point(331, 126);
+            this.panel5.Location = new System.Drawing.Point(382, 120);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(444, 344);
+            this.panel5.Size = new System.Drawing.Size(439, 259);
             this.panel5.TabIndex = 8;
             // 
             // mPlayer
             // 
             this.mPlayer.Enabled = true;
-            this.mPlayer.Location = new System.Drawing.Point(3, 0);
+            this.mPlayer.Location = new System.Drawing.Point(44, 62);
             this.mPlayer.Name = "mPlayer";
             this.mPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("mPlayer.OcxState")));
-            this.mPlayer.Size = new System.Drawing.Size(441, 341);
+            this.mPlayer.Size = new System.Drawing.Size(359, 181);
             this.mPlayer.TabIndex = 0;
             this.mPlayer.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(this.mPlayer_PlayStateChange);
             // 
-            // timer1
+            // lbEnd
             // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.lbEnd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.lbEnd.AutoSize = true;
+            this.lbEnd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(16)))));
+            this.lbEnd.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbEnd.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lbEnd.Location = new System.Drawing.Point(677, 55);
+            this.lbEnd.Name = "lbEnd";
+            this.lbEnd.Size = new System.Drawing.Size(70, 21);
+            this.lbEnd.TabIndex = 4;
+            this.lbEnd.Text = "00:00:00";
+            // 
+            // lbStart
+            // 
+            this.lbStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.lbStart.AutoSize = true;
+            this.lbStart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(16)))));
+            this.lbStart.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbStart.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lbStart.Location = new System.Drawing.Point(204, 55);
+            this.lbStart.Name = "lbStart";
+            this.lbStart.Size = new System.Drawing.Size(70, 21);
+            this.lbStart.TabIndex = 5;
+            this.lbStart.Text = "00:00:00";
             // 
             // Main
             // 
@@ -268,12 +304,14 @@ namespace DoAnCSharp
             this.Controls.Add(this.panelTitle);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.MinimumSize = new System.Drawing.Size(410, 0);
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main";
             this.Resize += new System.EventHandler(this.Main_Resize);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.panelTitle.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.mPlayer)).EndInit();
@@ -291,11 +329,13 @@ namespace DoAnCSharp
         private System.Windows.Forms.Panel panel3;
         private ReaLTaiizor.Controls.ForeverButton btnMin;
         private ReaLTaiizor.Controls.ForeverButton btnMax;
-        private ReaLTaiizor.Controls.RoyalEllipseButton royalEllipseButton1;
+        private ReaLTaiizor.Controls.RoyalEllipseButton btnPlay;
         private ReaLTaiizor.Controls.Button button1;
-        private System.Windows.Forms.Panel panel5;
-        private AxWMPLib.AxWindowsMediaPlayer mPlayer;
         private System.Windows.Forms.Timer timer1;
         private ReaLTaiizor.Controls.HopeTrackBar trackBar;
+        private System.Windows.Forms.Panel panel5;
+        private AxWMPLib.AxWindowsMediaPlayer mPlayer;
+        private System.Windows.Forms.Label lbStart;
+        private System.Windows.Forms.Label lbEnd;
     }
 }
