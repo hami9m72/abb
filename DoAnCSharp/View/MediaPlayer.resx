@@ -117,31 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="royalEllipseButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAXlJREFUWEft
-        lr8rRWEYx+8lLH6N0p0UGUVGg7IY2O5qtBqtMpkNyt+gLEaDZFXYlJQySCksfiQen+fHGXQjnXveI3U+
-        9eme9/0+Pc9b99733lpFxb9ARNaxJ5blw3DlEudiq1x8vvGOm9gbUTnYaOc1Xq9wPuL0+ExjBPf90djD
-        RpSlw2eJxHMdl/BO9+Ael7FuxSmwMRBLg+UQ7ljgHOJYxMXi/b8eIIPtBby2ApEnXMXOiIvBWkMsWyAa
-        wG380Do4wcmI28d7fn+ADEpm8NyKRd5wA9u/wKwdxPJHKOtDvSv0zlBOcSrifHif3Ae4wNmI8+F9fvUW
-        NPHGikVeUD+QXRHnx9pBLFsgaqBeShkHOBpx+3jP1gOw1YEr+KA5PGLxl5K1hlgaLMfxyAJnF4cjLhbv
-        7wfgpRvX8Fn34BabVpgKn2NM45k/2qWjl89glKXDxjnZz7FevYsRp8dnGvrd3sL+iMrBRosc40RslQuD
-        //ZPaUVFOmq1T1AYGlEKPQQtAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="mPlayer.OcxState" mimetype="application/x-microsoft.net.object.binary.base64">
+  <data name="axWindowsMediaPlayer1.OcxState" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACFTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5BeEhvc3QrU3RhdGUBAAAABERhdGEHAgIAAAAJAwAAAA8DAAAAtwAAAAIB
-        AAAAAQAAAAAAAAAAAAAAAKIAAAAAAwAACAAAAAAABQAAAAAAAADwPwMAAAAAAAUAAAAAAAAAAAAIAAIA
-        AAAAAAMAAQAAAAsA//8DAAAAAAALAP//CAACAAAAAAADADIAAAALAAAACAAKAAAAZgB1AGwAbAAAAAsA
-        AAALAAAACwD//wsA//8LAAAACAACAAAAAAAIAAIAAAAAAAgAAgAAAAAACAACAAAAAAALAAAAwAcAAGEC
-        AAAL
+        ZW0uV2luZG93cy5Gb3Jtcy5BeEhvc3QrU3RhdGUBAAAABERhdGEHAgIAAAAJAwAAAA8DAAAAuQAAAAIB
+        AAAAAQAAAAAAAAAAAAAAAKQAAAAAAwAACAACAAAAAAAFAAAAAAAAAPA/AwAAAAAABQAAAAAAAAAAAAgA
+        AgAAAAAAAwABAAAACwD//wMAAAAAAAsA//8IAAIAAAAAAAMAMgAAAAsAAAAIAAoAAABuAG8AbgBlAAAA
+        CwD//wsAAAALAP//CwD//wsAAAAIAAIAAAAAAAgAAgAAAAAACAACAAAAAAAIAAIAAAAAAAsAAABIIQAA
+        RQgAAAs=
 </value>
   </data>
-  <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
 </root>

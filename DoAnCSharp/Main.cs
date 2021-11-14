@@ -148,5 +148,82 @@ namespace DoAnCSharp
         {
             this.Close();
         }
+
+        private void btnMin_Click(object sender, EventArgs e)
+        {
+            formSize = Size;
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnMax_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                formSize = this.ClientSize;
+                this.WindowState = FormWindowState.Maximized;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Normal;
+                this.Size = formSize;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FileDialog f = new OpenFileDialog();
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                mPlayer.URL = f.FileName;
+                trackBar.Value = 0;
+                mPlayer.Ctlcontrols.currentPosition = 0;
+            }
+        }
+
+        private void mPlayer_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
+        {
+            if (mPlayer.playState == WMPLib.WMPPlayState.wmppsPlaying)
+            {
+                trackBar.MaxValue = (int)mPlayer.Ctlcontrols.currentItem.duration;
+                timer1.Start();
+            }else if (mPlayer.playState == WMPLib.WMPPlayState.wmppsPaused)
+            {
+                timer1.Stop();
+            }
+            else if(mPlayer.playState==WMPLib.WMPPlayState.wmppsStopped)
+            {
+                timer1.Stop();
+                trackBar.Value = 0;
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (mPlayer.playState == WMPLib.WMPPlayState.wmppsPlaying)
+            {
+                trackBar.Value = (int)mPlayer.Ctlcontrols.currentPosition;
+            }
+        }
+
+        private void trackBar_MouseUp(object sender, MouseEventArgs e)
+        {
+            mPlayer.Ctlcontrols.currentPosition = e.X;
+            timer1.Start();
+        }
+
+        private void trackBar_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                timer1.Stop();
+            }
+        }
+
+        private void trackBar_MouseDown(object sender, MouseEventArgs e)
+        {
+            timer1.Stop();
+            mPlayer.Ctlcontrols.currentPosition=e.X;
+            timer1.Start();
+        }
     }
 }
