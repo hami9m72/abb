@@ -1,4 +1,5 @@
 ﻿using DoAnCSharp.GoogleDriveAPI;
+using DoAnCSharp.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,12 +22,12 @@ namespace DoAnCSharp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //var files = DriveHelper.GetFilesInFloder(textBox1.Text);
+            var files = DriveHelper.GetFilesInFloder(textBox1.Text);
             // "https://drive.google.com/uc?id=14H59EJconqc17YUreMOFFkr5oj93sAsn&export=download"
-
-            //mPlayer.URL = files[0].WebContentLink;
-            StreamMp3("14H59EJconqc17YUreMOFFkr5oj93sAsn");
-            mPlayer.Controls.p
+            string accessToken = DriveHelper.GetAccessToken();
+            foreach (var file in files)
+                comboBox1.Items.Add(file.Id+","+file.Size.ToString()+","+ file.Name);
+            
         }
 
         private void StreamMp3(object fileID)
@@ -49,6 +50,31 @@ namespace DoAnCSharp
                 }
                 return;
             }
+        }
+
+        SimpleServer2 simpleServer;
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (simpleServer == null)
+                simpleServer = new SimpleServer2();
+            simpleServer.CreateServer();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            //if (simpleServer == null)
+            //    return;
+            //simpleServer.StopServer();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            var id = comboBox1.SelectedItem.ToString().Split(',')[0];
+            var size = comboBox1.SelectedItem.ToString().Split(',')[1];
+            mPlayer.URL = $"http://localhost:80/music/{id}/{size}";
+
+           // DriveHelper.DownloadFile(id,long.Parse(size));
+            
         }
     }
 }

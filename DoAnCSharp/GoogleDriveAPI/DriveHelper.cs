@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -56,7 +58,7 @@ namespace DoAnCSharp.GoogleDriveAPI
             var driveFiles = new List<Google.Apis.Drive.v3.Data.File>();
             do
             {
-                listRequest.Fields = "nextPageToken, files(id,name,webContentLink)";
+                listRequest.Fields = "nextPageToken, files(id,name,size,webContentLink)";
                 listRequest.Q = $"parents = '{floder_id}'";
                 listRequest.PageToken = pageToken;
                 Google.Apis.Drive.v3.Data.FileList reponse = listRequest.Execute();
@@ -65,6 +67,73 @@ namespace DoAnCSharp.GoogleDriveAPI
                 pageToken = reponse.NextPageToken;
             } while (!string.IsNullOrEmpty(pageToken));
             return driveFiles;
+        }
+
+        
+
+        //public static async Task<HttpResponeMessage> DownloadFile(string fileID,long size)
+        //{
+        //    var request = service.Files.Get(fileID);
+        //    var client = request.Service.HttpClient;
+
+        //    //you would need to know the file size
+        //    //var size = await GetFileSize(fileID);
+
+
+        //    //Stream stream1 = new MemoryStream(1024);
+        //    var req = request.CreateRequest();
+        //    req.RequestUri = new Uri(req.RequestUri.OriginalString + "?alt=media");
+        //    req.Headers.Range = new RangeHeaderValue(0,1024*1024);
+        //    var res = await client.SendAsync(req);
+
+        //    return res;
+
+        //    //using (var file = new FileStream("Hello.mp4", FileMode.Create, FileAccess.ReadWrite))
+        //    //{
+        //    //    if (res.StatusCode == HttpStatusCode.PartialContent || res.IsSuccessStatusCode)
+        //    //    {
+        //    //        using (var stream = await res.Content.ReadAsStreamAsync())
+        //    //        {
+        //    //            await stream.CopyToAsync(file);
+        //    //        }
+        //    //    }
+        //    //}
+                
+
+
+        //    //using (var file = new FileStream(downloadFileName, FileMode.CreateNew, FileAccess.ReadWrite))
+        //    //{
+
+        //    //    file.SetLength(size);
+
+        //    //    var chunks = (size / ChunkSize) + 1;
+        //    //    for (long index = 0; index < chunks; index++)
+        //    //    {
+
+        //    //        var request = exportRequest.CreateRequest();
+
+        //    //        var from = index * ChunkSize;
+        //    //        var to = from + ChunkSize - 1;
+
+        //    //        request.Headers.Range = new RangeHeaderValue(from, to);
+
+        //    //        var response = await client.SendAsync(request);
+
+        //    //        if (response.StatusCode == HttpStatusCode.PartialContent || response.IsSuccessStatusCode)
+        //    //        {
+        //    //            using (var stream = await response.Content.ReadAsStreamAsync())
+        //    //            {
+        //    //                file.Seek(from, SeekOrigin.Begin);
+        //    //                await stream.CopyToAsync(file);
+        //    //            }
+        //    //        }
+        //    //    }
+        //    //}
+        //}
+        private static async Task<long> GetFileSize(string fileId)
+        {
+            var file = await service.Files.Get(fileId).ExecuteAsync();
+            return file.Size.HasValue ? file.Size.Value : 0;
         }
     }
 }
