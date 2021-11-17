@@ -41,14 +41,14 @@ namespace DoAnCSharp
             this.rjCircularPictureBox2 = new RJCodeAdvance.RJControls.RJCircularPictureBox();
             this.btnPlay = new RJCodeAdvance.RJControls.RJCircularPictureBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.panelSongInfo = new System.Windows.Forms.Panel();
             this.panelMenu = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.iconButton5 = new FontAwesome.Sharp.IconButton();
-            this.iconButton4 = new FontAwesome.Sharp.IconButton();
-            this.iconButton3 = new FontAwesome.Sharp.IconButton();
-            this.iconButton2 = new FontAwesome.Sharp.IconButton();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.btnBXH = new FontAwesome.Sharp.IconButton();
+            this.btnTop = new FontAwesome.Sharp.IconButton();
+            this.btnCate = new FontAwesome.Sharp.IconButton();
+            this.btnHome = new FontAwesome.Sharp.IconButton();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pbLogo = new System.Windows.Forms.PictureBox();
@@ -61,7 +61,7 @@ namespace DoAnCSharp
             this.rjCircularPictureBox1 = new RJCodeAdvance.RJControls.RJCircularPictureBox();
             this.panelContainer = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.iconButton7 = new FontAwesome.Sharp.IconButton();
+            this.btnPlaylist = new FontAwesome.Sharp.IconButton();
             this.btnOpen = new FontAwesome.Sharp.IconButton();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
@@ -84,7 +84,7 @@ namespace DoAnCSharp
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(16)))));
             this.panel1.Controls.Add(this.panel8);
             this.panel1.Controls.Add(this.flowLayoutPanel1);
-            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Controls.Add(this.panelSongInfo);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 515);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
@@ -157,6 +157,8 @@ namespace DoAnCSharp
             this.trackBar.ThemeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(158)))), ((int)(((byte)(255)))));
             this.trackBar.UnknownColor = System.Drawing.Color.White;
             this.trackBar.Value = 0;
+            this.trackBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.trackBar_MouseMove);
+            this.trackBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.trackBar_MouseUp);
             // 
             // rjCircularPictureBox5
             // 
@@ -252,26 +254,27 @@ namespace DoAnCSharp
             this.flowLayoutPanel1.Size = new System.Drawing.Size(220, 86);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
-            // panel3
+            // panelSongInfo
             // 
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(230, 86);
-            this.panel3.TabIndex = 0;
+            this.panelSongInfo.BackColor = System.Drawing.Color.Yellow;
+            this.panelSongInfo.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelSongInfo.Location = new System.Drawing.Point(0, 0);
+            this.panelSongInfo.Name = "panelSongInfo";
+            this.panelSongInfo.Size = new System.Drawing.Size(230, 86);
+            this.panelSongInfo.TabIndex = 0;
             // 
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(26)))), ((int)(((byte)(31)))));
-            this.panelMenu.Controls.Add(this.iconButton7);
+            this.panelMenu.Controls.Add(this.btnPlaylist);
             this.panelMenu.Controls.Add(this.btnOpen);
             this.panelMenu.Controls.Add(this.panel6);
             this.panelMenu.Controls.Add(this.panel7);
             this.panelMenu.Controls.Add(this.iconButton5);
-            this.panelMenu.Controls.Add(this.iconButton4);
-            this.panelMenu.Controls.Add(this.iconButton3);
-            this.panelMenu.Controls.Add(this.iconButton2);
-            this.panelMenu.Controls.Add(this.iconButton1);
+            this.panelMenu.Controls.Add(this.btnBXH);
+            this.panelMenu.Controls.Add(this.btnTop);
+            this.panelMenu.Controls.Add(this.btnCate);
+            this.panelMenu.Controls.Add(this.btnHome);
             this.panelMenu.Controls.Add(this.panel5);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
@@ -313,101 +316,105 @@ namespace DoAnCSharp
             this.iconButton5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton5.UseVisualStyleBackColor = false;
             // 
-            // iconButton4
+            // btnBXH
             // 
-            this.iconButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(26)))), ((int)(((byte)(31)))));
-            this.iconButton4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iconButton4.FlatAppearance.BorderSize = 0;
-            this.iconButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton4.ForeColor = System.Drawing.Color.White;
-            this.iconButton4.IconChar = FontAwesome.Sharp.IconChar.ChartBar;
-            this.iconButton4.IconColor = System.Drawing.Color.White;
-            this.iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton4.IconSize = 30;
-            this.iconButton4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton4.Location = new System.Drawing.Point(0, 225);
-            this.iconButton4.Name = "iconButton4";
-            this.iconButton4.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.iconButton4.Size = new System.Drawing.Size(192, 48);
-            this.iconButton4.TabIndex = 4;
-            this.iconButton4.Tag = "BXH";
-            this.iconButton4.Text = "   BXH";
-            this.iconButton4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton4.UseVisualStyleBackColor = false;
+            this.btnBXH.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(26)))), ((int)(((byte)(31)))));
+            this.btnBXH.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnBXH.FlatAppearance.BorderSize = 0;
+            this.btnBXH.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBXH.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBXH.ForeColor = System.Drawing.Color.White;
+            this.btnBXH.IconChar = FontAwesome.Sharp.IconChar.ChartBar;
+            this.btnBXH.IconColor = System.Drawing.Color.White;
+            this.btnBXH.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnBXH.IconSize = 30;
+            this.btnBXH.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBXH.Location = new System.Drawing.Point(0, 225);
+            this.btnBXH.Name = "btnBXH";
+            this.btnBXH.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnBXH.Size = new System.Drawing.Size(192, 48);
+            this.btnBXH.TabIndex = 4;
+            this.btnBXH.Tag = "BXH";
+            this.btnBXH.Text = "   BXH";
+            this.btnBXH.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBXH.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnBXH.UseVisualStyleBackColor = false;
+            this.btnBXH.Click += new System.EventHandler(this.btnBXH_Click);
             // 
-            // iconButton3
+            // btnTop
             // 
-            this.iconButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(26)))), ((int)(((byte)(31)))));
-            this.iconButton3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iconButton3.FlatAppearance.BorderSize = 0;
-            this.iconButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton3.ForeColor = System.Drawing.Color.White;
-            this.iconButton3.IconChar = FontAwesome.Sharp.IconChar.Star;
-            this.iconButton3.IconColor = System.Drawing.Color.White;
-            this.iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton3.IconSize = 30;
-            this.iconButton3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton3.Location = new System.Drawing.Point(0, 177);
-            this.iconButton3.Name = "iconButton3";
-            this.iconButton3.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.iconButton3.Size = new System.Drawing.Size(192, 48);
-            this.iconButton3.TabIndex = 3;
-            this.iconButton3.Tag = "Top 100";
-            this.iconButton3.Text = "   Top 100";
-            this.iconButton3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton3.UseVisualStyleBackColor = false;
+            this.btnTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(26)))), ((int)(((byte)(31)))));
+            this.btnTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnTop.FlatAppearance.BorderSize = 0;
+            this.btnTop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTop.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTop.ForeColor = System.Drawing.Color.White;
+            this.btnTop.IconChar = FontAwesome.Sharp.IconChar.Star;
+            this.btnTop.IconColor = System.Drawing.Color.White;
+            this.btnTop.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnTop.IconSize = 30;
+            this.btnTop.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTop.Location = new System.Drawing.Point(0, 177);
+            this.btnTop.Name = "btnTop";
+            this.btnTop.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnTop.Size = new System.Drawing.Size(192, 48);
+            this.btnTop.TabIndex = 3;
+            this.btnTop.Tag = "Top 100";
+            this.btnTop.Text = "   Top 100";
+            this.btnTop.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTop.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnTop.UseVisualStyleBackColor = false;
+            this.btnTop.Click += new System.EventHandler(this.btnTop_Click);
             // 
-            // iconButton2
+            // btnCate
             // 
-            this.iconButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(26)))), ((int)(((byte)(31)))));
-            this.iconButton2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iconButton2.FlatAppearance.BorderSize = 0;
-            this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton2.ForeColor = System.Drawing.Color.White;
-            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.List;
-            this.iconButton2.IconColor = System.Drawing.Color.White;
-            this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton2.IconSize = 30;
-            this.iconButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton2.Location = new System.Drawing.Point(0, 129);
-            this.iconButton2.Name = "iconButton2";
-            this.iconButton2.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.iconButton2.Size = new System.Drawing.Size(192, 48);
-            this.iconButton2.TabIndex = 2;
-            this.iconButton2.Tag = "Thể loại";
-            this.iconButton2.Text = "   Thể loại";
-            this.iconButton2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton2.UseVisualStyleBackColor = false;
+            this.btnCate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(26)))), ((int)(((byte)(31)))));
+            this.btnCate.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnCate.FlatAppearance.BorderSize = 0;
+            this.btnCate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCate.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCate.ForeColor = System.Drawing.Color.White;
+            this.btnCate.IconChar = FontAwesome.Sharp.IconChar.List;
+            this.btnCate.IconColor = System.Drawing.Color.White;
+            this.btnCate.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnCate.IconSize = 30;
+            this.btnCate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCate.Location = new System.Drawing.Point(0, 129);
+            this.btnCate.Name = "btnCate";
+            this.btnCate.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnCate.Size = new System.Drawing.Size(192, 48);
+            this.btnCate.TabIndex = 2;
+            this.btnCate.Tag = "Thể loại";
+            this.btnCate.Text = "   Thể loại";
+            this.btnCate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCate.UseVisualStyleBackColor = false;
+            this.btnCate.Click += new System.EventHandler(this.btnCate_Click);
             // 
-            // iconButton1
+            // btnHome
             // 
-            this.iconButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.iconButton1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iconButton1.FlatAppearance.BorderSize = 0;
-            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton1.ForeColor = System.Drawing.Color.White;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Home;
-            this.iconButton1.IconColor = System.Drawing.Color.White;
-            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.IconSize = 30;
-            this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton1.Location = new System.Drawing.Point(0, 81);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.iconButton1.Size = new System.Drawing.Size(192, 48);
-            this.iconButton1.TabIndex = 1;
-            this.iconButton1.Tag = "Trang chủ";
-            this.iconButton1.Text = "   Trang chủ";
-            this.iconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton1.UseVisualStyleBackColor = false;
+            this.btnHome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnHome.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnHome.FlatAppearance.BorderSize = 0;
+            this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHome.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHome.ForeColor = System.Drawing.Color.White;
+            this.btnHome.IconChar = FontAwesome.Sharp.IconChar.Home;
+            this.btnHome.IconColor = System.Drawing.Color.White;
+            this.btnHome.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnHome.IconSize = 30;
+            this.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHome.Location = new System.Drawing.Point(0, 81);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnHome.Size = new System.Drawing.Size(192, 48);
+            this.btnHome.TabIndex = 1;
+            this.btnHome.Tag = "Trang chủ";
+            this.btnHome.Text = "   Trang chủ";
+            this.btnHome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHome.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnHome.UseVisualStyleBackColor = false;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // panel5
             // 
@@ -559,29 +566,30 @@ namespace DoAnCSharp
             this.panel6.Size = new System.Drawing.Size(192, 31);
             this.panel6.TabIndex = 9;
             // 
-            // iconButton7
+            // btnPlaylist
             // 
-            this.iconButton7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(26)))), ((int)(((byte)(31)))));
-            this.iconButton7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iconButton7.FlatAppearance.BorderSize = 0;
-            this.iconButton7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton7.ForeColor = System.Drawing.Color.White;
-            this.iconButton7.IconChar = FontAwesome.Sharp.IconChar.Stream;
-            this.iconButton7.IconColor = System.Drawing.Color.White;
-            this.iconButton7.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton7.IconSize = 30;
-            this.iconButton7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton7.Location = new System.Drawing.Point(0, 353);
-            this.iconButton7.Name = "iconButton7";
-            this.iconButton7.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.iconButton7.Size = new System.Drawing.Size(192, 48);
-            this.iconButton7.TabIndex = 11;
-            this.iconButton7.Tag = "Playlist";
-            this.iconButton7.Text = "   Playlist";
-            this.iconButton7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton7.UseVisualStyleBackColor = false;
+            this.btnPlaylist.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(26)))), ((int)(((byte)(31)))));
+            this.btnPlaylist.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnPlaylist.FlatAppearance.BorderSize = 0;
+            this.btnPlaylist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPlaylist.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPlaylist.ForeColor = System.Drawing.Color.White;
+            this.btnPlaylist.IconChar = FontAwesome.Sharp.IconChar.Stream;
+            this.btnPlaylist.IconColor = System.Drawing.Color.White;
+            this.btnPlaylist.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnPlaylist.IconSize = 30;
+            this.btnPlaylist.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPlaylist.Location = new System.Drawing.Point(0, 353);
+            this.btnPlaylist.Name = "btnPlaylist";
+            this.btnPlaylist.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnPlaylist.Size = new System.Drawing.Size(192, 48);
+            this.btnPlaylist.TabIndex = 11;
+            this.btnPlaylist.Tag = "Playlist";
+            this.btnPlaylist.Text = "   Playlist";
+            this.btnPlaylist.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPlaylist.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPlaylist.UseVisualStyleBackColor = false;
+            this.btnPlaylist.Click += new System.EventHandler(this.btnPlaylist_Click);
             // 
             // btnOpen
             // 
@@ -652,12 +660,12 @@ namespace DoAnCSharp
         private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.Panel panelTitleBar;
         private System.Windows.Forms.Panel panel5;
-        private FontAwesome.Sharp.IconButton iconButton1;
+        private FontAwesome.Sharp.IconButton btnHome;
         private System.Windows.Forms.Panel panel7;
         private FontAwesome.Sharp.IconButton iconButton5;
-        private FontAwesome.Sharp.IconButton iconButton4;
-        private FontAwesome.Sharp.IconButton iconButton3;
-        private FontAwesome.Sharp.IconButton iconButton2;
+        private FontAwesome.Sharp.IconButton btnBXH;
+        private FontAwesome.Sharp.IconButton btnTop;
+        private FontAwesome.Sharp.IconButton btnCate;
         private FontAwesome.Sharp.IconButton btnExit;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panelContainer;
@@ -669,7 +677,7 @@ namespace DoAnCSharp
         private System.Windows.Forms.Panel panel8;
         private RJCodeAdvance.RJControls.RJCircularPictureBox btnPlay;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panelSongInfo;
         private RJCodeAdvance.RJControls.RJCircularPictureBox rjCircularPictureBox2;
         private RJCodeAdvance.RJControls.RJCircularPictureBox rjCircularPictureBox3;
         private ReaLTaiizor.Controls.HopeTrackBar trackBar;
@@ -678,7 +686,7 @@ namespace DoAnCSharp
         private System.Windows.Forms.Label lbMaxTime;
         private System.Windows.Forms.Label lbMinTime;
         private RJCodeAdvance.RJControls.RJCircularPictureBox rjCircularPictureBox1;
-        private FontAwesome.Sharp.IconButton iconButton7;
+        private FontAwesome.Sharp.IconButton btnPlaylist;
         private FontAwesome.Sharp.IconButton btnOpen;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Timer timer1;

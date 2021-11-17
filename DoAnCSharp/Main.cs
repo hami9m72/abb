@@ -55,6 +55,7 @@ namespace DoAnCSharp
             {
                 timer1.Stop();
                 trackBar.Value = 0;
+                lbMinTime.Text = "00:00";
             }
         }
 
@@ -181,12 +182,13 @@ namespace DoAnCSharp
                     menuButton.ImageAlign = ContentAlignment.MiddleCenter;
                     menuButton.Padding = new Padding(0);
                 }
+                panelSongInfo.Visible = false;
                 canCollapse = true;
             }
 
             if(this.Width > 972 && canCollapse)
             { //Expand menu
-                panelMenu.Width = 230;
+                panelMenu.Width = 192;
                 pbLogo.Location = new Point(21, 23);
 
                 //btnMenu.Dock = DockStyle.None;
@@ -196,6 +198,8 @@ namespace DoAnCSharp
                     menuButton.ImageAlign = ContentAlignment.MiddleLeft;
                     menuButton.Padding = new Padding(10, 0, 0, 0);
                 }
+
+                panelSongInfo.Visible = true;
                 canCollapse = false;
             }
         }
@@ -231,10 +235,18 @@ namespace DoAnCSharp
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void ClearAllMenuCheck()
         {
-            
+            foreach (Button menuButton in panelMenu.Controls.OfType<Button>())
+                menuButton.BackColor = Color.FromArgb(25, 26, 31);      
         }
+
+        private void ActiveMenu(Button btn)
+        {
+            btn.BackColor = Color.FromArgb(255, 128, 0);
+        }
+
+
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
@@ -248,23 +260,76 @@ namespace DoAnCSharp
             }
         }
 
+        private bool barChange = true;
         private void timer1_Tick(object sender, EventArgs e)
         {
             if (MediaPlayer.playState == WMPLib.WMPPlayState.wmppsPlaying)
             {
-                trackBar.Value = (int)MediaPlayer.Ctlcontrols.currentPosition;
                 lbMinTime.Text = MediaPlayer.Ctlcontrols.currentPositionString;
+                if(barChange)
+                    trackBar.Value = (int)MediaPlayer.Ctlcontrols.currentPosition;
             }
         }
 
         private void btnOpen_Click(object sender, EventArgs e)
         {
             FileDialog f = new OpenFileDialog();
-            if (f.ShowDialog() == DialogResult.OK)
+            if (f.ShowDialog(this) == DialogResult.OK)
             {
                 MediaPlayer.URL = f.FileName;
                 MediaPlayer.Ctlcontrols.play();
+                ClearAllMenuCheck();
+                ActiveMenu(sender as Button);
             }
+        }
+
+        private void trackBar_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (MediaPlayer.currentMedia != null)
+            {
+                double cur = MediaPlayer.Ctlcontrols.currentItem.duration * e.X / (trackBar.Width - 15);
+                MediaPlayer.Ctlcontrols.currentPosition = cur;
+                lbMinTime.Text = MediaPlayer.Ctlcontrols.currentPositionString;
+                barChange = true;
+            }
+        }
+
+        private void trackBar_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (MediaPlayer.currentMedia != null && e.Button==MouseButtons.Left)
+            {
+                barChange = false;
+            }
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            ClearAllMenuCheck();
+            ActiveMenu(sender as Button);
+        }
+
+        private void btnCate_Click(object sender, EventArgs e)
+        {
+            ClearAllMenuCheck();
+            ActiveMenu(sender as Button);
+        }
+
+        private void btnTop_Click(object sender, EventArgs e)
+        {
+            ClearAllMenuCheck();
+            ActiveMenu(sender as Button);
+        }
+
+        private void btnBXH_Click(object sender, EventArgs e)
+        {
+            ClearAllMenuCheck();
+            ActiveMenu(sender as Button);
+        }
+
+        private void btnPlaylist_Click(object sender, EventArgs e)
+        {
+            ClearAllMenuCheck();
+            ActiveMenu(sender as Button);
         }
     }
 }
