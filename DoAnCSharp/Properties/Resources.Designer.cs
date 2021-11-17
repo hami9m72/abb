@@ -63,9 +63,59 @@ namespace DoAnCSharp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_end_24px_5 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_end_24px_5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_music_96px_5 {
             get {
                 object obj = ResourceManager.GetObject("icons8_music_96px_5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_play_32px_7 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_play_32px_7", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_repeat_24px_3 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_repeat_24px_3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_shuffle_24px_3 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_shuffle_24px_3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_skip_to_start_24px_2 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_skip_to_start_24px_2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

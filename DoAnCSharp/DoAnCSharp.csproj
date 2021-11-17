@@ -301,5 +301,20 @@
   <ItemGroup>
     <None Include="Resources\icons8_music_96px_5.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_play_32px_7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_skip_to_start_24px_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_end_24px_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_shuffle_24px_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_repeat_24px_3.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
