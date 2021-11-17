@@ -69,7 +69,6 @@ namespace DoAnCSharp
             // 
             // button2
             // 
-            this.button2.BackgroundImage = global::DoAnCSharp.Properties.Resources.frame;
             this.button2.Location = new System.Drawing.Point(582, 60);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
