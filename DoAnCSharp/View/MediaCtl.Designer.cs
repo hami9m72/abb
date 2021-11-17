@@ -1,7 +1,7 @@
 ﻿
 namespace DoAnCSharp.View
 {
-    partial class MediaPlayer
+    partial class MediaCtl
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,34 +29,35 @@ namespace DoAnCSharp.View
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MediaPlayer));
-            this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
-            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MediaCtl));
+            this.mPlayer = new AxWMPLib.AxWindowsMediaPlayer();
+            ((System.ComponentModel.ISupportInitialize)(this.mPlayer)).BeginInit();
             this.SuspendLayout();
             // 
-            // axWindowsMediaPlayer1
+            // mPlayer
             // 
-            this.axWindowsMediaPlayer1.Enabled = true;
-            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(0, 0);
-            this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
-            this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
-            this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(687, 465);
-            this.axWindowsMediaPlayer1.TabIndex = 0;
+            this.mPlayer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mPlayer.Enabled = true;
+            this.mPlayer.Location = new System.Drawing.Point(0, 0);
+            this.mPlayer.Name = "mPlayer";
+            this.mPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("mPlayer.OcxState")));
+            this.mPlayer.Size = new System.Drawing.Size(764, 434);
+            this.mPlayer.TabIndex = 0;
             // 
-            // MediaPlayer
+            // MediaCtl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.axWindowsMediaPlayer1);
-            this.Name = "MediaPlayer";
-            this.Size = new System.Drawing.Size(687, 465);
-            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
+            this.Controls.Add(this.mPlayer);
+            this.Name = "MediaCtl";
+            this.Size = new System.Drawing.Size(764, 434);
+            ((System.ComponentModel.ISupportInitialize)(this.mPlayer)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
+        private AxWMPLib.AxWindowsMediaPlayer mPlayer;
     }
 }

@@ -1,9 +1,11 @@
-﻿using System;
+﻿using DoAnCSharp.View;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Resources;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,13 +17,47 @@ namespace DoAnCSharp
     {
         private int borderSize = 2;
         private Size formSize;
+
+        private Main instance;
+        public Main Instance { get => instance; }
+        public AxWMPLib.AxWindowsMediaPlayer MediaPlayer;
+
+        
         public Main()
         {
             InitializeComponent();
+            instance = this;
             //CollapseMenu();
             this.Padding = new Padding(borderSize);//Border size
             this.BackColor = Color.FromArgb(98, 102, 244);
+
+            var mediaView = new MediaCtl();
+            panelContainer.Controls.Add(mediaView);
+            mediaView.Dock = DockStyle.Fill;
+            MediaPlayer = mediaView.MPlayer;
+            MediaPlayer.PlayStateChange += MediaPlayer_PlayStateChange;
         }
+
+        private void MediaPlayer_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
+        {
+            if (MediaPlayer.playState == WMPLib.WMPPlayState.wmppsPlaying)
+            {
+                btnPlay.Image = Properties.Resources.pause;
+                trackBar.MaxValue =(int) MediaPlayer.Ctlcontrols.currentItem.duration;
+                lbMaxTime.Text = MediaPlayer.Ctlcontrols.currentItem.durationString;
+                timer1.Start();
+            }
+            else if (MediaPlayer.playState == WMPLib.WMPPlayState.wmppsPaused)
+            {
+                btnPlay.Image = Properties.Resources.play;
+                timer1.Stop();
+            }else if (MediaPlayer.playState == WMPLib.WMPPlayState.wmppsStopped)
+            {
+                timer1.Stop();
+                trackBar.Value = 0;
+            }
+        }
+
         //Drag Form
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -193,6 +229,42 @@ namespace DoAnCSharp
         {
             formSize = Size;
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnPlay_Click(object sender, EventArgs e)
+        {
+            if (MediaPlayer.playState == WMPLib.WMPPlayState.wmppsPlaying)
+            {
+                MediaPlayer.Ctlcontrols.pause();
+            }        
+            else if (MediaPlayer.playState == WMPLib.WMPPlayState.wmppsPaused)
+            {
+                MediaPlayer.Ctlcontrols.play();
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (MediaPlayer.playState == WMPLib.WMPPlayState.wmppsPlaying)
+            {
+                trackBar.Value = (int)MediaPlayer.Ctlcontrols.currentPosition;
+                lbMinTime.Text = MediaPlayer.Ctlcontrols.currentPositionString;
+            }
+        }
+
+        private void btnOpen_Click(object sender, EventArgs e)
+        {
+            FileDialog f = new OpenFileDialog();
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                MediaPlayer.URL = f.FileName;
+                MediaPlayer.Ctlcontrols.play();
+            }
         }
     }
 }

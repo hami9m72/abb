@@ -10,9 +10,10 @@ using System.Windows.Forms;
 
 namespace DoAnCSharp.View
 {
-    public partial class MediaPlayer : UserControl
+    public partial class MediaCtl : UserControl
     {
-        public MediaPlayer()
+        public AxWMPLib.AxWindowsMediaPlayer MPlayer { get => mPlayer; }
+        public MediaCtl()
         {
             InitializeComponent();
         }

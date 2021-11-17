@@ -231,6 +231,12 @@
     <Compile Include="Utils\Helper.cs" />
     <Compile Include="Utils\SimpleServer.cs" />
     <Compile Include="Utils\SimpleServer2.cs" />
+    <Compile Include="View\MediaCtl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\MediaCtl.Designer.cs">
+      <DependentUpon>MediaCtl.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -247,6 +253,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\MediaCtl.resx">
+      <DependentUpon>MediaCtl.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -315,6 +324,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8_repeat_24px_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DataRepo\" />
+    <Folder Include="Model\" />
+    <Folder Include="Service\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
