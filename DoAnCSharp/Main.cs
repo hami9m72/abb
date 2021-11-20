@@ -29,12 +29,16 @@ namespace DoAnCSharp
             instance = this;
             //CollapseMenu();
             this.Padding = new Padding(borderSize);//Border size
-            this.BackColor = Color.FromArgb(98, 102, 244);
 
-            var mediaView = new MediaCtl();
+            var homeView = new HomeView();
+            panelContainer.Controls.Add(homeView);
+            homeView.Dock = DockStyle.Fill;
+
+           var mediaView = new MediaCtl();
             panelContainer.Controls.Add(mediaView);
             mediaView.Dock = DockStyle.Fill;
             MediaPlayer = mediaView.MPlayer;
+            mediaView.Visible = false;
             MediaPlayer.PlayStateChange += MediaPlayer_PlayStateChange;
         }
 
@@ -188,7 +192,7 @@ namespace DoAnCSharp
 
             if(this.Width > 972 && canCollapse)
             { //Expand menu
-                panelMenu.Width = 192;
+                panelMenu.Width = 227;
                 pbLogo.Location = new Point(21, 23);
 
                 //btnMenu.Dock = DockStyle.None;

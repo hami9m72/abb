@@ -32,11 +32,11 @@ namespace DoAnCSharp
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.mPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button4 = new System.Windows.Forms.Button();
+            this.mPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             ((System.ComponentModel.ISupportInitialize)(this.mPlayer)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,15 +57,6 @@ namespace DoAnCSharp
             this.button1.Text = "Load";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // mPlayer
-            // 
-            this.mPlayer.Enabled = true;
-            this.mPlayer.Location = new System.Drawing.Point(12, 54);
-            this.mPlayer.Name = "mPlayer";
-            this.mPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("mPlayer.OcxState")));
-            this.mPlayer.Size = new System.Drawing.Size(530, 335);
-            this.mPlayer.TabIndex = 2;
             // 
             // button2
             // 
@@ -107,11 +98,20 @@ namespace DoAnCSharp
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // mPlayer
+            // 
+            this.mPlayer.Enabled = true;
+            this.mPlayer.Location = new System.Drawing.Point(12, 54);
+            this.mPlayer.Name = "mPlayer";
+            this.mPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("mPlayer.OcxState")));
+            this.mPlayer.Size = new System.Drawing.Size(530, 335);
+            this.mPlayer.TabIndex = 2;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(748, 413);
+            this.ClientSize = new System.Drawing.Size(919, 608);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button3);

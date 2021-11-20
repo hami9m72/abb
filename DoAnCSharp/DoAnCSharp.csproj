@@ -219,6 +219,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -226,19 +232,37 @@
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="GoogleDriveAPI\DriveHelper.cs" />
+    <Compile Include="Model\MicIn.cs" />
+    <Compile Include="Model\SavingWaveProvider.cs" />
+    <Compile Include="Model\Song.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\Helper.cs" />
     <Compile Include="Utils\SimpleServer.cs" />
     <Compile Include="Utils\SimpleServer2.cs" />
-    <Compile Include="View\MediaCtl.cs">
+    <Compile Include="View\CustomControl\AlbumCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\MediaCtl.Designer.cs">
+    <Compile Include="View\CustomControl\AlbumCard.Designer.cs">
+      <DependentUpon>AlbumCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\HomeView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\HomeView.Designer.cs">
+      <DependentUpon>HomeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\CustomControl\MediaCtl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\CustomControl\MediaCtl.Designer.cs">
       <DependentUpon>MediaCtl.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
@@ -253,7 +277,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="View\MediaCtl.resx">
+    <EmbeddedResource Include="View\CustomControl\AlbumCard.resx">
+      <DependentUpon>AlbumCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\HomeView.resx">
+      <DependentUpon>HomeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\CustomControl\MediaCtl.resx">
       <DependentUpon>MediaCtl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -327,7 +357,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DataRepo\" />
-    <Folder Include="Model\" />
     <Folder Include="Service\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

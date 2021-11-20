@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DoAnCSharp.View.CustomControl;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,12 +11,13 @@ using System.Windows.Forms;
 
 namespace DoAnCSharp.View
 {
-    public partial class MediaCtl : UserControl
+    public partial class HomeView : UserControl
     {
-        public AxWMPLib.AxWindowsMediaPlayer MPlayer { get => mPlayer; }
-        public MediaCtl()
+        public HomeView()
         {
             InitializeComponent();
+            for (int i = 0; i < 5; i++)
+                poisonPanel1.Controls.Add(new AlbumCard());
         }
     }
 }
