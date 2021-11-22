@@ -23,6 +23,8 @@ namespace DoAnCSharp
         private SavingWaveProvider savingWaveProvider;
         private WaveOut player;
         private VolumeSampleProvider volumeSampleProvider;
+
+
         public Form2()
         {
             InitializeComponent();
@@ -41,8 +43,11 @@ namespace DoAnCSharp
 
         private void btnStart_Click(object sender, EventArgs e)
         {
+            var reader1 = new AudioFileReader(Path.Combine(outpath, "karaoke.mp3"));
+
             // set up the recorder
             recorder = new WaveIn();
+            recorder.WaveFormat = reader1.WaveFormat;
             recorder.DeviceNumber = cbMic.SelectedIndex;
             recorder.DataAvailable += RecorderOnDataAvailable;
 
@@ -55,7 +60,13 @@ namespace DoAnCSharp
             player.DeviceNumber = cbLoa.SelectedIndex;
             volumeSampleProvider =new VolumeSampleProvider(savingWaveProvider.ToSampleProvider());
             volumeSampleProvider.Volume = 1.0f;
-            player.Init(volumeSampleProvider);
+
+            
+            ISampleProvider t = volumeSampleProvider;
+            
+            MixingSampleProvider mixer= new MixingSampleProvider(new[] { t, reader1 });
+            
+            player.Init(mixer);
 
             // begin playback & record
             player.Play();
@@ -91,12 +102,13 @@ namespace DoAnCSharp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //using (var reader1 = new AudioFileReader(Path.Combine(outpath, "karaoke.mp3")))
-            //using (var reader2 = new AudioFileReader(Path.Combine(outpath, "temp.wav")))
-            //{
-            //    var mixer = new MixingSampleProvider(new[] { reader1, reader2 });
-            //    WaveFileWriter.CreateWaveFile16("mixed.wav", mixer);
-            //}
+            using (var reader1 = new AudioFileReader(Path.Combine(outpath, "karaoke.mp3")))
+            using (var reader2 = new AudioFileReader(Path.Combine(outpath, "temp.wav")))
+            {
+
+                var mixer = new MixingSampleProvider(new[] { reader1, reader2 });
+                WaveFileWriter.CreateWaveFile16(Path.Combine(outpath, "mixed.wav"), mixer);
+            }
         }
     }
 }

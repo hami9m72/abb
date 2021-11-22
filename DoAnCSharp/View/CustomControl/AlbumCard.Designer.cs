@@ -60,7 +60,7 @@ namespace DoAnCSharp.View.CustomControl
             this.label1.Location = new System.Drawing.Point(0, 150);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(5, 5, 0, 0);
-            this.label1.Size = new System.Drawing.Size(163, 77);
+            this.label1.Size = new System.Drawing.Size(163, 64);
             this.label1.TabIndex = 1;
             this.label1.Text = "label1\r\na";
             // 
@@ -72,7 +72,7 @@ namespace DoAnCSharp.View.CustomControl
             this.Controls.Add(this.rjButton1);
             this.Margin = new System.Windows.Forms.Padding(3, 3, 20, 3);
             this.Name = "AlbumCard";
-            this.Size = new System.Drawing.Size(163, 227);
+            this.Size = new System.Drawing.Size(163, 214);
             this.ResumeLayout(false);
 
         }

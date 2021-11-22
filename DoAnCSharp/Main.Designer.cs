@@ -30,18 +30,6 @@ namespace DoAnCSharp
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.lbMaxTime = new System.Windows.Forms.Label();
-            this.lbMinTime = new System.Windows.Forms.Label();
-            this.trackBar = new ReaLTaiizor.Controls.HopeTrackBar();
-            this.rjCircularPictureBox5 = new RJCodeAdvance.RJControls.RJCircularPictureBox();
-            this.rjCircularPictureBox4 = new RJCodeAdvance.RJControls.RJCircularPictureBox();
-            this.rjCircularPictureBox3 = new RJCodeAdvance.RJControls.RJCircularPictureBox();
-            this.rjCircularPictureBox2 = new RJCodeAdvance.RJControls.RJCircularPictureBox();
-            this.btnPlay = new RJCodeAdvance.RJControls.RJCircularPictureBox();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.panelSongInfo = new System.Windows.Forms.Panel();
             this.panelMenu = new System.Windows.Forms.Panel();
             this.btnPlaylist = new FontAwesome.Sharp.IconButton();
             this.btnOpen = new FontAwesome.Sharp.IconButton();
@@ -65,15 +53,23 @@ namespace DoAnCSharp
             this.rjTextBox1 = new RJCodeAdvance.RJControls.RJTextBox();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.rjCircularPictureBox1 = new RJCodeAdvance.RJControls.RJCircularPictureBox();
-            this.panelContainer = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.panel1.SuspendLayout();
-            this.panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnPlay)).BeginInit();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.panelContainer = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.lbMinTime = new System.Windows.Forms.Label();
+            this.lbMaxTime = new System.Windows.Forms.Label();
+            this.trackBar = new ReaLTaiizor.Controls.HopeTrackBar();
+            this.rjCircularPictureBox5 = new RJCodeAdvance.RJControls.RJCircularPictureBox();
+            this.rjCircularPictureBox4 = new RJCodeAdvance.RJControls.RJCircularPictureBox();
+            this.rjCircularPictureBox3 = new RJCodeAdvance.RJControls.RJCircularPictureBox();
+            this.rjCircularPictureBox2 = new RJCodeAdvance.RJControls.RJCircularPictureBox();
+            this.btnPlay = new RJCodeAdvance.RJControls.RJCircularPictureBox();
             this.panelMenu.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
@@ -81,191 +77,18 @@ namespace DoAnCSharp
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox1)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel8.SuspendLayout();
+            this.panel10.SuspendLayout();
+            this.panel11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPlay)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(16)))));
-            this.panel1.Controls.Add(this.panel8);
-            this.panel1.Controls.Add(this.flowLayoutPanel1);
-            this.panel1.Controls.Add(this.panelSongInfo);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 515);
-            this.panel1.Margin = new System.Windows.Forms.Padding(0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(956, 86);
-            this.panel1.TabIndex = 0;
-            // 
-            // panel8
-            // 
-            this.panel8.Controls.Add(this.lbMaxTime);
-            this.panel8.Controls.Add(this.lbMinTime);
-            this.panel8.Controls.Add(this.trackBar);
-            this.panel8.Controls.Add(this.rjCircularPictureBox5);
-            this.panel8.Controls.Add(this.rjCircularPictureBox4);
-            this.panel8.Controls.Add(this.rjCircularPictureBox3);
-            this.panel8.Controls.Add(this.rjCircularPictureBox2);
-            this.panel8.Controls.Add(this.btnPlay);
-            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(230, 0);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(506, 86);
-            this.panel8.TabIndex = 2;
-            // 
-            // lbMaxTime
-            // 
-            this.lbMaxTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.lbMaxTime.AutoSize = true;
-            this.lbMaxTime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbMaxTime.ForeColor = System.Drawing.Color.White;
-            this.lbMaxTime.Location = new System.Drawing.Point(434, 47);
-            this.lbMaxTime.Name = "lbMaxTime";
-            this.lbMaxTime.Size = new System.Drawing.Size(49, 21);
-            this.lbMaxTime.TabIndex = 7;
-            this.lbMaxTime.Text = "00:00";
-            // 
-            // lbMinTime
-            // 
-            this.lbMinTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.lbMinTime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbMinTime.ForeColor = System.Drawing.Color.White;
-            this.lbMinTime.Location = new System.Drawing.Point(20, 47);
-            this.lbMinTime.Name = "lbMinTime";
-            this.lbMinTime.Size = new System.Drawing.Size(70, 27);
-            this.lbMinTime.TabIndex = 6;
-            this.lbMinTime.Text = "00:00";
-            this.lbMinTime.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // trackBar
-            // 
-            this.trackBar.AlwaysValueVisible = false;
-            this.trackBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.trackBar.BallonArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.trackBar.BallonColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.trackBar.BarColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(220)))), ((int)(((byte)(223)))));
-            this.trackBar.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(16)))));
-            this.trackBar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.trackBar.FillBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.trackBar.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.trackBar.ForeColor = System.Drawing.Color.White;
-            this.trackBar.HeadBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.trackBar.HeadColor = System.Drawing.Color.Black;
-            this.trackBar.Location = new System.Drawing.Point(87, 58);
-            this.trackBar.MaxValue = 1000;
-            this.trackBar.MinValue = 0;
-            this.trackBar.Name = "trackBar";
-            this.trackBar.ShowValue = false;
-            this.trackBar.Size = new System.Drawing.Size(352, 16);
-            this.trackBar.TabIndex = 5;
-            this.trackBar.Text = "hopeTrackBar1";
-            this.trackBar.ThemeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(158)))), ((int)(((byte)(255)))));
-            this.trackBar.UnknownColor = System.Drawing.Color.White;
-            this.trackBar.Value = 0;
-            this.trackBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.trackBar_MouseMove);
-            this.trackBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.trackBar_MouseUp);
-            // 
-            // rjCircularPictureBox5
-            // 
-            this.rjCircularPictureBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.rjCircularPictureBox5.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.rjCircularPictureBox5.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.rjCircularPictureBox5.BorderColor2 = System.Drawing.Color.HotPink;
-            this.rjCircularPictureBox5.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.rjCircularPictureBox5.BorderSize = 0;
-            this.rjCircularPictureBox5.GradientAngle = 50F;
-            this.rjCircularPictureBox5.Image = global::DoAnCSharp.Properties.Resources.icons8_shuffle_24px_3;
-            this.rjCircularPictureBox5.Location = new System.Drawing.Point(132, 6);
-            this.rjCircularPictureBox5.Name = "rjCircularPictureBox5";
-            this.rjCircularPictureBox5.Size = new System.Drawing.Size(41, 41);
-            this.rjCircularPictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.rjCircularPictureBox5.TabIndex = 4;
-            this.rjCircularPictureBox5.TabStop = false;
-            // 
-            // rjCircularPictureBox4
-            // 
-            this.rjCircularPictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.rjCircularPictureBox4.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.rjCircularPictureBox4.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.rjCircularPictureBox4.BorderColor2 = System.Drawing.Color.HotPink;
-            this.rjCircularPictureBox4.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.rjCircularPictureBox4.BorderSize = 0;
-            this.rjCircularPictureBox4.GradientAngle = 50F;
-            this.rjCircularPictureBox4.Image = global::DoAnCSharp.Properties.Resources.icons8_repeat_24px_3;
-            this.rjCircularPictureBox4.Location = new System.Drawing.Point(342, 6);
-            this.rjCircularPictureBox4.Name = "rjCircularPictureBox4";
-            this.rjCircularPictureBox4.Size = new System.Drawing.Size(41, 41);
-            this.rjCircularPictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.rjCircularPictureBox4.TabIndex = 3;
-            this.rjCircularPictureBox4.TabStop = false;
-            // 
-            // rjCircularPictureBox3
-            // 
-            this.rjCircularPictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.rjCircularPictureBox3.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.rjCircularPictureBox3.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.rjCircularPictureBox3.BorderColor2 = System.Drawing.Color.HotPink;
-            this.rjCircularPictureBox3.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.rjCircularPictureBox3.BorderSize = 0;
-            this.rjCircularPictureBox3.GradientAngle = 50F;
-            this.rjCircularPictureBox3.Image = global::DoAnCSharp.Properties.Resources.icons8_end_24px_5;
-            this.rjCircularPictureBox3.Location = new System.Drawing.Point(295, 6);
-            this.rjCircularPictureBox3.Name = "rjCircularPictureBox3";
-            this.rjCircularPictureBox3.Size = new System.Drawing.Size(41, 41);
-            this.rjCircularPictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.rjCircularPictureBox3.TabIndex = 2;
-            this.rjCircularPictureBox3.TabStop = false;
-            // 
-            // rjCircularPictureBox2
-            // 
-            this.rjCircularPictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.rjCircularPictureBox2.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.rjCircularPictureBox2.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.rjCircularPictureBox2.BorderColor2 = System.Drawing.Color.HotPink;
-            this.rjCircularPictureBox2.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.rjCircularPictureBox2.BorderSize = 0;
-            this.rjCircularPictureBox2.GradientAngle = 50F;
-            this.rjCircularPictureBox2.Image = global::DoAnCSharp.Properties.Resources.icons8_skip_to_start_24px_2;
-            this.rjCircularPictureBox2.Location = new System.Drawing.Point(179, 6);
-            this.rjCircularPictureBox2.Name = "rjCircularPictureBox2";
-            this.rjCircularPictureBox2.Size = new System.Drawing.Size(41, 41);
-            this.rjCircularPictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.rjCircularPictureBox2.TabIndex = 1;
-            this.rjCircularPictureBox2.TabStop = false;
-            // 
-            // btnPlay
-            // 
-            this.btnPlay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.btnPlay.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.btnPlay.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnPlay.BorderColor2 = System.Drawing.Color.HotPink;
-            this.btnPlay.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.btnPlay.BorderSize = 2;
-            this.btnPlay.GradientAngle = 50F;
-            this.btnPlay.Image = global::DoAnCSharp.Properties.Resources.icons8_play_32px_7;
-            this.btnPlay.Location = new System.Drawing.Point(232, 1);
-            this.btnPlay.Name = "btnPlay";
-            this.btnPlay.Size = new System.Drawing.Size(51, 51);
-            this.btnPlay.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.btnPlay.TabIndex = 0;
-            this.btnPlay.TabStop = false;
-            this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(736, 0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(220, 86);
-            this.flowLayoutPanel1.TabIndex = 1;
-            // 
-            // panelSongInfo
-            // 
-            this.panelSongInfo.BackColor = System.Drawing.Color.Yellow;
-            this.panelSongInfo.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelSongInfo.Location = new System.Drawing.Point(0, 0);
-            this.panelSongInfo.Name = "panelSongInfo";
-            this.panelSongInfo.Size = new System.Drawing.Size(230, 86);
-            this.panelSongInfo.TabIndex = 0;
             // 
             // panelMenu
             // 
@@ -284,7 +107,7 @@ namespace DoAnCSharp
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Margin = new System.Windows.Forms.Padding(0);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(227, 515);
+            this.panelMenu.Size = new System.Drawing.Size(227, 582);
             this.panelMenu.TabIndex = 1;
             // 
             // btnPlaylist
@@ -367,7 +190,7 @@ namespace DoAnCSharp
             this.iconButton5.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton5.IconSize = 30;
             this.iconButton5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton5.Location = new System.Drawing.Point(0, 467);
+            this.iconButton5.Location = new System.Drawing.Point(0, 534);
             this.iconButton5.Name = "iconButton5";
             this.iconButton5.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.iconButton5.Size = new System.Drawing.Size(227, 48);
@@ -498,7 +321,7 @@ namespace DoAnCSharp
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(65, 26);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 30);
+            this.label1.Size = new System.Drawing.Size(111, 37);
             this.label1.TabIndex = 3;
             this.label1.Text = "DPlayer";
             // 
@@ -532,7 +355,7 @@ namespace DoAnCSharp
             this.panelTitleBar.Location = new System.Drawing.Point(227, 0);
             this.panelTitleBar.Margin = new System.Windows.Forms.Padding(0);
             this.panelTitleBar.Name = "panelTitleBar";
-            this.panelTitleBar.Size = new System.Drawing.Size(729, 23);
+            this.panelTitleBar.Size = new System.Drawing.Size(945, 23);
             this.panelTitleBar.TabIndex = 2;
             this.panelTitleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTitleBar_MouseDown);
             // 
@@ -545,7 +368,7 @@ namespace DoAnCSharp
             this.btnMin.IconColor = System.Drawing.Color.White;
             this.btnMin.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnMin.IconSize = 22;
-            this.btnMin.Location = new System.Drawing.Point(621, 0);
+            this.btnMin.Location = new System.Drawing.Point(837, 0);
             this.btnMin.Name = "btnMin";
             this.btnMin.Size = new System.Drawing.Size(36, 23);
             this.btnMin.TabIndex = 2;
@@ -561,7 +384,7 @@ namespace DoAnCSharp
             this.btnMax.IconColor = System.Drawing.Color.White;
             this.btnMax.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnMax.IconSize = 22;
-            this.btnMax.Location = new System.Drawing.Point(657, 0);
+            this.btnMax.Location = new System.Drawing.Point(873, 0);
             this.btnMax.Name = "btnMax";
             this.btnMax.Size = new System.Drawing.Size(36, 23);
             this.btnMax.TabIndex = 1;
@@ -577,7 +400,7 @@ namespace DoAnCSharp
             this.btnExit.IconColor = System.Drawing.Color.White;
             this.btnExit.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnExit.IconSize = 22;
-            this.btnExit.Location = new System.Drawing.Point(693, 0);
+            this.btnExit.Location = new System.Drawing.Point(909, 0);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(36, 23);
             this.btnExit.TabIndex = 0;
@@ -592,7 +415,7 @@ namespace DoAnCSharp
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(227, 23);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(729, 77);
+            this.panel4.Size = new System.Drawing.Size(945, 77);
             this.panel4.TabIndex = 3;
             // 
             // panel3
@@ -622,7 +445,7 @@ namespace DoAnCSharp
             this.rjTextBox1.PasswordChar = false;
             this.rjTextBox1.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.rjTextBox1.PlaceholderText = "";
-            this.rjTextBox1.Size = new System.Drawing.Size(447, 36);
+            this.rjTextBox1.Size = new System.Drawing.Size(447, 43);
             this.rjTextBox1.TabIndex = 1;
             this.rjTextBox1.Texts = "";
             this.rjTextBox1.UnderlinedStyle = false;
@@ -654,49 +477,252 @@ namespace DoAnCSharp
             this.rjCircularPictureBox1.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
             this.rjCircularPictureBox1.BorderSize = 2;
             this.rjCircularPictureBox1.GradientAngle = 50F;
-            this.rjCircularPictureBox1.Location = new System.Drawing.Point(668, 6);
+            this.rjCircularPictureBox1.Location = new System.Drawing.Point(884, 6);
             this.rjCircularPictureBox1.Name = "rjCircularPictureBox1";
             this.rjCircularPictureBox1.Size = new System.Drawing.Size(49, 49);
             this.rjCircularPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.rjCircularPictureBox1.TabIndex = 0;
             this.rjCircularPictureBox1.TabStop = false;
             // 
-            // panelContainer
-            // 
-            this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContainer.Location = new System.Drawing.Point(227, 100);
-            this.panelContainer.Name = "panelContainer";
-            this.panelContainer.Size = new System.Drawing.Size(729, 415);
-            this.panelContainer.TabIndex = 4;
-            // 
             // timer1
             // 
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // panel9
+            // 
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel9.Location = new System.Drawing.Point(227, 100);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(27, 482);
+            this.panel9.TabIndex = 4;
+            // 
+            // panelContainer
+            // 
+            this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelContainer.Location = new System.Drawing.Point(254, 100);
+            this.panelContainer.Name = "panelContainer";
+            this.panelContainer.Size = new System.Drawing.Size(918, 482);
+            this.panelContainer.TabIndex = 5;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.40132F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 53.06893F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.43532F));
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel8, 1, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 582);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1172, 110);
+            this.tableLayoutPanel1.TabIndex = 6;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(291, 104);
+            this.panel1.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(147, 104);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.panel11);
+            this.panel8.Controls.Add(this.panel10);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel8.Location = new System.Drawing.Point(300, 3);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(616, 104);
+            this.panel8.TabIndex = 1;
+            // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.rjCircularPictureBox5);
+            this.panel10.Controls.Add(this.rjCircularPictureBox4);
+            this.panel10.Controls.Add(this.rjCircularPictureBox3);
+            this.panel10.Controls.Add(this.rjCircularPictureBox2);
+            this.panel10.Controls.Add(this.btnPlay);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel10.Location = new System.Drawing.Point(0, 0);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(616, 72);
+            this.panel10.TabIndex = 0;
+            // 
+            // panel11
+            // 
+            this.panel11.Controls.Add(this.trackBar);
+            this.panel11.Controls.Add(this.lbMaxTime);
+            this.panel11.Controls.Add(this.lbMinTime);
+            this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel11.Location = new System.Drawing.Point(0, 72);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(616, 32);
+            this.panel11.TabIndex = 1;
+            // 
+            // lbMinTime
+            // 
+            this.lbMinTime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMinTime.ForeColor = System.Drawing.Color.White;
+            this.lbMinTime.Location = new System.Drawing.Point(0, -2);
+            this.lbMinTime.Name = "lbMinTime";
+            this.lbMinTime.Size = new System.Drawing.Size(70, 28);
+            this.lbMinTime.TabIndex = 23;
+            this.lbMinTime.Text = "00:00";
+            this.lbMinTime.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // lbMaxTime
+            // 
+            this.lbMaxTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbMaxTime.AutoSize = true;
+            this.lbMaxTime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMaxTime.ForeColor = System.Drawing.Color.White;
+            this.lbMaxTime.Location = new System.Drawing.Point(553, -2);
+            this.lbMaxTime.Name = "lbMaxTime";
+            this.lbMaxTime.Size = new System.Drawing.Size(60, 28);
+            this.lbMaxTime.TabIndex = 30;
+            this.lbMaxTime.Text = "00:00";
+            // 
+            // trackBar
+            // 
+            this.trackBar.AlwaysValueVisible = false;
+            this.trackBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.trackBar.BallonArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.trackBar.BallonColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.trackBar.BarColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(220)))), ((int)(((byte)(223)))));
+            this.trackBar.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(16)))));
+            this.trackBar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.trackBar.FillBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.trackBar.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.trackBar.ForeColor = System.Drawing.Color.White;
+            this.trackBar.HeadBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.trackBar.HeadColor = System.Drawing.Color.Black;
+            this.trackBar.Location = new System.Drawing.Point(76, 4);
+            this.trackBar.MaxValue = 1000;
+            this.trackBar.MinValue = 0;
+            this.trackBar.Name = "trackBar";
+            this.trackBar.ShowValue = false;
+            this.trackBar.Size = new System.Drawing.Size(474, 16);
+            this.trackBar.TabIndex = 31;
+            this.trackBar.Text = "hopeTrackBar1";
+            this.trackBar.ThemeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(158)))), ((int)(((byte)(255)))));
+            this.trackBar.UnknownColor = System.Drawing.Color.White;
+            this.trackBar.Value = 0;
+            // 
+            // rjCircularPictureBox5
+            // 
+            this.rjCircularPictureBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.rjCircularPictureBox5.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
+            this.rjCircularPictureBox5.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.rjCircularPictureBox5.BorderColor2 = System.Drawing.Color.HotPink;
+            this.rjCircularPictureBox5.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.rjCircularPictureBox5.BorderSize = 0;
+            this.rjCircularPictureBox5.GradientAngle = 50F;
+            this.rjCircularPictureBox5.Image = global::DoAnCSharp.Properties.Resources.icons8_shuffle_24px_3;
+            this.rjCircularPictureBox5.Location = new System.Drawing.Point(183, 16);
+            this.rjCircularPictureBox5.Name = "rjCircularPictureBox5";
+            this.rjCircularPictureBox5.Size = new System.Drawing.Size(41, 41);
+            this.rjCircularPictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.rjCircularPictureBox5.TabIndex = 25;
+            this.rjCircularPictureBox5.TabStop = false;
+            // 
+            // rjCircularPictureBox4
+            // 
+            this.rjCircularPictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.rjCircularPictureBox4.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
+            this.rjCircularPictureBox4.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.rjCircularPictureBox4.BorderColor2 = System.Drawing.Color.HotPink;
+            this.rjCircularPictureBox4.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.rjCircularPictureBox4.BorderSize = 0;
+            this.rjCircularPictureBox4.GradientAngle = 50F;
+            this.rjCircularPictureBox4.Image = global::DoAnCSharp.Properties.Resources.icons8_repeat_24px_3;
+            this.rjCircularPictureBox4.Location = new System.Drawing.Point(393, 16);
+            this.rjCircularPictureBox4.Name = "rjCircularPictureBox4";
+            this.rjCircularPictureBox4.Size = new System.Drawing.Size(41, 41);
+            this.rjCircularPictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.rjCircularPictureBox4.TabIndex = 24;
+            this.rjCircularPictureBox4.TabStop = false;
+            // 
+            // rjCircularPictureBox3
+            // 
+            this.rjCircularPictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.rjCircularPictureBox3.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
+            this.rjCircularPictureBox3.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.rjCircularPictureBox3.BorderColor2 = System.Drawing.Color.HotPink;
+            this.rjCircularPictureBox3.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.rjCircularPictureBox3.BorderSize = 0;
+            this.rjCircularPictureBox3.GradientAngle = 50F;
+            this.rjCircularPictureBox3.Image = global::DoAnCSharp.Properties.Resources.icons8_end_24px_5;
+            this.rjCircularPictureBox3.Location = new System.Drawing.Point(346, 16);
+            this.rjCircularPictureBox3.Name = "rjCircularPictureBox3";
+            this.rjCircularPictureBox3.Size = new System.Drawing.Size(41, 41);
+            this.rjCircularPictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.rjCircularPictureBox3.TabIndex = 23;
+            this.rjCircularPictureBox3.TabStop = false;
+            // 
+            // rjCircularPictureBox2
+            // 
+            this.rjCircularPictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.rjCircularPictureBox2.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
+            this.rjCircularPictureBox2.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.rjCircularPictureBox2.BorderColor2 = System.Drawing.Color.HotPink;
+            this.rjCircularPictureBox2.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.rjCircularPictureBox2.BorderSize = 0;
+            this.rjCircularPictureBox2.GradientAngle = 50F;
+            this.rjCircularPictureBox2.Image = global::DoAnCSharp.Properties.Resources.icons8_skip_to_start_24px_2;
+            this.rjCircularPictureBox2.Location = new System.Drawing.Point(230, 16);
+            this.rjCircularPictureBox2.Name = "rjCircularPictureBox2";
+            this.rjCircularPictureBox2.Size = new System.Drawing.Size(41, 41);
+            this.rjCircularPictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.rjCircularPictureBox2.TabIndex = 22;
+            this.rjCircularPictureBox2.TabStop = false;
+            // 
+            // btnPlay
+            // 
+            this.btnPlay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.btnPlay.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
+            this.btnPlay.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnPlay.BorderColor2 = System.Drawing.Color.HotPink;
+            this.btnPlay.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.btnPlay.BorderSize = 2;
+            this.btnPlay.GradientAngle = 50F;
+            this.btnPlay.Image = global::DoAnCSharp.Properties.Resources.icons8_play_32px_7;
+            this.btnPlay.Location = new System.Drawing.Point(283, 11);
+            this.btnPlay.Name = "btnPlay";
+            this.btnPlay.Size = new System.Drawing.Size(51, 51);
+            this.btnPlay.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.btnPlay.TabIndex = 21;
+            this.btnPlay.TabStop = false;
+            // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(28)))), ((int)(((byte)(34)))));
-            this.ClientSize = new System.Drawing.Size(956, 601);
+            this.ClientSize = new System.Drawing.Size(1172, 692);
             this.Controls.Add(this.panelContainer);
+            this.Controls.Add(this.panel9);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panelTitleBar);
             this.Controls.Add(this.panelMenu);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form2";
             this.Resize += new System.EventHandler(this.Main_Resize);
-            this.panel1.ResumeLayout(false);
-            this.panel8.ResumeLayout(false);
-            this.panel8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnPlay)).EndInit();
             this.panelMenu.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
@@ -705,13 +731,23 @@ namespace DoAnCSharp
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox1)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel8.ResumeLayout(false);
+            this.panel10.ResumeLayout(false);
+            this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPlay)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.Panel panelTitleBar;
         private System.Windows.Forms.Panel panel5;
@@ -723,23 +759,11 @@ namespace DoAnCSharp
         private FontAwesome.Sharp.IconButton btnCate;
         private FontAwesome.Sharp.IconButton btnExit;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panelContainer;
         private FontAwesome.Sharp.IconButton btnMax;
         private FontAwesome.Sharp.IconButton btnMin;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pbLogo;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel8;
-        private RJCodeAdvance.RJControls.RJCircularPictureBox btnPlay;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Panel panelSongInfo;
-        private RJCodeAdvance.RJControls.RJCircularPictureBox rjCircularPictureBox2;
-        private RJCodeAdvance.RJControls.RJCircularPictureBox rjCircularPictureBox3;
-        private ReaLTaiizor.Controls.HopeTrackBar trackBar;
-        private RJCodeAdvance.RJControls.RJCircularPictureBox rjCircularPictureBox5;
-        private RJCodeAdvance.RJControls.RJCircularPictureBox rjCircularPictureBox4;
-        private System.Windows.Forms.Label lbMaxTime;
-        private System.Windows.Forms.Label lbMinTime;
         private RJCodeAdvance.RJControls.RJCircularPictureBox rjCircularPictureBox1;
         private FontAwesome.Sharp.IconButton btnPlaylist;
         private FontAwesome.Sharp.IconButton btnOpen;
@@ -748,5 +772,21 @@ namespace DoAnCSharp
         private System.Windows.Forms.Panel panel3;
         private FontAwesome.Sharp.IconButton iconButton1;
         private RJCodeAdvance.RJControls.RJTextBox rjTextBox1;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Panel panelContainer;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Label lbMinTime;
+        private System.Windows.Forms.Label lbMaxTime;
+        private ReaLTaiizor.Controls.HopeTrackBar trackBar;
+        private RJCodeAdvance.RJControls.RJCircularPictureBox rjCircularPictureBox5;
+        private RJCodeAdvance.RJControls.RJCircularPictureBox rjCircularPictureBox4;
+        private RJCodeAdvance.RJControls.RJCircularPictureBox rjCircularPictureBox3;
+        private RJCodeAdvance.RJControls.RJCircularPictureBox rjCircularPictureBox2;
+        private RJCodeAdvance.RJControls.RJCircularPictureBox btnPlay;
     }
 }

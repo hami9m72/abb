@@ -1,4 +1,5 @@
-﻿using DoAnCSharp.View;
+﻿using DoAnCSharp.Model;
+using DoAnCSharp.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,8 +19,8 @@ namespace DoAnCSharp
         private int borderSize = 2;
         private Size formSize;
 
-        private Main instance;
-        public Main Instance { get => instance; }
+        private static Main instance;
+        public static Main Instance { get => instance; }
         public AxWMPLib.AxWindowsMediaPlayer MediaPlayer;
 
         
@@ -46,20 +47,20 @@ namespace DoAnCSharp
         {
             if (MediaPlayer.playState == WMPLib.WMPPlayState.wmppsPlaying)
             {
-                btnPlay.Image = Properties.Resources.pause;
-                trackBar.MaxValue =(int) MediaPlayer.Ctlcontrols.currentItem.duration;
-                lbMaxTime.Text = MediaPlayer.Ctlcontrols.currentItem.durationString;
+                //btnPlay.Image = Properties.Resources.pause;
+                //trackBar.MaxValue =(int) MediaPlayer.Ctlcontrols.currentItem.duration;
+                //lbMaxTime.Text = MediaPlayer.Ctlcontrols.currentItem.durationString;
                 timer1.Start();
             }
             else if (MediaPlayer.playState == WMPLib.WMPPlayState.wmppsPaused)
             {
-                btnPlay.Image = Properties.Resources.play;
+                //btnPlay.Image = Properties.Resources.play;
                 timer1.Stop();
             }else if (MediaPlayer.playState == WMPLib.WMPPlayState.wmppsStopped)
             {
                 timer1.Stop();
-                trackBar.Value = 0;
-                lbMinTime.Text = "00:00";
+                //trackBar.Value = 0;
+                //lbMinTime.Text = "00:00";
             }
         }
 
@@ -161,7 +162,7 @@ namespace DoAnCSharp
             switch (this.WindowState)
             {
                 case FormWindowState.Maximized: //Maximized form (After)
-                    this.Padding = new Padding(8, 8, 8, 0);
+                    this.Padding = new Padding(8, 8, 8, 8);
                     break;
                 case FormWindowState.Normal: //Restored form (After)
                     if (this.Padding.Top != borderSize)
@@ -170,10 +171,19 @@ namespace DoAnCSharp
             }
         }
 
+        public void SetMedia(Song song)
+        {
+            MediaPlayer.URL = song.streaming._128;
+            MediaPlayer.Ctlcontrols.play();
+            //pbSong.LoadAsync(song.thumbnailM);
+            //lbSongName.Text = song.title;
+            //lbSongArtist.Text = song.artistsNames;
+        }
+
         private bool canCollapse = false;
         private void CollapseMenu()
         {
-            if (this.Width < 972 && !canCollapse) //Collapse menu
+            if (this.Width < 1075 && !canCollapse) //Collapse menu
             {
                 panelMenu.Width = 64;
                 //pictureBox1.Visible = false;
@@ -186,11 +196,11 @@ namespace DoAnCSharp
                     menuButton.ImageAlign = ContentAlignment.MiddleCenter;
                     menuButton.Padding = new Padding(0);
                 }
-                panelSongInfo.Visible = false;
+                //panelSongInfo.Visible = false;
                 canCollapse = true;
             }
 
-            if(this.Width > 972 && canCollapse)
+            if(this.Width > 1075 && canCollapse)
             { //Expand menu
                 panelMenu.Width = 227;
                 pbLogo.Location = new Point(21, 23);
@@ -203,7 +213,7 @@ namespace DoAnCSharp
                     menuButton.Padding = new Padding(10, 0, 0, 0);
                 }
 
-                panelSongInfo.Visible = true;
+                //panelSongInfo.Visible = true;
                 canCollapse = false;
             }
         }
@@ -269,32 +279,44 @@ namespace DoAnCSharp
         {
             if (MediaPlayer.playState == WMPLib.WMPPlayState.wmppsPlaying)
             {
-                lbMinTime.Text = MediaPlayer.Ctlcontrols.currentPositionString;
-                if(barChange)
-                    trackBar.Value = (int)MediaPlayer.Ctlcontrols.currentPosition;
+                //lbMinTime.Text = MediaPlayer.Ctlcontrols.currentPositionString;
+                //if(barChange)
+                    //trackBar.Value = (int)MediaPlayer.Ctlcontrols.currentPosition;
             }
         }
 
         private void btnOpen_Click(object sender, EventArgs e)
         {
-            FileDialog f = new OpenFileDialog();
-            if (f.ShowDialog(this) == DialogResult.OK)
+            //FileDialog f = new OpenFileDialog();
+            //if (f.ShowDialog(this) == DialogResult.OK)
+            //{
+            //    MediaPlayer.URL = f.FileName;
+            //    MediaPlayer.Ctlcontrols.play();
+            //    ClearAllMenuCheck();
+            //    ActiveMenu(sender as Button);
+            //}
+            ClearAllMenuCheck();
+            ActiveMenu(sender as Button);
+            MyMusicView view;
+            if (panelContainer.Controls["MyMusicView"] == null)
             {
-                MediaPlayer.URL = f.FileName;
-                MediaPlayer.Ctlcontrols.play();
-                ClearAllMenuCheck();
-                ActiveMenu(sender as Button);
+                view = new MyMusicView();
+                panelContainer.Controls.Add(view);
             }
+            else
+                view = panelContainer.Controls["MyMusicView"] as MyMusicView;
+            view.Dock = DockStyle.Fill;
+            view.BringToFront();
         }
 
         private void trackBar_MouseUp(object sender, MouseEventArgs e)
         {
             if (MediaPlayer.currentMedia != null)
             {
-                double cur = MediaPlayer.Ctlcontrols.currentItem.duration * e.X / (trackBar.Width - 15);
-                MediaPlayer.Ctlcontrols.currentPosition = cur;
-                lbMinTime.Text = MediaPlayer.Ctlcontrols.currentPositionString;
-                barChange = true;
+                //double cur = MediaPlayer.Ctlcontrols.currentItem.duration * e.X / (trackBar.Width - 15);
+                //MediaPlayer.Ctlcontrols.currentPosition = cur;
+                //lbMinTime.Text = MediaPlayer.Ctlcontrols.currentPositionString;
+                //barChange = true;
             }
         }
 
@@ -310,6 +332,17 @@ namespace DoAnCSharp
         {
             ClearAllMenuCheck();
             ActiveMenu(sender as Button);
+
+            HomeView view;
+            if (panelContainer.Controls["HomeView"] == null)
+            {
+                view = new HomeView();
+                panelContainer.Controls.Add(view);
+            }
+            else
+                view = panelContainer.Controls["HomeView"] as HomeView;
+            view.Dock = DockStyle.Fill;
+            view.BringToFront();
         }
 
         private void btnCate_Click(object sender, EventArgs e)
@@ -334,6 +367,16 @@ namespace DoAnCSharp
         {
             ClearAllMenuCheck();
             ActiveMenu(sender as Button);
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel1_Paint_1(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
