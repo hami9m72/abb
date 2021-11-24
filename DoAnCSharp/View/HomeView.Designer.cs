@@ -126,6 +126,7 @@ namespace DoAnCSharp.View
             // pb3
             // 
             this.pb3.BackColor = System.Drawing.Color.Yellow;
+            this.pb3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pb3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pb3.Location = new System.Drawing.Point(467, 3);
             this.pb3.Margin = new System.Windows.Forms.Padding(9, 3, 3, 3);
@@ -140,6 +141,7 @@ namespace DoAnCSharp.View
             // pb2
             // 
             this.pb2.BackColor = System.Drawing.Color.Yellow;
+            this.pb2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pb2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pb2.Location = new System.Drawing.Point(238, 3);
             this.pb2.Margin = new System.Windows.Forms.Padding(9, 3, 9, 3);
@@ -155,6 +157,7 @@ namespace DoAnCSharp.View
             // 
             this.pb1.BackColor = System.Drawing.Color.Yellow;
             this.pb1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pb1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pb1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pb1.Location = new System.Drawing.Point(3, 3);
             this.pb1.Margin = new System.Windows.Forms.Padding(3, 3, 9, 3);

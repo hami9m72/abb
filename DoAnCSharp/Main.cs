@@ -23,7 +23,7 @@ namespace DoAnCSharp
         public static Main Instance { get => instance; }
         public AxWMPLib.AxWindowsMediaPlayer MediaPlayer;
 
-        
+
         public Main()
         {
             InitializeComponent();
@@ -35,32 +35,34 @@ namespace DoAnCSharp
             panelContainer.Controls.Add(homeView);
             homeView.Dock = DockStyle.Fill;
 
-           var mediaView = new MediaCtl();
+            var mediaView = new MediaCtl();
             panelContainer.Controls.Add(mediaView);
             mediaView.Dock = DockStyle.Fill;
             MediaPlayer = mediaView.MPlayer;
             mediaView.Visible = false;
             MediaPlayer.PlayStateChange += MediaPlayer_PlayStateChange;
+
         }
 
         private void MediaPlayer_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
         {
             if (MediaPlayer.playState == WMPLib.WMPPlayState.wmppsPlaying)
             {
-                //btnPlay.Image = Properties.Resources.pause;
-                //trackBar.MaxValue =(int) MediaPlayer.Ctlcontrols.currentItem.duration;
-                //lbMaxTime.Text = MediaPlayer.Ctlcontrols.currentItem.durationString;
+                btnPlay.Image = Properties.Resources.pause;
+                trackBar.MaxValue = (int)MediaPlayer.Ctlcontrols.currentItem.duration;
+                lbMaxTime.Text = MediaPlayer.Ctlcontrols.currentItem.durationString;
                 timer1.Start();
             }
             else if (MediaPlayer.playState == WMPLib.WMPPlayState.wmppsPaused)
             {
-                //btnPlay.Image = Properties.Resources.play;
+                btnPlay.Image = Properties.Resources.play;
                 timer1.Stop();
-            }else if (MediaPlayer.playState == WMPLib.WMPPlayState.wmppsStopped)
+            }
+            else if (MediaPlayer.playState == WMPLib.WMPPlayState.wmppsStopped)
             {
                 timer1.Stop();
-                //trackBar.Value = 0;
-                //lbMinTime.Text = "00:00";
+                trackBar.Value = 0;
+                lbMinTime.Text = "00:00";
             }
         }
 
@@ -175,9 +177,13 @@ namespace DoAnCSharp
         {
             MediaPlayer.URL = song.streaming._128;
             MediaPlayer.Ctlcontrols.play();
-            //pbSong.LoadAsync(song.thumbnailM);
-            //lbSongName.Text = song.title;
-            //lbSongArtist.Text = song.artistsNames;
+            if (song.thumbnailM != null)
+                pbSong.LoadAsync(song.thumbnailM);
+            else
+                pbSong.Image = song.thumbnailMImg;
+            lbSongName.Text = song.title;
+            lbSongArtist.Text = song.artistsNames;
+
         }
 
         private bool canCollapse = false;
@@ -200,7 +206,7 @@ namespace DoAnCSharp
                 canCollapse = true;
             }
 
-            if(this.Width > 1075 && canCollapse)
+            if (this.Width > 1075 && canCollapse)
             { //Expand menu
                 panelMenu.Width = 227;
                 pbLogo.Location = new Point(21, 23);
@@ -222,7 +228,7 @@ namespace DoAnCSharp
         {
             Application.Exit();
         }
-     
+
         private void Main_Resize(object sender, EventArgs e)
         {
             CollapseMenu();
@@ -252,7 +258,7 @@ namespace DoAnCSharp
         private void ClearAllMenuCheck()
         {
             foreach (Button menuButton in panelMenu.Controls.OfType<Button>())
-                menuButton.BackColor = Color.FromArgb(25, 26, 31);      
+                menuButton.BackColor = Color.FromArgb(25, 26, 31);
         }
 
         private void ActiveMenu(Button btn)
@@ -267,7 +273,7 @@ namespace DoAnCSharp
             if (MediaPlayer.playState == WMPLib.WMPPlayState.wmppsPlaying)
             {
                 MediaPlayer.Ctlcontrols.pause();
-            }        
+            }
             else if (MediaPlayer.playState == WMPLib.WMPPlayState.wmppsPaused)
             {
                 MediaPlayer.Ctlcontrols.play();
@@ -279,22 +285,14 @@ namespace DoAnCSharp
         {
             if (MediaPlayer.playState == WMPLib.WMPPlayState.wmppsPlaying)
             {
-                //lbMinTime.Text = MediaPlayer.Ctlcontrols.currentPositionString;
-                //if(barChange)
-                    //trackBar.Value = (int)MediaPlayer.Ctlcontrols.currentPosition;
+                lbMinTime.Text = MediaPlayer.Ctlcontrols.currentPositionString;
+                if (barChange)
+                    trackBar.Value = (int)MediaPlayer.Ctlcontrols.currentPosition;
             }
         }
 
         private void btnOpen_Click(object sender, EventArgs e)
         {
-            //FileDialog f = new OpenFileDialog();
-            //if (f.ShowDialog(this) == DialogResult.OK)
-            //{
-            //    MediaPlayer.URL = f.FileName;
-            //    MediaPlayer.Ctlcontrols.play();
-            //    ClearAllMenuCheck();
-            //    ActiveMenu(sender as Button);
-            //}
             ClearAllMenuCheck();
             ActiveMenu(sender as Button);
             MyMusicView view;
@@ -313,16 +311,16 @@ namespace DoAnCSharp
         {
             if (MediaPlayer.currentMedia != null)
             {
-                //double cur = MediaPlayer.Ctlcontrols.currentItem.duration * e.X / (trackBar.Width - 15);
-                //MediaPlayer.Ctlcontrols.currentPosition = cur;
-                //lbMinTime.Text = MediaPlayer.Ctlcontrols.currentPositionString;
-                //barChange = true;
+                double cur = MediaPlayer.Ctlcontrols.currentItem.duration * e.X / (trackBar.Width - 15);
+                MediaPlayer.Ctlcontrols.currentPosition = cur;
+                lbMinTime.Text = MediaPlayer.Ctlcontrols.currentPositionString;
+                barChange = true;
             }
         }
 
         private void trackBar_MouseMove(object sender, MouseEventArgs e)
         {
-            if (MediaPlayer.currentMedia != null && e.Button==MouseButtons.Left)
+            if (MediaPlayer.currentMedia != null && e.Button == MouseButtons.Left)
             {
                 barChange = false;
             }
@@ -369,14 +367,24 @@ namespace DoAnCSharp
             ActiveMenu(sender as Button);
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        private void trackbarVolume_MouseUp(object sender, MouseEventArgs e)
         {
-
+            Console.WriteLine(e.X);
         }
 
-        private void tableLayoutPanel1_Paint_1(object sender, PaintEventArgs e)
+        private void trackbarVolume_MouseMove(object sender, MouseEventArgs e)
         {
-
+            if (e.Button == MouseButtons.Left)
+            {
+                MediaPlayer.settings.volume = trackbarVolume.Value;
+            }
         }
+
+        private void trackbarVolume_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine((e as MouseEventArgs).X);
+        }
+
+
     }
 }

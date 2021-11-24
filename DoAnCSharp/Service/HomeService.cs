@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DoAnCSharp.Service
 {
-    public class HomeService:BaseService
+    public class HomeService : BaseService
     {
         private JObject data;
         private string url = "https://dat-zing-mp3-api.herokuapp.com/home/1";
@@ -18,18 +18,22 @@ namespace DoAnCSharp.Service
 
         public async Task<List<Song>> BanerSongs()
         {
-            if(data==null)
+            if (data == null)
                 data = await GetDataFromURL(url);
             List<Song> songs = new List<Song>();
             int i = 0;
             foreach (var item in data["items"][0]["items"])
-            {              
-                var temp = item["link"].ToString().Split(new char[] { '/', '.' });
-                string songID = temp[temp.Length - 2];
-                var song = await GetSongDetail(songID);
-                if(song!=null)
-                    songs.Add(song);
-                if (i++ == 3 || song==null) break;
+            {
+                if (item["link"].ToString().Contains("bai-hat"))
+                {
+                    var temp = item["link"].ToString().Split(new char[] { '/', '.' });
+                    string songID = temp[temp.Length - 2];
+                    var song = await GetSongDetail(songID);
+                    if (song != null)
+                        songs.Add(song);
+                    if (i++ == 3 || song == null) break;
+                }
+
             }
             return songs;
         }
@@ -38,12 +42,13 @@ namespace DoAnCSharp.Service
         {
             if (data == null)
                 data = await GetDataFromURL(url);
-            return new List<string> 
+            List<string> result = new List<string>();
+            foreach (var item in data["items"][0]["items"])
             {
-                data["items"][0]["items"][0]["banner"].ToString(),
-                data["items"][0]["items"][1]["banner"].ToString(),
-                data["items"][0]["items"][2]["banner"].ToString()
-            };
+                if (item.ToString().Contains("bai-hat"))
+                    result.Add(item["banner"].ToString());
+            }
+            return result;
 
         }
     }

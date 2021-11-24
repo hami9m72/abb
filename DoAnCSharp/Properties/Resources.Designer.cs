@@ -73,6 +73,16 @@ namespace DoAnCSharp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_music_48px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_music_48px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_music_96px_5 {
             get {
                 object obj = ResourceManager.GetObject("icons8_music_96px_5", resourceCulture);
@@ -116,6 +126,16 @@ namespace DoAnCSharp.Properties {
         internal static System.Drawing.Bitmap icons8_skip_to_start_24px_2 {
             get {
                 object obj = ResourceManager.GetObject("icons8_skip_to_start_24px_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_video_100px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_video_100px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

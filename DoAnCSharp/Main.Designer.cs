@@ -30,6 +30,7 @@ namespace DoAnCSharp
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.panelMenu = new System.Windows.Forms.Panel();
             this.btnPlaylist = new FontAwesome.Sharp.IconButton();
             this.btnOpen = new FontAwesome.Sharp.IconButton();
@@ -58,18 +59,23 @@ namespace DoAnCSharp
             this.panelContainer = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lbSongArtist = new System.Windows.Forms.Label();
+            this.lbSongName = new System.Windows.Forms.Label();
+            this.pbSong = new System.Windows.Forms.PictureBox();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.panel10 = new System.Windows.Forms.Panel();
             this.panel11 = new System.Windows.Forms.Panel();
-            this.lbMinTime = new System.Windows.Forms.Label();
-            this.lbMaxTime = new System.Windows.Forms.Label();
             this.trackBar = new ReaLTaiizor.Controls.HopeTrackBar();
+            this.lbMaxTime = new System.Windows.Forms.Label();
+            this.lbMinTime = new System.Windows.Forms.Label();
+            this.panel10 = new System.Windows.Forms.Panel();
             this.rjCircularPictureBox5 = new RJCodeAdvance.RJControls.RJCircularPictureBox();
             this.rjCircularPictureBox4 = new RJCodeAdvance.RJControls.RJCircularPictureBox();
             this.rjCircularPictureBox3 = new RJCodeAdvance.RJControls.RJCircularPictureBox();
             this.rjCircularPictureBox2 = new RJCodeAdvance.RJControls.RJCircularPictureBox();
             this.btnPlay = new RJCodeAdvance.RJControls.RJCircularPictureBox();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.iconButton2 = new FontAwesome.Sharp.IconButton();
+            this.trackbarVolume = new ReaLTaiizor.Controls.HopeTrackBar();
             this.panelMenu.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
@@ -79,15 +85,16 @@ namespace DoAnCSharp
             ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSong)).BeginInit();
             this.panel8.SuspendLayout();
-            this.panel10.SuspendLayout();
             this.panel11.SuspendLayout();
+            this.panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPlay)).BeginInit();
+            this.panel12.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMenu
@@ -314,7 +321,7 @@ namespace DoAnCSharp
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -422,7 +429,7 @@ namespace DoAnCSharp
             // 
             this.panel3.Controls.Add(this.rjTextBox1);
             this.panel3.Controls.Add(this.iconButton1);
-            this.panel3.Location = new System.Drawing.Point(62, 10);
+            this.panel3.Location = new System.Drawing.Point(43, 17);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(482, 38);
             this.panel3.TabIndex = 1;
@@ -507,12 +514,14 @@ namespace DoAnCSharp
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(16)))));
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.40132F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 53.06893F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.43532F));
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel8, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel12, 2, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 582);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -523,21 +532,46 @@ namespace DoAnCSharp
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
+            this.panel1.Controls.Add(this.lbSongArtist);
+            this.panel1.Controls.Add(this.lbSongName);
+            this.panel1.Controls.Add(this.pbSong);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(291, 104);
+            this.panel1.Size = new System.Drawing.Size(297, 110);
             this.panel1.TabIndex = 0;
             // 
-            // pictureBox1
+            // lbSongArtist
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(147, 104);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.lbSongArtist.AutoSize = true;
+            this.lbSongArtist.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSongArtist.ForeColor = System.Drawing.Color.White;
+            this.lbSongArtist.Location = new System.Drawing.Point(123, 64);
+            this.lbSongArtist.Name = "lbSongArtist";
+            this.lbSongArtist.Size = new System.Drawing.Size(0, 23);
+            this.lbSongArtist.TabIndex = 2;
+            // 
+            // lbSongName
+            // 
+            this.lbSongName.AutoSize = true;
+            this.lbSongName.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSongName.ForeColor = System.Drawing.Color.White;
+            this.lbSongName.Location = new System.Drawing.Point(123, 29);
+            this.lbSongName.Name = "lbSongName";
+            this.lbSongName.Size = new System.Drawing.Size(0, 28);
+            this.lbSongName.TabIndex = 1;
+            // 
+            // pbSong
+            // 
+            this.pbSong.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pbSong.Location = new System.Drawing.Point(0, 0);
+            this.pbSong.Name = "pbSong";
+            this.pbSong.Size = new System.Drawing.Size(117, 110);
+            this.pbSong.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbSong.TabIndex = 0;
+            this.pbSong.TabStop = false;
             // 
             // panel8
             // 
@@ -548,19 +582,6 @@ namespace DoAnCSharp
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(616, 104);
             this.panel8.TabIndex = 1;
-            // 
-            // panel10
-            // 
-            this.panel10.Controls.Add(this.rjCircularPictureBox5);
-            this.panel10.Controls.Add(this.rjCircularPictureBox4);
-            this.panel10.Controls.Add(this.rjCircularPictureBox3);
-            this.panel10.Controls.Add(this.rjCircularPictureBox2);
-            this.panel10.Controls.Add(this.btnPlay);
-            this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel10.Location = new System.Drawing.Point(0, 0);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(616, 72);
-            this.panel10.TabIndex = 0;
             // 
             // panel11
             // 
@@ -573,33 +594,10 @@ namespace DoAnCSharp
             this.panel11.Size = new System.Drawing.Size(616, 32);
             this.panel11.TabIndex = 1;
             // 
-            // lbMinTime
-            // 
-            this.lbMinTime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbMinTime.ForeColor = System.Drawing.Color.White;
-            this.lbMinTime.Location = new System.Drawing.Point(0, -2);
-            this.lbMinTime.Name = "lbMinTime";
-            this.lbMinTime.Size = new System.Drawing.Size(70, 28);
-            this.lbMinTime.TabIndex = 23;
-            this.lbMinTime.Text = "00:00";
-            this.lbMinTime.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // lbMaxTime
-            // 
-            this.lbMaxTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbMaxTime.AutoSize = true;
-            this.lbMaxTime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbMaxTime.ForeColor = System.Drawing.Color.White;
-            this.lbMaxTime.Location = new System.Drawing.Point(553, -2);
-            this.lbMaxTime.Name = "lbMaxTime";
-            this.lbMaxTime.Size = new System.Drawing.Size(60, 28);
-            this.lbMaxTime.TabIndex = 30;
-            this.lbMaxTime.Text = "00:00";
-            // 
             // trackBar
             // 
             this.trackBar.AlwaysValueVisible = false;
-            this.trackBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.trackBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar.BallonArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.trackBar.BallonColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -622,6 +620,44 @@ namespace DoAnCSharp
             this.trackBar.ThemeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(158)))), ((int)(((byte)(255)))));
             this.trackBar.UnknownColor = System.Drawing.Color.White;
             this.trackBar.Value = 0;
+            this.trackBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.trackBar_MouseMove);
+            this.trackBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.trackBar_MouseUp);
+            // 
+            // lbMaxTime
+            // 
+            this.lbMaxTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbMaxTime.AutoSize = true;
+            this.lbMaxTime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMaxTime.ForeColor = System.Drawing.Color.White;
+            this.lbMaxTime.Location = new System.Drawing.Point(553, -2);
+            this.lbMaxTime.Name = "lbMaxTime";
+            this.lbMaxTime.Size = new System.Drawing.Size(60, 28);
+            this.lbMaxTime.TabIndex = 30;
+            this.lbMaxTime.Text = "00:00";
+            // 
+            // lbMinTime
+            // 
+            this.lbMinTime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMinTime.ForeColor = System.Drawing.Color.White;
+            this.lbMinTime.Location = new System.Drawing.Point(0, -2);
+            this.lbMinTime.Name = "lbMinTime";
+            this.lbMinTime.Size = new System.Drawing.Size(70, 28);
+            this.lbMinTime.TabIndex = 23;
+            this.lbMinTime.Text = "00:00";
+            this.lbMinTime.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.rjCircularPictureBox5);
+            this.panel10.Controls.Add(this.rjCircularPictureBox4);
+            this.panel10.Controls.Add(this.rjCircularPictureBox3);
+            this.panel10.Controls.Add(this.rjCircularPictureBox2);
+            this.panel10.Controls.Add(this.btnPlay);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel10.Location = new System.Drawing.Point(0, 0);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(616, 72);
+            this.panel10.TabIndex = 0;
             // 
             // rjCircularPictureBox5
             // 
@@ -707,6 +743,60 @@ namespace DoAnCSharp
             this.btnPlay.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.btnPlay.TabIndex = 21;
             this.btnPlay.TabStop = false;
+            this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
+            // 
+            // panel12
+            // 
+            this.panel12.Controls.Add(this.iconButton2);
+            this.panel12.Controls.Add(this.trackbarVolume);
+            this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel12.Location = new System.Drawing.Point(922, 3);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(247, 104);
+            this.panel12.TabIndex = 2;
+            // 
+            // iconButton2
+            // 
+            this.iconButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(16)))));
+            this.iconButton2.FlatAppearance.BorderSize = 0;
+            this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.VolumeUp;
+            this.iconButton2.IconColor = System.Drawing.Color.White;
+            this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton2.IconSize = 32;
+            this.iconButton2.Location = new System.Drawing.Point(12, 17);
+            this.iconButton2.Name = "iconButton2";
+            this.iconButton2.Size = new System.Drawing.Size(38, 40);
+            this.iconButton2.TabIndex = 4;
+            this.iconButton2.UseVisualStyleBackColor = false;
+            // 
+            // trackbarVolume
+            // 
+            this.trackbarVolume.AlwaysValueVisible = false;
+            this.trackbarVolume.BallonArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(158)))), ((int)(((byte)(255)))));
+            this.trackbarVolume.BallonColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(158)))), ((int)(((byte)(255)))));
+            this.trackbarVolume.BarColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(220)))), ((int)(((byte)(223)))));
+            this.trackbarVolume.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(16)))));
+            this.trackbarVolume.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.trackbarVolume.FillBarColor = System.Drawing.Color.HotPink;
+            this.trackbarVolume.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.trackbarVolume.ForeColor = System.Drawing.Color.White;
+            this.trackbarVolume.HeadBorderColor = System.Drawing.Color.HotPink;
+            this.trackbarVolume.HeadColor = System.Drawing.Color.Black;
+            this.trackbarVolume.Location = new System.Drawing.Point(56, 29);
+            this.trackbarVolume.MaxValue = 100;
+            this.trackbarVolume.MinValue = 0;
+            this.trackbarVolume.Name = "trackbarVolume";
+            this.trackbarVolume.ShowValue = false;
+            this.trackbarVolume.Size = new System.Drawing.Size(120, 16);
+            this.trackbarVolume.TabIndex = 3;
+            this.trackbarVolume.Text = "hopeTrackBar1";
+            this.trackbarVolume.ThemeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(158)))), ((int)(((byte)(255)))));
+            this.trackbarVolume.UnknownColor = System.Drawing.Color.White;
+            this.trackbarVolume.Value = 50;
+            this.trackbarVolume.Click += new System.EventHandler(this.trackbarVolume_Click);
+            this.trackbarVolume.MouseMove += new System.Windows.Forms.MouseEventHandler(this.trackbarVolume_MouseMove);
+            this.trackbarVolume.MouseUp += new System.Windows.Forms.MouseEventHandler(this.trackbarVolume_MouseUp);
             // 
             // Main
             // 
@@ -719,6 +809,7 @@ namespace DoAnCSharp
             this.Controls.Add(this.panelTitleBar);
             this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form2";
@@ -733,16 +824,18 @@ namespace DoAnCSharp
             ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSong)).EndInit();
             this.panel8.ResumeLayout(false);
-            this.panel10.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
+            this.panel10.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPlay)).EndInit();
+            this.panel12.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -776,7 +869,7 @@ namespace DoAnCSharp
         private System.Windows.Forms.Panel panelContainer;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbSong;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Panel panel10;
@@ -788,5 +881,10 @@ namespace DoAnCSharp
         private RJCodeAdvance.RJControls.RJCircularPictureBox rjCircularPictureBox3;
         private RJCodeAdvance.RJControls.RJCircularPictureBox rjCircularPictureBox2;
         private RJCodeAdvance.RJControls.RJCircularPictureBox btnPlay;
+        private System.Windows.Forms.Label lbSongArtist;
+        private System.Windows.Forms.Label lbSongName;
+        private System.Windows.Forms.Panel panel12;
+        private FontAwesome.Sharp.IconButton iconButton2;
+        private ReaLTaiizor.Controls.HopeTrackBar trackbarVolume;
     }
 }

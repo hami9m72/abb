@@ -32,11 +32,13 @@ namespace DoAnCSharp.View
             this.hopeTabPage1 = new ReaLTaiizor.Controls.HopeTabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.poisonScrollBar1 = new ReaLTaiizor.Controls.PoisonScrollBar();
-            this.poisonPanel1 = new ReaLTaiizor.Controls.PoisonPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.poisonPanel1 = new ReaLTaiizor.Controls.PoisonPanel();
             this.hopeTabPage1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // hopeTabPage1
@@ -51,9 +53,10 @@ namespace DoAnCSharp.View
             this.hopeTabPage1.ForeColorC = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.hopeTabPage1.ItemSize = new System.Drawing.Size(120, 40);
             this.hopeTabPage1.Location = new System.Drawing.Point(0, 0);
+            this.hopeTabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.hopeTabPage1.Name = "hopeTabPage1";
             this.hopeTabPage1.SelectedIndex = 0;
-            this.hopeTabPage1.Size = new System.Drawing.Size(832, 499);
+            this.hopeTabPage1.Size = new System.Drawing.Size(1109, 614);
             this.hopeTabPage1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.hopeTabPage1.TabIndex = 0;
             this.hopeTabPage1.ThemeColorA = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(158)))), ((int)(((byte)(255)))));
@@ -67,9 +70,10 @@ namespace DoAnCSharp.View
             this.tabPage1.Controls.Add(this.poisonPanel1);
             this.tabPage1.Controls.Add(this.panel1);
             this.tabPage1.Location = new System.Drawing.Point(0, 40);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(832, 459);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage1.Size = new System.Drawing.Size(1109, 574);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             // 
@@ -77,16 +81,49 @@ namespace DoAnCSharp.View
             // 
             this.poisonScrollBar1.Dock = System.Windows.Forms.DockStyle.Right;
             this.poisonScrollBar1.LargeChange = 10;
-            this.poisonScrollBar1.Location = new System.Drawing.Point(823, 51);
+            this.poisonScrollBar1.Location = new System.Drawing.Point(1097, 63);
+            this.poisonScrollBar1.Margin = new System.Windows.Forms.Padding(4);
             this.poisonScrollBar1.Maximum = 100;
             this.poisonScrollBar1.Minimum = 0;
             this.poisonScrollBar1.MouseWheelBarPartitions = 10;
             this.poisonScrollBar1.Name = "poisonScrollBar1";
             this.poisonScrollBar1.Orientation = ReaLTaiizor.Enum.Poison.ScrollOrientationType.Vertical;
-            this.poisonScrollBar1.ScrollbarSize = 6;
-            this.poisonScrollBar1.Size = new System.Drawing.Size(6, 405);
+            this.poisonScrollBar1.ScrollbarSize = 8;
+            this.poisonScrollBar1.Size = new System.Drawing.Size(8, 507);
             this.poisonScrollBar1.TabIndex = 2;
             this.poisonScrollBar1.UseSelectable = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1101, 59);
+            this.panel1.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.button1.Location = new System.Drawing.Point(993, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(108, 59);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(0, 40);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage2.Size = new System.Drawing.Size(1109, 574);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // poisonPanel1
             // 
@@ -95,45 +132,30 @@ namespace DoAnCSharp.View
             this.poisonPanel1.HorizontalScrollbar = true;
             this.poisonPanel1.HorizontalScrollbarBarColor = true;
             this.poisonPanel1.HorizontalScrollbarHighlightOnWheel = false;
-            this.poisonPanel1.HorizontalScrollbarSize = 10;
-            this.poisonPanel1.Location = new System.Drawing.Point(3, 51);
+            this.poisonPanel1.HorizontalScrollbarSize = 12;
+            this.poisonPanel1.Location = new System.Drawing.Point(4, 63);
+            this.poisonPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.poisonPanel1.Name = "poisonPanel1";
-            this.poisonPanel1.Size = new System.Drawing.Size(826, 405);
+            this.poisonPanel1.Size = new System.Drawing.Size(1101, 507);
             this.poisonPanel1.TabIndex = 1;
             this.poisonPanel1.UseCustomBackColor = true;
             this.poisonPanel1.VerticalScrollbar = true;
             this.poisonPanel1.VerticalScrollbarBarColor = true;
             this.poisonPanel1.VerticalScrollbarHighlightOnWheel = false;
-            this.poisonPanel1.VerticalScrollbarSize = 10;
+            this.poisonPanel1.VerticalScrollbarSize = 13;
             this.poisonPanel1.VerticalScrolled += new System.EventHandler<System.Windows.Forms.ScrollEventArgs>(this.poisonPanel1_VerticalScrolled);
-            // 
-            // panel1
-            // 
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(826, 48);
-            this.panel1.TabIndex = 0;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(0, 40);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(832, 459);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // MyMusicView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.hopeTabPage1);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MyMusicView";
-            this.Size = new System.Drawing.Size(832, 499);
+            this.Size = new System.Drawing.Size(1109, 614);
             this.hopeTabPage1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -145,6 +167,7 @@ namespace DoAnCSharp.View
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Panel panel1;
         private ReaLTaiizor.Controls.PoisonScrollBar poisonScrollBar1;
+        private System.Windows.Forms.Button button1;
         private ReaLTaiizor.Controls.PoisonPanel poisonPanel1;
     }
 }

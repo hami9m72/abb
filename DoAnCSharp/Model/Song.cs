@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,7 @@ namespace DoAnCSharp.Model
         public List<Artist> artists { get; set; }
         public bool isWorldWide { get; set; }
         public string thumbnailM { get; set; }
+        public Image thumbnailMImg { get; set; }
         public string link { get; set; }
         public string thumbnail { get; set; }
         public int duration { get; set; }
