@@ -31,65 +31,53 @@ namespace DoAnCSharp.View
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MediaCtl));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.mPlayer = new AxWMPLib.AxWindowsMediaPlayer();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mPlayer)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.richTextBox1);
             this.panel1.Controls.Add(this.mPlayer);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(729, 434);
+            this.panel1.Size = new System.Drawing.Size(972, 534);
             this.panel1.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.iconButton1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(499, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(230, 434);
-            this.panel2.TabIndex = 1;
             // 
             // mPlayer
             // 
             this.mPlayer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mPlayer.Enabled = true;
             this.mPlayer.Location = new System.Drawing.Point(0, 0);
+            this.mPlayer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.mPlayer.Name = "mPlayer";
             this.mPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("mPlayer.OcxState")));
-            this.mPlayer.Size = new System.Drawing.Size(729, 434);
+            this.mPlayer.Size = new System.Drawing.Size(972, 534);
             this.mPlayer.TabIndex = 1;
             // 
-            // iconButton1
+            // richTextBox1
             // 
-            this.iconButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconButton1.IconColor = System.Drawing.Color.Black;
-            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.Location = new System.Drawing.Point(152, 3);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Size = new System.Drawing.Size(75, 23);
-            this.iconButton1.TabIndex = 0;
-            this.iconButton1.Text = "iconButton1";
-            this.iconButton1.UseVisualStyleBackColor = true;
+            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.richTextBox1.Location = new System.Drawing.Point(503, 0);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.Size = new System.Drawing.Size(469, 534);
+            this.richTextBox1.TabIndex = 2;
+            this.richTextBox1.Text = "";
             // 
             // MediaCtl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MediaCtl";
-            this.Size = new System.Drawing.Size(729, 434);
+            this.Size = new System.Drawing.Size(972, 534);
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.mPlayer)).EndInit();
             this.ResumeLayout(false);
 
@@ -99,7 +87,6 @@ namespace DoAnCSharp.View
 
         private System.Windows.Forms.Panel panel1;
         private AxWMPLib.AxWindowsMediaPlayer mPlayer;
-        private System.Windows.Forms.Panel panel2;
-        private FontAwesome.Sharp.IconButton iconButton1;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
