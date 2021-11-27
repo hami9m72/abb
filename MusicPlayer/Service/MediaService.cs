@@ -12,7 +12,7 @@ namespace MusicPlayer.Service
 {
     public class MediaService
     {
-        public async Task<JObject> GetDataFromURL(string url)
+        public static async Task<JObject> GetDataFromURL(string url)
         {
             HttpClient httpClient = new HttpClient();
             HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
@@ -22,7 +22,7 @@ namespace MusicPlayer.Service
             return JObject.Parse(await response.Content.ReadAsStringAsync());
         }
 
-        public async Task<Song> GetSongDetail(string songId)
+        public static async Task<Song> GetSongDetail(string songId)
         {
             try
             {
@@ -34,7 +34,42 @@ namespace MusicPlayer.Service
                 Console.WriteLine(ex.Message);
                 return null;
             }
+        }
 
+        public static async Task<Lyric> GetSongLyric(string songId)
+        {
+            try
+            {
+                var data = await GetDataFromURL($"https://dat-zing-mp3-api.herokuapp.com/song/lyric/{songId}");
+                return JsonConvert.DeserializeObject<Lyric>(data.ToString());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
+        public static async Task<Streaming> GetSongStream(string songId)
+        {
+            try
+            {
+                var data = await GetDataFromURL($"https://dat-zing-mp3-api.herokuapp.com/song/stream/{songId}");
+                return JsonConvert.DeserializeObject<Streaming>(data.ToString());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
+        public static async Task<List<Song>> GetSongs(List<string> lstID)
+        {
+            List<Song> songs = new List<Song>();
+            foreach (var id in lstID)
+                songs.Add(await GetSongDetail(id));
+            return songs;
         }
     }
 }

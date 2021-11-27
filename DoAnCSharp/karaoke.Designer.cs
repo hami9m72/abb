@@ -37,10 +37,11 @@ namespace DoAnCSharp
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.panelL1 = new System.Windows.Forms.Panel();
+            this.panelL2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -97,7 +98,7 @@ namespace DoAnCSharp
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(688, 400);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 32);
+            this.label3.Size = new System.Drawing.Size(64, 25);
             this.label3.TabIndex = 7;
             this.label3.Text = "label3";
             // 
@@ -107,7 +108,7 @@ namespace DoAnCSharp
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(1019, 400);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(81, 32);
+            this.label4.Size = new System.Drawing.Size(64, 25);
             this.label4.TabIndex = 8;
             this.label4.Text = "label4";
             // 
@@ -120,15 +121,6 @@ namespace DoAnCSharp
             this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(251, 102);
             this.axWindowsMediaPlayer1.TabIndex = 9;
             this.axWindowsMediaPlayer1.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(this.axWindowsMediaPlayer1_PlayStateChange);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(638, 603);
-            this.panel1.TabIndex = 10;
             // 
             // timer1
             // 
@@ -152,17 +144,36 @@ namespace DoAnCSharp
             "Thay lòng - ZU7C8FDU"});
             this.comboBox1.Location = new System.Drawing.Point(678, 12);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 24);
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 12;
             this.comboBox1.Text = "Phi hành gia - ZU9CE99E";
+            // 
+            // panelL1
+            // 
+            this.panelL1.BackColor = System.Drawing.Color.BlanchedAlmond;
+            this.panelL1.Location = new System.Drawing.Point(2, 9);
+            this.panelL1.Name = "panelL1";
+            this.panelL1.Size = new System.Drawing.Size(563, 264);
+            this.panelL1.TabIndex = 13;
+            this.panelL1.Paint += new System.Windows.Forms.PaintEventHandler(this.panelL1_Paint);
+            // 
+            // panelL2
+            // 
+            this.panelL2.BackColor = System.Drawing.Color.LightSalmon;
+            this.panelL2.Location = new System.Drawing.Point(2, 279);
+            this.panelL2.Name = "panelL2";
+            this.panelL2.Size = new System.Drawing.Size(563, 312);
+            this.panelL2.TabIndex = 14;
+            this.panelL2.Paint += new System.Windows.Forms.PaintEventHandler(this.panelL2_Paint);
             // 
             // karaoke
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1128, 603);
+            this.Controls.Add(this.panelL2);
+            this.Controls.Add(this.panelL1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.axWindowsMediaPlayer1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -184,9 +195,10 @@ namespace DoAnCSharp
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Panel panelL1;
+        private System.Windows.Forms.Panel panelL2;
     }
 }

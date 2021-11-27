@@ -1,4 +1,7 @@
-﻿using System;
+﻿using MusicPlayer.Model;
+using MusicPlayer.Service;
+using MusicPlayer.View;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,12 +17,19 @@ namespace MusicPlayer
 {
     public partial class MainForm : Form
     {
+        private static MainForm instance;
+        public static MainForm Instance { get => instance; }
 
         public MainForm()
         {
             InitializeComponent();
-            this.Padding = new Padding(borderSize);//Border size          
+            this.Padding = new Padding(borderSize);//Border size
+            btnHome_Click(null, null);
+            instance = this;
+
         }
+
+       
         #region Borderless form
         //Fields
         private int borderSize = 2;
@@ -130,7 +140,7 @@ namespace MusicPlayer
             switch (this.WindowState)
             {
                 case FormWindowState.Maximized: //Maximized form (After)
-                    this.Padding = new Padding(8, 8, 8, 0);
+                    this.Padding = new Padding(8, 8, 8, 8);
                     break;
                 case FormWindowState.Normal: //Restored form (After)
                     if (this.Padding.Top != borderSize)
@@ -139,7 +149,7 @@ namespace MusicPlayer
             }
         }
         #endregion
-        
+
 
 
         #region 3 nút thanh title
@@ -171,37 +181,8 @@ namespace MusicPlayer
 
         #endregion
 
-        private void panelLyric_Paint(object sender, PaintEventArgs e)
-        {
-            Control control = sender as Control;
-            const string txt = "C# Helper! Draw some text with each word in a random color.";
 
-            TextFormatFlags flags = TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter |
-                                    TextFormatFlags.NoPadding | TextFormatFlags.NoClipping;
 
-            using (StringFormat format = new StringFormat())
-            {
-                format.Alignment = StringAlignment.Center;
-                format.LineAlignment = StringAlignment.Center;
-
-                MatchCollection mc = Regex.Matches(txt, @"[^\s]+");
-                CharacterRange[] ranges = mc.Cast<Match>().Select(m => new CharacterRange(m.Index, m.Length)).ToArray();
-                format.SetMeasurableCharacterRanges(ranges);
-
-                using (Font font = new Font("Times New Roman", 40, FontStyle.Regular, GraphicsUnit.Point))
-                {
-                    Region[] regions = e.Graphics.MeasureCharacterRanges(txt, font, control.ClientRectangle, format);
-
-                    for (int i = 0; i < ranges.Length; i++)
-                    {
-                        Rectangle WordBounds = Rectangle.Round(regions[i].GetBounds(e.Graphics));
-                        string word = txt.Substring(ranges[i].First, ranges[i].Length);
-
-                        TextRenderer.DrawText(e.Graphics, word, font, WordBounds, Color.White, flags);
-                    }
-                }
-            }
-        }
         private void MainForm_Resize(object sender, EventArgs e)
         {
             AdjustForm();
@@ -209,14 +190,93 @@ namespace MusicPlayer
         }
 
 
-        private void panelSongInfo_Paint(object sender, PaintEventArgs e)
+        private void btnHome_Click(object sender, EventArgs e)
         {
-            tlpMedia.BringToFront();
+            var view = new HomeView();
+            panelContainer.Controls.Add(view);
+            view.Dock = DockStyle.Fill;
+            view.BringToFront();
         }
 
-        private void button8_Click(object sender, EventArgs e)
+        public void SetMedia(string url)
+        {
+            mPlayer.URL = url;
+            mPlayer.Ctlcontrols.play();
+        }
+
+        public async void SetMedia(Song song)
         {
             
+
+            mPlayer.URL = song.streaming._128;
+            lbSongName.Text = song.title + "\n" + song.artistsNames;
+            //lbSongArtist.Text = song.artistsNames;
+            pbSong.LoadAsync(song.thumbnailM);
+            mPlayer.Ctlcontrols.play();
+
         }
+
+        #region Load Lyric
+        
+
+
+        #endregion
+
+        private void mPlayer_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
+        {
+            if (mPlayer.playState == WMPLib.WMPPlayState.wmppsPlaying)
+            {
+                btnPlay.BackgroundImage = Properties.Resources.icons8_pause_32px;
+                trackBar.MaxValue = (int)mPlayer.Ctlcontrols.currentItem.duration;
+                lbMaxTime.Text = mPlayer.Ctlcontrols.currentItem.durationString;
+                tTrackBar.Start();
+            }
+            else if (mPlayer.playState == WMPLib.WMPPlayState.wmppsPaused)
+            {
+                btnPlay.BackgroundImage = Properties.Resources.icons8_play_32px;
+                tTrackBar.Stop();
+            }
+            else if (mPlayer.playState == WMPLib.WMPPlayState.wmppsStopped)
+            {
+                tTrackBar.Stop();
+                trackBar.Value = 0;
+                lbMinTime.Text = "00:00";
+            }
+        }
+
+        private void tTrackBar_Tick(object sender, EventArgs e)
+        {
+            if (mPlayer.playState == WMPLib.WMPPlayState.wmppsPlaying)
+            {
+                lbMinTime.Text = mPlayer.Ctlcontrols.currentPositionString;
+                trackBar.Value = (int)mPlayer.Ctlcontrols.currentPosition;
+            }
+
+
+            
+            
+        }
+
+        private void btnPlay_Click(object sender, EventArgs e)
+        {
+            if (mPlayer.playState == WMPLib.WMPPlayState.wmppsPlaying)
+            {
+                mPlayer.Ctlcontrols.pause();
+            }
+            else if (mPlayer.playState == WMPLib.WMPPlayState.wmppsPaused)
+            {
+                mPlayer.Ctlcontrols.play();
+            }
+        }
+
+
+        private void panelSongInfo_Click(object sender, EventArgs e)
+        {
+            panelMedia.Visible = !panelMedia.Visible;
+            if (panelMedia.Visible)
+                panelMedia.BringToFront();
+        }
+
+
     }
 }
