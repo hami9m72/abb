@@ -73,6 +73,10 @@ namespace MusicPlayer
             this.mPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panelLyric = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panelL1 = new System.Windows.Forms.Panel();
+            this.panelL2 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.tTrackBar = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.tlpMedia.SuspendLayout();
@@ -97,6 +101,8 @@ namespace MusicPlayer
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mPlayer)).BeginInit();
             this.tabPage2.SuspendLayout();
+            this.panelLyric.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -133,6 +139,7 @@ namespace MusicPlayer
             this.panelSongInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(16)))));
             this.panelSongInfo.Controls.Add(this.lbSongName);
             this.panelSongInfo.Controls.Add(this.pbSong);
+            this.panelSongInfo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.panelSongInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelSongInfo.Location = new System.Drawing.Point(0, 0);
             this.panelSongInfo.Margin = new System.Windows.Forms.Padding(0);
@@ -143,27 +150,31 @@ namespace MusicPlayer
             // 
             // lbSongName
             // 
-            this.lbSongName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.lbSongName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lbSongName.AutoSize = true;
+            this.lbSongName.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbSongName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbSongName.ForeColor = System.Drawing.Color.White;
-            this.lbSongName.Location = new System.Drawing.Point(123, 10);
+            this.lbSongName.Location = new System.Drawing.Point(109, 8);
             this.lbSongName.MaximumSize = new System.Drawing.Size(250, 0);
             this.lbSongName.Name = "lbSongName";
             this.lbSongName.Size = new System.Drawing.Size(0, 21);
             this.lbSongName.TabIndex = 3;
+            this.lbSongName.Click += new System.EventHandler(this.panelSongInfo_Click);
             // 
             // pbSong
             // 
+            this.pbSong.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbSong.Dock = System.Windows.Forms.DockStyle.Left;
             this.pbSong.Location = new System.Drawing.Point(0, 0);
             this.pbSong.Name = "pbSong";
-            this.pbSong.Size = new System.Drawing.Size(117, 86);
+            this.pbSong.Size = new System.Drawing.Size(103, 86);
             this.pbSong.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbSong.TabIndex = 0;
             this.pbSong.TabStop = false;
+            this.pbSong.Click += new System.EventHandler(this.panelSongInfo_Click);
             // 
             // panel8
             // 
@@ -189,7 +200,7 @@ namespace MusicPlayer
             // trackBar
             // 
             this.trackBar.AlwaysValueVisible = false;
-            this.trackBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.trackBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar.BallonArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.trackBar.BallonColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -733,12 +744,57 @@ namespace MusicPlayer
             // panelLyric
             // 
             this.panelLyric.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(28)))), ((int)(((byte)(34)))));
+            this.panelLyric.Controls.Add(this.tableLayoutPanel1);
+            this.panelLyric.Controls.Add(this.panel4);
             this.panelLyric.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelLyric.Location = new System.Drawing.Point(0, 0);
             this.panelLyric.Margin = new System.Windows.Forms.Padding(0);
             this.panelLyric.Name = "panelLyric";
             this.panelLyric.Size = new System.Drawing.Size(749, 452);
             this.panelLyric.TabIndex = 0;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.panelL1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panelL2, 0, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(749, 399);
+            this.tableLayoutPanel1.TabIndex = 1;
+            // 
+            // panelL1
+            // 
+            this.panelL1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(28)))), ((int)(((byte)(34)))));
+            this.panelL1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelL1.Location = new System.Drawing.Point(3, 3);
+            this.panelL1.Name = "panelL1";
+            this.panelL1.Size = new System.Drawing.Size(743, 193);
+            this.panelL1.TabIndex = 0;
+            this.panelL1.Paint += new System.Windows.Forms.PaintEventHandler(this.panelL1_Paint);
+            // 
+            // panelL2
+            // 
+            this.panelL2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(28)))), ((int)(((byte)(34)))));
+            this.panelL2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelL2.Location = new System.Drawing.Point(3, 202);
+            this.panelL2.Name = "panelL2";
+            this.panelL2.Size = new System.Drawing.Size(743, 194);
+            this.panelL2.TabIndex = 1;
+            this.panelL2.Paint += new System.Windows.Forms.PaintEventHandler(this.panelL2_Paint);
+            // 
+            // panel4
+            // 
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel4.Location = new System.Drawing.Point(0, 399);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(749, 53);
+            this.panel4.TabIndex = 0;
             // 
             // tTrackBar
             // 
@@ -784,6 +840,8 @@ namespace MusicPlayer
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.mPlayer)).EndInit();
             this.tabPage2.ResumeLayout(false);
+            this.panelLyric.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -833,5 +891,9 @@ namespace MusicPlayer
         private System.Windows.Forms.Panel panelLyric;
         private System.Windows.Forms.Label lbSongName;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Panel panelL1;
+        private System.Windows.Forms.Panel panelL2;
     }
 }

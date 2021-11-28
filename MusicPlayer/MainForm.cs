@@ -29,7 +29,7 @@ namespace MusicPlayer
 
         }
 
-       
+
         #region Borderless form
         //Fields
         private int borderSize = 2;
@@ -206,7 +206,23 @@ namespace MusicPlayer
 
         public async void SetMedia(Song song)
         {
-            
+            tTrackBar.Stop();
+            mPlayer.Ctlcontrols.stop();
+            l1 = "";
+            l2 = "";
+            idx = 0;
+            idx1 = -1;
+            idx2 = -1;
+            t = 0;
+
+            lyric = await MediaService.GetSongLyric(song.encodeId);
+            startTime = lyric.sentences[idx].words[0].startTime;
+            endTime = lyric.sentences[idx].words.Last().endTime;
+
+            l1 = lyric.sentences[0].fullSentence();
+            l2 = lyric.sentences[1].fullSentence();
+            panelL1.Invalidate();
+            panelL2.Invalidate();
 
             mPlayer.URL = song.streaming._128;
             lbSongName.Text = song.title + "\n" + song.artistsNames;
@@ -214,12 +230,84 @@ namespace MusicPlayer
             pbSong.LoadAsync(song.thumbnailM);
             mPlayer.Ctlcontrols.play();
 
+
         }
 
         #region Load Lyric
-        
+        Lyric lyric;
+        int t = 0;
+        private int startTime;
+        private int endTime;
+        string l1 = "";
+        string l2 = "";
+        int idx = 0;
+        int idx1 = -1;
+        int idx2 = -1;
 
+        private void panelL1_Paint(object sender, PaintEventArgs e)
+        {
+            if (l1 != "")
+            {
+                Graphics g = e.Graphics;
+                TextFormatFlags flags = TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter |
+                                    TextFormatFlags.NoPadding | TextFormatFlags.NoClipping;
 
+                using (StringFormat format = new StringFormat())
+                {
+                    format.Alignment = StringAlignment.Center;
+                    format.LineAlignment = StringAlignment.Far;
+
+                    MatchCollection mc = Regex.Matches(l1, @"[^\s]+");
+                    CharacterRange[] ranges = mc.Cast<Match>().Select(m => new CharacterRange(m.Index, m.Length)).ToArray();
+                    format.SetMeasurableCharacterRanges(ranges);
+
+                    using (Font font = new Font("Microsoft Sans Serif", 40, FontStyle.Regular, GraphicsUnit.Point))
+                    {
+                        Region[] regions = g.MeasureCharacterRanges(l1, font, panelL1.ClientRectangle, format);
+
+                        for (int i = 0; i < ranges.Length; i++)
+                        {
+                            Rectangle WordBounds = Rectangle.Round(regions[i].GetBounds(g));
+                            string word = l1.Substring(ranges[i].First, ranges[i].Length);
+                            Color c = i <= idx1 ? Color.FromArgb(255, 237, 0) : Color.White;
+                            TextRenderer.DrawText(g, word, font, WordBounds, c, flags);
+                        }
+                    }
+                }
+            }
+        }
+        private void panelL2_Paint(object sender, PaintEventArgs e)
+        {
+            if (l2 != "")
+            {
+                Graphics g = e.Graphics;
+                TextFormatFlags flags = TextFormatFlags.HorizontalCenter | TextFormatFlags.Top |
+                                    TextFormatFlags.NoPadding | TextFormatFlags.NoClipping;
+
+                using (StringFormat format = new StringFormat())
+                {
+                    format.Alignment = StringAlignment.Center;
+                    format.LineAlignment = StringAlignment.Near;
+
+                    MatchCollection mc = Regex.Matches(l2, @"[^\s]+");
+                    CharacterRange[] ranges = mc.Cast<Match>().Select(m => new CharacterRange(m.Index, m.Length)).ToArray();
+                    format.SetMeasurableCharacterRanges(ranges);
+
+                    using (Font font = new Font("Microsoft Sans Serif", 40, FontStyle.Regular, GraphicsUnit.Point))
+                    {
+                        Region[] regions = g.MeasureCharacterRanges(l2, font, panelL1.ClientRectangle, format);
+
+                        for (int i = 0; i < ranges.Length; i++)
+                        {
+                            Rectangle WordBounds = Rectangle.Round(regions[i].GetBounds(g));
+                            string word = l2.Substring(ranges[i].First, ranges[i].Length);
+                            Color c = i <= idx2 ? Color.FromArgb(255, 237, 0) : Color.White;
+                            TextRenderer.DrawText(g, word, font, WordBounds, c, flags);
+                        }
+                    }
+                }
+            }
+        }
         #endregion
 
         private void mPlayer_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
@@ -230,6 +318,7 @@ namespace MusicPlayer
                 trackBar.MaxValue = (int)mPlayer.Ctlcontrols.currentItem.duration;
                 lbMaxTime.Text = mPlayer.Ctlcontrols.currentItem.durationString;
                 tTrackBar.Start();
+
             }
             else if (mPlayer.playState == WMPLib.WMPPlayState.wmppsPaused)
             {
@@ -252,9 +341,60 @@ namespace MusicPlayer
                 trackBar.Value = (int)mPlayer.Ctlcontrols.currentPosition;
             }
 
+            if (idx >= lyric.sentences.Count)
+            {
+                tTrackBar.Stop();
+                return;
+            }
+            if (t >= lyric.sentences[0].words[0].startTime &&
+                t < lyric.sentences[0].words[0].endTime)
+            {
+                idx1 = 0;
+                idx2 = 0;
+            }
+            if (t >= startTime && t < endTime)
+            {
+                if (idx % 2 == 0)
+                {
+                    if (idx >= lyric.sentences.Count)
+                    {
+                        tTrackBar.Stop();
+                        return;
+                    }
+                    l2 = lyric.sentences[idx + 1].fullSentence();
+                    idx2 = -1;
+                    panelL2.Invalidate();
+                    if (t >= lyric.sentences[idx].words[idx1].endTime)
+                        idx1++;
+                    panelL1.Invalidate();
+                }
+                else
+                {
+                    if (idx >= lyric.sentences.Count)
+                    {
+                        tTrackBar.Stop();
+                        return;
+                    }
+                    l1 = lyric.sentences[idx + 1].fullSentence();
+                    panelL1.Invalidate();
+                    idx1 = -1;
+                    if (t >= lyric.sentences[idx].words[idx2].endTime)
+                        idx2++;
+                    panelL2.Invalidate();
 
-            
-            
+                }
+            }
+            if (t >= endTime)
+            {
+                idx++;
+                if (idx % 2 == 0) idx1 = 0;
+                else idx2 = 0;
+                startTime = lyric.sentences[idx].words[0].startTime;
+                endTime = lyric.sentences[idx].words.Last().endTime;
+            }
+            t += tTrackBar.Interval + 10;
+
+
         }
 
         private void btnPlay_Click(object sender, EventArgs e)
