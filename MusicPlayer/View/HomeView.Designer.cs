@@ -33,12 +33,12 @@ namespace MusicPlayer.View
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.tlpBanner = new System.Windows.Forms.TableLayoutPanel();
-            this.pb3 = new System.Windows.Forms.PictureBox();
-            this.pb2 = new System.Windows.Forms.PictureBox();
-            this.pb1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.poisonScrollBar1 = new ReaLTaiizor.Controls.PoisonScrollBar();
+            this.pb3 = new System.Windows.Forms.PictureBox();
+            this.pb2 = new System.Windows.Forms.PictureBox();
+            this.pb1 = new System.Windows.Forms.PictureBox();
             this.poisonPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tlpBanner.SuspendLayout();
@@ -108,52 +108,6 @@ namespace MusicPlayer.View
             this.tlpBanner.Size = new System.Drawing.Size(707, 150);
             this.tlpBanner.TabIndex = 2;
             // 
-            // pb3
-            // 
-            this.pb3.BackColor = System.Drawing.Color.Yellow;
-            this.pb3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pb3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pb3.Location = new System.Drawing.Point(479, 3);
-            this.pb3.Margin = new System.Windows.Forms.Padding(9, 3, 3, 3);
-            this.pb3.Name = "pb3";
-            this.pb3.Size = new System.Drawing.Size(225, 144);
-            this.pb3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pb3.TabIndex = 0;
-            this.pb3.TabStop = false;
-            this.pb3.Tag = "2";
-            this.pb3.Click += new System.EventHandler(this.pb1_Click);
-            // 
-            // pb2
-            // 
-            this.pb2.BackColor = System.Drawing.Color.Yellow;
-            this.pb2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pb2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pb2.Location = new System.Drawing.Point(244, 3);
-            this.pb2.Margin = new System.Windows.Forms.Padding(9, 3, 9, 3);
-            this.pb2.Name = "pb2";
-            this.pb2.Size = new System.Drawing.Size(217, 144);
-            this.pb2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pb2.TabIndex = 1;
-            this.pb2.TabStop = false;
-            this.pb2.Tag = "1";
-            this.pb2.Click += new System.EventHandler(this.pb1_Click);
-            // 
-            // pb1
-            // 
-            this.pb1.BackColor = System.Drawing.Color.Yellow;
-            this.pb1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pb1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pb1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pb1.Location = new System.Drawing.Point(3, 3);
-            this.pb1.Margin = new System.Windows.Forms.Padding(3, 3, 9, 3);
-            this.pb1.Name = "pb1";
-            this.pb1.Size = new System.Drawing.Size(223, 144);
-            this.pb1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pb1.TabIndex = 2;
-            this.pb1.TabStop = false;
-            this.pb1.Tag = "0";
-            this.pb1.Click += new System.EventHandler(this.pb1_Click);
-            // 
             // panel3
             // 
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
@@ -184,6 +138,52 @@ namespace MusicPlayer.View
             this.poisonScrollBar1.Size = new System.Drawing.Size(6, 492);
             this.poisonScrollBar1.TabIndex = 2;
             this.poisonScrollBar1.UseSelectable = true;
+            // 
+            // pb3
+            // 
+            this.pb3.BackColor = System.Drawing.Color.Transparent;
+            this.pb3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pb3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pb3.Location = new System.Drawing.Point(479, 3);
+            this.pb3.Margin = new System.Windows.Forms.Padding(9, 3, 3, 3);
+            this.pb3.Name = "pb3";
+            this.pb3.Size = new System.Drawing.Size(225, 144);
+            this.pb3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb3.TabIndex = 0;
+            this.pb3.TabStop = false;
+            this.pb3.Tag = "2";
+            this.pb3.Click += new System.EventHandler(this.pb1_Click);
+            // 
+            // pb2
+            // 
+            this.pb2.BackColor = System.Drawing.Color.Transparent;
+            this.pb2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pb2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pb2.Location = new System.Drawing.Point(244, 3);
+            this.pb2.Margin = new System.Windows.Forms.Padding(9, 3, 9, 3);
+            this.pb2.Name = "pb2";
+            this.pb2.Size = new System.Drawing.Size(217, 144);
+            this.pb2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb2.TabIndex = 1;
+            this.pb2.TabStop = false;
+            this.pb2.Tag = "1";
+            this.pb2.Click += new System.EventHandler(this.pb1_Click);
+            // 
+            // pb1
+            // 
+            this.pb1.BackColor = System.Drawing.Color.Transparent;
+            this.pb1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pb1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pb1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pb1.Location = new System.Drawing.Point(3, 3);
+            this.pb1.Margin = new System.Windows.Forms.Padding(3, 3, 9, 3);
+            this.pb1.Name = "pb1";
+            this.pb1.Size = new System.Drawing.Size(223, 144);
+            this.pb1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb1.TabIndex = 2;
+            this.pb1.TabStop = false;
+            this.pb1.Tag = "0";
+            this.pb1.Click += new System.EventHandler(this.pb1_Click);
             // 
             // HomeView
             // 

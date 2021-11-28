@@ -24,7 +24,7 @@ namespace MusicPlayer
         {
             InitializeComponent();
             this.Padding = new Padding(borderSize);//Border size
-            btnHome_Click(null, null);
+            btnHome_Click(btnHome, null);
             instance = this;
 
         }
@@ -192,8 +192,16 @@ namespace MusicPlayer
 
         private void btnHome_Click(object sender, EventArgs e)
         {
-            var view = new HomeView();
-            panelContainer.Controls.Add(view);
+            ClearAllMenuCheck();
+            ActiveMenu(sender as Button);
+            HomeView view;
+            if (panelContainer.Controls["HomeView"] == null)
+            {
+                view = new HomeView();
+                panelContainer.Controls.Add(view);
+            }
+            else
+                view = panelContainer.Controls["HomeView"] as HomeView;
             view.Dock = DockStyle.Fill;
             view.BringToFront();
         }
@@ -214,20 +222,35 @@ namespace MusicPlayer
             idx1 = -1;
             idx2 = -1;
             t = 0;
+            rtbSong.Text = "";
+            if (song.encodeId != "" && song.encodeId != null)
+            {
+                lyric = await MediaService.GetSongLyric(song.encodeId);
+                startTime = lyric.sentences[idx].words[0].startTime;
+                endTime = lyric.sentences[idx].words.Last().endTime;
 
-            lyric = await MediaService.GetSongLyric(song.encodeId);
-            startTime = lyric.sentences[idx].words[0].startTime;
-            endTime = lyric.sentences[idx].words.Last().endTime;
+                l1 = lyric.sentences[0].fullSentence();
+                l2 = lyric.sentences[1].fullSentence();
+                panelL1.Invalidate();
+                panelL2.Invalidate();
+                pbSong.LoadAsync(song.thumbnailM);
 
-            l1 = lyric.sentences[0].fullSentence();
-            l2 = lyric.sentences[1].fullSentence();
-            panelL1.Invalidate();
-            panelL2.Invalidate();
+                foreach (var item in lyric.sentences)
+                    rtbSong.AppendText(item.fullSentence() + "\n");
+                rtbSong.SelectAll();
+                rtbSong.SelectionAlignment = HorizontalAlignment.Center;
+            }
+            else
+            {
+                pbSong.Image = null;
+                pbSong.BackgroundImage = song.thumbnailMImg;
+            }
+
 
             mPlayer.URL = song.streaming._128;
             lbSongName.Text = song.title + "\n" + song.artistsNames;
             //lbSongArtist.Text = song.artistsNames;
-            pbSong.LoadAsync(song.thumbnailM);
+
             mPlayer.Ctlcontrols.play();
 
 
@@ -308,6 +331,27 @@ namespace MusicPlayer
                 }
             }
         }
+
+        private void HighlightLine()
+        {
+            if (idx > 0)
+            {
+                int f = rtbSong.GetFirstCharIndexFromLine(idx - 1);
+                int c = rtbSong.GetLineFromCharIndex(f);
+                string cur = rtbSong.Lines[c];
+                rtbSong.Select(f, cur.Length);
+
+                rtbSong.SelectionColor = Color.White;
+            }
+            int firstcharindex = rtbSong.GetFirstCharIndexFromLine(idx);
+            int currentline = rtbSong.GetLineFromCharIndex(firstcharindex);
+            string currentlinetext = rtbSong.Lines[currentline];
+            rtbSong.Select(firstcharindex, currentlinetext.Length);
+
+            rtbSong.SelectionColor = Color.FromArgb(255, 237, 0);
+
+            rtbSong.ScrollToCaret();
+        }
         #endregion
 
         private void mPlayer_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
@@ -317,6 +361,7 @@ namespace MusicPlayer
                 btnPlay.BackgroundImage = Properties.Resources.icons8_pause_32px;
                 trackBar.MaxValue = (int)mPlayer.Ctlcontrols.currentItem.duration;
                 lbMaxTime.Text = mPlayer.Ctlcontrols.currentItem.durationString;
+
                 tTrackBar.Start();
 
             }
@@ -338,63 +383,66 @@ namespace MusicPlayer
             if (mPlayer.playState == WMPLib.WMPPlayState.wmppsPlaying)
             {
                 lbMinTime.Text = mPlayer.Ctlcontrols.currentPositionString;
-                trackBar.Value = (int)mPlayer.Ctlcontrols.currentPosition;
+                if (barChange)
+                    trackBar.Value = (int)mPlayer.Ctlcontrols.currentPosition;
             }
-
-            if (idx >= lyric.sentences.Count)
+            if (lyric != null)
             {
-                tTrackBar.Stop();
-                return;
-            }
-            if (t >= lyric.sentences[0].words[0].startTime &&
-                t < lyric.sentences[0].words[0].endTime)
-            {
-                idx1 = 0;
-                idx2 = 0;
-            }
-            if (t >= startTime && t < endTime)
-            {
-                if (idx % 2 == 0)
+                if (idx >= lyric.sentences.Count)
                 {
-                    if (idx >= lyric.sentences.Count)
-                    {
-                        tTrackBar.Stop();
-                        return;
-                    }
-                    l2 = lyric.sentences[idx + 1].fullSentence();
-                    idx2 = -1;
-                    panelL2.Invalidate();
-                    if (t >= lyric.sentences[idx].words[idx1].endTime)
-                        idx1++;
-                    panelL1.Invalidate();
+                    tTrackBar.Stop();
+                    return;
                 }
-                else
+                if (t >= lyric.sentences[0].words[0].startTime &&
+                    t < lyric.sentences[0].words[0].endTime)
                 {
-                    if (idx >= lyric.sentences.Count)
-                    {
-                        tTrackBar.Stop();
-                        return;
-                    }
-                    l1 = lyric.sentences[idx + 1].fullSentence();
-                    panelL1.Invalidate();
-                    idx1 = -1;
-                    if (t >= lyric.sentences[idx].words[idx2].endTime)
-                        idx2++;
-                    panelL2.Invalidate();
-
+                    idx1 = 0;
+                    idx2 = 0;
+                    HighlightLine();
                 }
-            }
-            if (t >= endTime)
-            {
-                idx++;
-                if (idx % 2 == 0) idx1 = 0;
-                else idx2 = 0;
-                startTime = lyric.sentences[idx].words[0].startTime;
-                endTime = lyric.sentences[idx].words.Last().endTime;
-            }
-            t += tTrackBar.Interval + 10;
+                if (t >= startTime && t < endTime)
+                {
+                    if (idx % 2 == 0)
+                    {
+                        if (idx >= lyric.sentences.Count)
+                        {
+                            tTrackBar.Stop();
+                            return;
+                        }
+                        l2 = lyric.sentences[idx + 1].fullSentence();
+                        idx2 = -1;
+                        panelL2.Invalidate();
+                        if (t >= lyric.sentences[idx].words[idx1].endTime)
+                            idx1++;
+                        panelL1.Invalidate();
+                    }
+                    else
+                    {
+                        if (idx >= lyric.sentences.Count)
+                        {
+                            tTrackBar.Stop();
+                            return;
+                        }
+                        l1 = lyric.sentences[idx + 1].fullSentence();
+                        panelL1.Invalidate();
+                        idx1 = -1;
+                        if (t >= lyric.sentences[idx].words[idx2].endTime)
+                            idx2++;
+                        panelL2.Invalidate();
 
-
+                    }
+                }
+                if (t >= endTime)
+                {
+                    idx++;
+                    if (idx % 2 == 0) idx1 = 0;
+                    else idx2 = 0;
+                    startTime = lyric.sentences[idx].words[0].startTime;
+                    endTime = lyric.sentences[idx].words.Last().endTime;
+                    HighlightLine();
+                }
+                t += tTrackBar.Interval + 10;
+            }
         }
 
         private void btnPlay_Click(object sender, EventArgs e)
@@ -416,7 +464,52 @@ namespace MusicPlayer
             if (panelMedia.Visible)
                 panelMedia.BringToFront();
         }
+        private bool barChange = true;
+        private void trackBar_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (mPlayer.currentMedia != null)
+            {
+                double cur = mPlayer.Ctlcontrols.currentItem.duration * e.X / (trackBar.Width - 15);
+                mPlayer.Ctlcontrols.currentPosition = cur;
+                lbMinTime.Text = mPlayer.Ctlcontrols.currentPositionString;
+                barChange = true;
+            }
+        }
 
+        private void trackBar_MouseMove(object sender, MouseEventArgs e)
+        {
 
+            if (mPlayer.currentMedia != null && e.Button == MouseButtons.Left)
+            {
+                barChange = false;
+            }
+        }
+
+        private void ClearAllMenuCheck()
+        {
+            foreach (Button menuButton in panelMenu.Controls.OfType<Button>())
+                menuButton.BackColor = Color.FromArgb(25, 26, 31);
+        }
+
+        private void ActiveMenu(Button btn)
+        {
+            btn.BackColor = Color.FromArgb(255, 128, 0);
+        }
+
+        private void btnLocal_Click(object sender, EventArgs e)
+        {
+            ClearAllMenuCheck();
+            ActiveMenu(sender as Button);
+            LocalView view;
+            if (panelContainer.Controls["LocalView"] == null)
+            {
+                view = new LocalView();
+                panelContainer.Controls.Add(view);
+            }
+            else
+                view = panelContainer.Controls["LocalView"] as LocalView;
+            view.Dock = DockStyle.Fill;
+            view.BringToFront();
+        }
     }
 }
