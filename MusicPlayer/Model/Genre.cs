@@ -8,10 +8,13 @@ namespace MusicPlayer.Model
 {
     public class Genre
     {
-        public string id { get; set; }
-        public string name { get; set; }
-        public string title { get; set; }
-        public string alias { get; set; }
-        public string link { get; set; }
+        public string id;
+        public string title;
+
+        public Genre(string id, string title)
+        {
+            this.id = id;
+            this.title = title;
+        }
     }
 }

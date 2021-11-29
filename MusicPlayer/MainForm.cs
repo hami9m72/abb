@@ -1,6 +1,6 @@
 ﻿using MusicPlayer.Model;
 using MusicPlayer.Service;
-using MusicPlayer.View;
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,15 +19,18 @@ namespace MusicPlayer
     {
         private static MainForm instance;
         public static MainForm Instance { get => instance; }
-        private List<Song> songs;
-        private int selIdx = -1;
+
+        private Playlist playlist;
+        private int currIdx=-1;
+
         public MainForm()
         {
             InitializeComponent();
             this.Padding = new Padding(borderSize);//Border size
             btnHome_Click(btnHome, null);
             instance = this;
-            songs = new List<Song>();
+            playlist = new Playlist("C0","current");
+            
         }
 
 
@@ -193,25 +196,26 @@ namespace MusicPlayer
         {
             ClearAllMenuCheck();
             ActiveMenu(sender as Button);
-            HomeView view;
-            if (panelContainer.Controls["HomeView"] == null)
-            {
-                view = new HomeView();
-                panelContainer.Controls.Add(view);
-            }
-            else
-                view = panelContainer.Controls["HomeView"] as HomeView;
-            view.Dock = DockStyle.Fill;
-            view.BringToFront();
+            //HomeView view;
+            //if (panelContainer.Controls["HomeView"] == null)
+            //{
+            //    view = new HomeView();
+            //    panelContainer.Controls.Add(view);
+            //}
+            //else
+            //    view = panelContainer.Controls["HomeView"] as HomeView;
+            //view.Dock = DockStyle.Fill;
+            //view.BringToFront();
         }
 
-        public void SetMedia(string url)
+        
+        public void AddMediaToCurrPlaylist(Song song)
         {
-            mPlayer.URL = url;
-            mPlayer.Ctlcontrols.play();
+            playlist.medias.Add(song);
+            currIdx++;
         }
 
-        public async void SetMedia(Song song)
+        public async void PlayMedia()
         {
             tTrackBar.Stop();
             mPlayer.Ctlcontrols.stop();
@@ -222,37 +226,37 @@ namespace MusicPlayer
             idx2 = -1;
             t = 0;
             rtbSong.Text = "";
-            if (song.encodeId != "" && song.encodeId != null)
+            if (playlist.medias[currIdx].type == "song")
             {
-                lyric = await MediaService.GetSongLyric(song.encodeId);
-                startTime = lyric.sentences[idx].words[0].startTime;
-                endTime = lyric.sentences[idx].words.Last().endTime;
+                Song song = playlist.medias[currIdx] as Song;
+                if (song.id != "")
+                {
+                    lyric = await MediaService.GetSongLyric(song.id);
+                    startTime = lyric.sentences[idx].words[0].startTime;
+                    endTime = lyric.sentences[idx].words.Last().endTime;
 
-                l1 = lyric.sentences[0].fullSentence();
-                l2 = lyric.sentences[1].fullSentence();
-                panelL1.Invalidate();
-                panelL2.Invalidate();
-                pbSong.LoadAsync(song.thumbnailM);
+                    l1 = lyric.sentences[0].fullSentence();
+                    l2 = lyric.sentences[1].fullSentence();
+                    panelL1.Invalidate();
+                    panelL2.Invalidate();
+                    pbSong.LoadAsync(song.thumbImg.ToString());
 
-                foreach (var item in lyric.sentences)
-                    rtbSong.AppendText(item.fullSentence() + "\n");
-                rtbSong.SelectAll();
-                rtbSong.SelectionAlignment = HorizontalAlignment.Center;
-            }
-            else
-            {
-                pbSong.Image = null;
-                pbSong.BackgroundImage = song.thumbnailMImg;
-            }
+                    foreach (var item in lyric.sentences)
+                        rtbSong.AppendText(item.fullSentence() + "\n");
+                    rtbSong.SelectAll();
+                    rtbSong.SelectionAlignment = HorizontalAlignment.Center;
+                }
+                else
+                {
+                    pbSong.Image = null;
+                    pbSong.BackgroundImage = song.thumbImg as Image;
+                }
 
 
-            mPlayer.URL = song.streaming._128;
-            lbSongName.Text = song.title + "\n" + song.artistsNames;
-            //lbSongArtist.Text = song.artistsNames;
-
-            mPlayer.Ctlcontrols.play();
-            songs.Add(song);
-            LoadSongs();
+                mPlayer.URL = song.srcLink;
+                lbSongName.Text = song.title + "\n" + song.artistNames;
+                mPlayer.Ctlcontrols.play();                
+            }            
         }
 
         #region Load Lyric
@@ -498,18 +502,18 @@ namespace MusicPlayer
 
         private void btnLocal_Click(object sender, EventArgs e)
         {
-            ClearAllMenuCheck();
-            ActiveMenu(sender as Button);
-            LocalView view;
-            if (panelContainer.Controls["LocalView"] == null)
-            {
-                view = new LocalView();
-                panelContainer.Controls.Add(view);
-            }
-            else
-                view = panelContainer.Controls["LocalView"] as LocalView;
-            view.Dock = DockStyle.Fill;
-            view.BringToFront();
+            //ClearAllMenuCheck();
+            //ActiveMenu(sender as Button);
+            //LocalView view;
+            //if (panelContainer.Controls["LocalView"] == null)
+            //{
+            //    view = new LocalView();
+            //    panelContainer.Controls.Add(view);
+            //}
+            //else
+            //    view = panelContainer.Controls["LocalView"] as LocalView;
+            //view.Dock = DockStyle.Fill;
+            //view.BringToFront();
         }
 
         private void trackbarVolume_MouseMove(object sender, MouseEventArgs e)
@@ -528,13 +532,13 @@ namespace MusicPlayer
 
         private void LoadSongs()
         {
-            poisonPanel1.Controls.Clear();
-            foreach (Song s in songs)
-            {
-                MediaListSmall v = new MediaListSmall(s);
-                v.Dock = DockStyle.Top;
-                poisonPanel1.Controls.Add(v);
-            }
+            //poisonPanel1.Controls.Clear();
+            //foreach (Song s in songs)
+            //{
+            //    MediaListSmall v = new MediaListSmall(s);
+            //    v.Dock = DockStyle.Top;
+            //    poisonPanel1.Controls.Add(v);
+            //}
         }
         private void button5_Click(object sender, EventArgs e)
         {

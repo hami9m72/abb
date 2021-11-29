@@ -64,41 +64,7 @@ namespace MusicPlayer.Utils
             return result;
         }
 
-        public static Song ConvertFromLocalFile(string path)
-        {
-            var tfile = TagLib.File.Create(path);
-            Image pic;
-            if (tfile is TagLib.Mpeg.AudioFile)
-            {
-                if (tfile.Tag.Pictures.Length > 0 && tfile.Tag.Pictures != null)
-                {
-                    MemoryStream ms = new MemoryStream(tfile.Tag.Pictures[0].Data.Data);
-                    pic = Image.FromStream(ms);
-                }
-                else
-                    pic = Properties.Resources.icons8_music_48px_1;
-            }
-            else
-                pic = Properties.Resources.icons8_video_48px;
 
-            string songName = "";
-            if (tfile.Tag.Title != null)
-                songName = tfile.Tag.Title;
-            else
-                songName = Path.GetFileNameWithoutExtension(path);
 
-            string artistName = "";
-            if (tfile.Tag.JoinedPerformers != null)
-                artistName = tfile.Tag.JoinedPerformers;
-
-            Song song = new Song();
-            song.streaming = new Streaming();
-            song.streaming._128 = path;
-            song.thumbnailMImg = pic;
-            song.title = songName;
-            song.artistsNames = artistName;
-
-            return song;
-        }
     }
 }

@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace MusicPlayer.Model
 {
-    public class Artist
+    public class Playlist
     {
         public string id;
         public string name;
-        public object thumbnail;
+        public List<Media> medias;
 
-        public Artist(string id, string name, object thumbnail)
+        public Playlist(string id, string name)
         {
             this.id = id;
             this.name = name;
-            this.thumbnail = thumbnail;
+            this.medias = new List<Media>();
         }
     }
 }

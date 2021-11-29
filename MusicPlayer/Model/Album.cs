@@ -8,16 +8,21 @@ namespace MusicPlayer.Model
 {
     public class Album
     {
-        public string encodeId { get; set; }
-        public string title { get; set; }
-        public string thumbnail { get; set; }
-        public bool isoffical { get; set; }
-        public string link { get; set; }
-        public bool isIndie { get; set; }
-        public string releaseDate { get; set; }
-        public string sortDescription { get; set; }
-        public bool PR { get; set; }
-        public List<Artist> artists { get; set; }
-        public string artistsNames { get; set; }
+        public string id;
+        public string title;
+        public object thumbImg;
+        public List<Artist> artists;
+        public string artistsNames;
+        public string releaseDate;
+
+        public Album(string id, string title, object thumbImg, List<Artist> artists, string artistsNames, string releaseDate)
+        {
+            this.id = id;
+            this.title = title;
+            this.thumbImg = thumbImg;
+            this.artists = artists;
+            this.artistsNames = artistsNames;
+            this.releaseDate = releaseDate;
+        }
     }
 }
