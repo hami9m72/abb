@@ -30,21 +30,35 @@ namespace MusicPlayer.View
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.poisonScrollBar1 = new ReaLTaiizor.Controls.PoisonScrollBar();
-            this.poisonPanel1 = new ReaLTaiizor.Controls.PoisonPanel();
             this.button1 = new System.Windows.Forms.Button();
+            this.poisonScrollBar1 = new ReaLTaiizor.Controls.PoisonScrollBar();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.poisonPanel1 = new ReaLTaiizor.Controls.PoisonPanel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.LightGray;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(28)))), ((int)(((byte)(34)))));
             this.panel1.Controls.Add(this.button1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(749, 53);
             this.panel1.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(37, 10);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(100, 32);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Play tất cả";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // poisonScrollBar1
             // 
@@ -61,6 +75,15 @@ namespace MusicPlayer.View
             this.poisonScrollBar1.TabIndex = 1;
             this.poisonScrollBar1.UseSelectable = true;
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(28)))), ((int)(((byte)(34)))));
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.Location = new System.Drawing.Point(0, 53);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(36, 439);
+            this.panel2.TabIndex = 3;
+            // 
             // poisonPanel1
             // 
             this.poisonPanel1.AutoScroll = true;
@@ -70,31 +93,23 @@ namespace MusicPlayer.View
             this.poisonPanel1.HorizontalScrollbarBarColor = true;
             this.poisonPanel1.HorizontalScrollbarHighlightOnWheel = false;
             this.poisonPanel1.HorizontalScrollbarSize = 10;
-            this.poisonPanel1.Location = new System.Drawing.Point(0, 53);
+            this.poisonPanel1.Location = new System.Drawing.Point(36, 53);
             this.poisonPanel1.Name = "poisonPanel1";
-            this.poisonPanel1.Size = new System.Drawing.Size(741, 439);
-            this.poisonPanel1.TabIndex = 2;
+            this.poisonPanel1.Size = new System.Drawing.Size(705, 439);
+            this.poisonPanel1.TabIndex = 4;
             this.poisonPanel1.UseCustomBackColor = true;
             this.poisonPanel1.VerticalScrollbar = true;
             this.poisonPanel1.VerticalScrollbarBarColor = true;
             this.poisonPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.poisonPanel1.VerticalScrollbarSize = 10;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(666, 13);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // LocalView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(28)))), ((int)(((byte)(34)))));
             this.Controls.Add(this.poisonPanel1);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.poisonScrollBar1);
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(0);
@@ -109,7 +124,8 @@ namespace MusicPlayer.View
 
         private System.Windows.Forms.Panel panel1;
         private ReaLTaiizor.Controls.PoisonScrollBar poisonScrollBar1;
-        private ReaLTaiizor.Controls.PoisonPanel poisonPanel1;
+        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button1;
+        private ReaLTaiizor.Controls.PoisonPanel poisonPanel1;
     }
 }

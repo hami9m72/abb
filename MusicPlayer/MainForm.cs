@@ -19,14 +19,15 @@ namespace MusicPlayer
     {
         private static MainForm instance;
         public static MainForm Instance { get => instance; }
-
+        private List<Song> songs;
+        private int selIdx = -1;
         public MainForm()
         {
             InitializeComponent();
             this.Padding = new Padding(borderSize);//Border size
             btnHome_Click(btnHome, null);
             instance = this;
-
+            songs = new List<Song>();
         }
 
 
@@ -151,7 +152,6 @@ namespace MusicPlayer
         #endregion
 
 
-
         #region 3 nút thanh title
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -180,7 +180,6 @@ namespace MusicPlayer
         }
 
         #endregion
-
 
 
         private void MainForm_Resize(object sender, EventArgs e)
@@ -252,8 +251,8 @@ namespace MusicPlayer
             //lbSongArtist.Text = song.artistsNames;
 
             mPlayer.Ctlcontrols.play();
-
-
+            songs.Add(song);
+            LoadSongs();
         }
 
         #region Load Lyric
@@ -494,6 +493,7 @@ namespace MusicPlayer
         private void ActiveMenu(Button btn)
         {
             btn.BackColor = Color.FromArgb(255, 128, 0);
+
         }
 
         private void btnLocal_Click(object sender, EventArgs e)
@@ -510,6 +510,42 @@ namespace MusicPlayer
                 view = panelContainer.Controls["LocalView"] as LocalView;
             view.Dock = DockStyle.Fill;
             view.BringToFront();
+        }
+
+        private void trackbarVolume_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                mPlayer.settings.volume = trackbarVolume.Value;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void LoadSongs()
+        {
+            poisonPanel1.Controls.Clear();
+            foreach (Song s in songs)
+            {
+                MediaListSmall v = new MediaListSmall(s);
+                v.Dock = DockStyle.Top;
+                poisonPanel1.Controls.Add(v);
+            }
+        }
+        private void button5_Click(object sender, EventArgs e)
+        {
+            panel6.Visible = !panel6.Visible;
+            pictureBox3.Visible = true;
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            panel6.Visible = !panel6.Visible;
+            pictureBox3.Visible = false;
         }
     }
 }

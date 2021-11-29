@@ -83,6 +83,16 @@ namespace MusicPlayer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_collapse_arrow_50px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_collapse_arrow_50px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_delete_16px {
             get {
                 object obj = ResourceManager.GetObject("icons8_delete_16px", resourceCulture);
@@ -113,6 +123,16 @@ namespace MusicPlayer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_less_than_50px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_less_than_50px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_list_24px {
             get {
                 object obj = ResourceManager.GetObject("icons8_list_24px", resourceCulture);
@@ -136,6 +156,16 @@ namespace MusicPlayer.Properties {
         internal static System.Drawing.Bitmap icons8_monitor_24px {
             get {
                 object obj = ResourceManager.GetObject("icons8_monitor_24px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_more_than_50px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_more_than_50px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

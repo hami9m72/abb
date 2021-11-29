@@ -105,7 +105,6 @@ namespace DoAnCSharp
             using (var reader1 = new AudioFileReader(Path.Combine(outpath, "karaoke.mp3")))
             using (var reader2 = new AudioFileReader(Path.Combine(outpath, "temp.wav")))
             {
-
                 var mixer = new MixingSampleProvider(new[] { reader1, reader2 });
                 WaveFileWriter.CreateWaveFile16(Path.Combine(outpath, "mixed.wav"), mixer);
             }

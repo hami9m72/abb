@@ -29,6 +29,7 @@ namespace DoAnCSharp
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.panelMenu = new System.Windows.Forms.Panel();
             this.btnPlaylist = new FontAwesome.Sharp.IconButton();
@@ -53,7 +54,7 @@ namespace DoAnCSharp
             this.rjTextBox1 = new RJCodeAdvance.RJControls.RJTextBox();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.rjCircularPictureBox1 = new RJCodeAdvance.RJControls.RJCircularPictureBox();
-            this.timer1 = new System.Windows.Forms.Timer();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel9 = new System.Windows.Forms.Panel();
             this.panelContainer = new System.Windows.Forms.Panel();
             this.panel12 = new System.Windows.Forms.Panel();
