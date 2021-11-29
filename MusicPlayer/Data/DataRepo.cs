@@ -9,7 +9,13 @@ namespace MusicPlayer.Data
 {
     public static class DataRepo
     {
-        //public static Playlist isPlaying = new Playlist("local", "local");
-        //public static int idxPlaying = -1;
+        public static Playlist isPlaying;
+        public static int idxPlaying = -1;
+
+
+        public static TagLib.File GetIsPlayingSong()
+        {
+            return isPlaying.files[idxPlaying];
+        }
     }
 }

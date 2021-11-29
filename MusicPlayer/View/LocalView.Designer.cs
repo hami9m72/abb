@@ -35,13 +35,18 @@ namespace MusicPlayer.View
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.pSong = new ReaLTaiizor.Controls.PoisonPanel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.flpSong = new System.Windows.Forms.FlowLayoutPanel();
             this.hopeTabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // hopeTabPage1
@@ -113,9 +118,8 @@ namespace MusicPlayer.View
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.pSong);
+            this.panel1.Controls.Add(this.flpSong);
             this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(10, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
@@ -123,39 +127,79 @@ namespace MusicPlayer.View
             this.panel1.Size = new System.Drawing.Size(733, 446);
             this.panel1.TabIndex = 0;
             // 
-            // panel2
-            // 
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(718, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(15, 446);
-            this.panel2.TabIndex = 0;
-            // 
-            // pSong
-            // 
-            this.pSong.AutoScroll = true;
-            this.pSong.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pSong.HorizontalScrollbar = true;
-            this.pSong.HorizontalScrollbarBarColor = true;
-            this.pSong.HorizontalScrollbarHighlightOnWheel = false;
-            this.pSong.HorizontalScrollbarSize = 10;
-            this.pSong.Location = new System.Drawing.Point(0, 43);
-            this.pSong.Name = "pSong";
-            this.pSong.Size = new System.Drawing.Size(718, 403);
-            this.pSong.TabIndex = 3;
-            this.pSong.UseCustomBackColor = true;
-            this.pSong.VerticalScrollbar = true;
-            this.pSong.VerticalScrollbarBarColor = true;
-            this.pSong.VerticalScrollbarHighlightOnWheel = false;
-            this.pSong.VerticalScrollbarSize = 10;
-            // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.button3);
+            this.panel3.Controls.Add(this.button2);
+            this.panel3.Controls.Add(this.comboBox2);
+            this.panel3.Controls.Add(this.comboBox1);
+            this.panel3.Controls.Add(this.button1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(718, 43);
+            this.panel3.Size = new System.Drawing.Size(733, 43);
             this.panel3.TabIndex = 2;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(3, 9);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(113, 25);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Phát ngẫu nhiên";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(147, 9);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 25);
+            this.comboBox1.TabIndex = 1;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(274, 9);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(121, 25);
+            this.comboBox2.TabIndex = 2;
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(657, 4);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(55, 34);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Tim";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(596, 4);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(55, 34);
+            this.button3.TabIndex = 4;
+            this.button3.Text = "add";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // flpSong
+            // 
+            this.flpSong.AutoScroll = true;
+            this.flpSong.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpSong.Location = new System.Drawing.Point(0, 43);
+            this.flpSong.Name = "flpSong";
+            this.flpSong.Size = new System.Drawing.Size(733, 403);
+            this.flpSong.TabIndex = 3;
+            this.flpSong.Resize += new System.EventHandler(this.flpSong_Resize);
             // 
             // LocalView
             // 
@@ -170,6 +214,7 @@ namespace MusicPlayer.View
             this.tabPage2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -182,8 +227,12 @@ namespace MusicPlayer.View
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Panel panel1;
-        private ReaLTaiizor.Controls.PoisonPanel pSong;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.FlowLayoutPanel flpSong;
     }
 }

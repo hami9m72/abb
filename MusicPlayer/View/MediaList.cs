@@ -1,4 +1,5 @@
-﻿using MusicPlayer.Model;
+﻿using MusicPlayer.Data;
+using MusicPlayer.Model;
 using MusicPlayer.Utils;
 using System;
 using System.Collections.Generic;
@@ -14,14 +15,18 @@ namespace MusicPlayer.View
 {
     public partial class MediaList : UserControl
     {
+        Playlist parent;
         TagLib.File song;
+        int idx;
         public MediaList()
         {
             InitializeComponent();
         }
-        public MediaList(TagLib.File song)
+        public MediaList(TagLib.File song, int idx, Playlist parent)
         {
             InitializeComponent();
+            this.parent = parent;
+            this.idx = idx;
             this.song = song;
             if (song.Tag.Pictures.Length > 0 && song.Tag.Pictures != null)
             {
@@ -36,8 +41,22 @@ namespace MusicPlayer.View
             lbDuration.Text = TimeSpan.FromSeconds(song.Properties.Duration.TotalSeconds).ToString(@"mm\:ss");
         }
 
+        private void pbImg_Click(object sender, EventArgs e)
+        {
+            DataRepo.isPlaying = parent;
+            DataRepo.idxPlaying = idx;
+            MainForm.Instance.PlayMedia();
+            MainForm.Instance.LoadViewPlaying();
+        }
 
+        private void pbImg_MouseEnter(object sender, EventArgs e)
+        {
+            pbImg.Image = Properties.Resources.icons8_play_32px;
+        }
 
-
+        private void pbImg_MouseLeave(object sender, EventArgs e)
+        {
+            pbImg.Image = null;
+        }
     }
 }

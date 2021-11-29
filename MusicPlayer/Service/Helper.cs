@@ -8,10 +8,11 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace MusicPlayer.Utils
 {
-    public class Helper
+    public static class Helper
     {
         public static string defaultPath = "C:\\Users\\DAT\\Desktop\\music\\Top 100 VPop";
         public static string FormatTime(double time)
@@ -72,6 +73,42 @@ namespace MusicPlayer.Utils
         {
             MemoryStream ms = new MemoryStream(arr);
             return Image.FromStream(ms);
+        }
+
+        public static void Shuffle<T>(this IList<T> list)
+        {
+            Random random = new Random();
+            int n = list.Count;
+
+            for (int i = list.Count - 1; i > 1; i--)
+            {
+                int rnd = random.Next(i + 1);
+
+                T value = list[rnd];
+                list[rnd] = list[i];
+                list[i] = value;
+            }
+        }
+
+        public static void HideScrollBar(FlowLayoutPanel panel, bool h = true, bool v = true)
+        {
+            // need to disable AutoScroll, otherwise disabling the horizontal scrollbar doesn't work
+            panel.AutoScroll = false;
+
+            if (h)
+            {
+                // disable horizontal scrollbar
+                panel.HorizontalScroll.Enabled = false;
+                panel.HorizontalScroll.Maximum = 0;
+            }
+            if (v)
+            {
+                panel.VerticalScroll.Enabled = false;
+                panel.VerticalScroll.Maximum = 0;
+            }
+
+            // restore AutoScroll
+            panel.AutoScroll = true;
         }
 
     }

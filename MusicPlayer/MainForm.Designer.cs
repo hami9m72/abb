@@ -48,27 +48,25 @@ namespace MusicPlayer
             this.rjCircularPictureBox2 = new RJCodeAdvance.RJControls.RJCircularPictureBox();
             this.btnPlay = new RJCodeAdvance.RJControls.RJCircularPictureBox();
             this.panel12 = new System.Windows.Forms.Panel();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.mPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.trackbarVolume = new ReaLTaiizor.Controls.HopeTrackBar();
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.btnLocal = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.btnHome = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelContainer = new System.Windows.Forms.Panel();
-            this.tTrackBar = new System.Windows.Forms.Timer(this.components);
             this.tabPageMedia = new ReaLTaiizor.Controls.HopeTabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.flpPlaying = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.mPlayer = new AxWMPLib.AxWindowsMediaPlayer();
+            this.tTrackBar = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.tlpMedia.SuspendLayout();
             this.panelSongInfo.SuspendLayout();
@@ -82,14 +80,14 @@ namespace MusicPlayer
             ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPlay)).BeginInit();
             this.panel12.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mPlayer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panelMenu.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelContainer.SuspendLayout();
             this.tabPageMedia.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mPlayer)).BeginInit();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -133,6 +131,7 @@ namespace MusicPlayer
             this.panelSongInfo.Name = "panelSongInfo";
             this.panelSongInfo.Size = new System.Drawing.Size(244, 86);
             this.panelSongInfo.TabIndex = 0;
+            this.panelSongInfo.Click += new System.EventHandler(this.panelSongInfo_Click);
             // 
             // lbSongName
             // 
@@ -148,6 +147,7 @@ namespace MusicPlayer
             this.lbSongName.Name = "lbSongName";
             this.lbSongName.Size = new System.Drawing.Size(0, 21);
             this.lbSongName.TabIndex = 3;
+            this.lbSongName.Click += new System.EventHandler(this.panelSongInfo_Click);
             // 
             // pbSong
             // 
@@ -160,6 +160,7 @@ namespace MusicPlayer
             this.pbSong.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbSong.TabIndex = 0;
             this.pbSong.TabStop = false;
+            this.pbSong.Click += new System.EventHandler(this.panelSongInfo_Click);
             // 
             // panel8
             // 
@@ -338,7 +339,6 @@ namespace MusicPlayer
             // panel12
             // 
             this.panel12.Controls.Add(this.mPlayer);
-            this.panel12.Controls.Add(this.pictureBox3);
             this.panel12.Controls.Add(this.pictureBox2);
             this.panel12.Controls.Add(this.trackbarVolume);
             this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -347,17 +347,16 @@ namespace MusicPlayer
             this.panel12.Size = new System.Drawing.Size(201, 80);
             this.panel12.TabIndex = 2;
             // 
-            // pictureBox3
+            // mPlayer
             // 
-            this.pictureBox3.BackColor = System.Drawing.Color.Black;
-            this.pictureBox3.Image = global::MusicPlayer.Properties.Resources.icons8_less_than_50px;
-            this.pictureBox3.Location = new System.Drawing.Point(174, 0);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(18, 20);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 2;
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.Visible = false;
+            this.mPlayer.Enabled = true;
+            this.mPlayer.Location = new System.Drawing.Point(15, 62);
+            this.mPlayer.Name = "mPlayer";
+            this.mPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("mPlayer.OcxState")));
+            this.mPlayer.Size = new System.Drawing.Size(10, 11);
+            this.mPlayer.TabIndex = 5;
+            this.mPlayer.Visible = false;
+            this.mPlayer.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(this.mPlayer_PlayStateChange);
             // 
             // pictureBox2
             // 
@@ -397,14 +396,12 @@ namespace MusicPlayer
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(26)))), ((int)(((byte)(31)))));
+            this.panelMenu.Controls.Add(this.button2);
             this.panelMenu.Controls.Add(this.button1);
             this.panelMenu.Controls.Add(this.button7);
             this.panelMenu.Controls.Add(this.button6);
             this.panelMenu.Controls.Add(this.btnLocal);
             this.panelMenu.Controls.Add(this.panel5);
-            this.panelMenu.Controls.Add(this.button2);
-            this.panelMenu.Controls.Add(this.button3);
-            this.panelMenu.Controls.Add(this.btnHome);
             this.panelMenu.Controls.Add(this.panel2);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.ForeColor = System.Drawing.Color.White;
@@ -413,6 +410,25 @@ namespace MusicPlayer
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(212, 514);
             this.panelMenu.TabIndex = 2;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(26)))), ((int)(((byte)(31)))));
+            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Image = global::MusicPlayer.Properties.Resources.icons8_love_24px;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(0, 220);
+            this.button2.Margin = new System.Windows.Forms.Padding(0);
+            this.button2.Name = "button2";
+            this.button2.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
+            this.button2.Size = new System.Drawing.Size(212, 53);
+            this.button2.TabIndex = 12;
+            this.button2.Text = "          Yêu thích";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.UseVisualStyleBackColor = false;
             // 
             // button1
             // 
@@ -423,13 +439,13 @@ namespace MusicPlayer
             this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Image = global::MusicPlayer.Properties.Resources.icons8_playlist_24px;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(0, 326);
+            this.button1.Location = new System.Drawing.Point(0, 167);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
             this.button1.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
             this.button1.Size = new System.Drawing.Size(212, 53);
             this.button1.TabIndex = 11;
-            this.button1.Text = "          Yêu thích";
+            this.button1.Text = "          Playlist";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.UseVisualStyleBackColor = false;
             // 
@@ -459,34 +475,34 @@ namespace MusicPlayer
             this.button6.FlatAppearance.BorderSize = 0;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Image = global::MusicPlayer.Properties.Resources.icons8_playlist_24px;
+            this.button6.Image = global::MusicPlayer.Properties.Resources.icons8_search_24px;
             this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.Location = new System.Drawing.Point(0, 273);
+            this.button6.Location = new System.Drawing.Point(0, 114);
             this.button6.Margin = new System.Windows.Forms.Padding(0);
             this.button6.Name = "button6";
             this.button6.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
             this.button6.Size = new System.Drawing.Size(212, 53);
             this.button6.TabIndex = 9;
-            this.button6.Text = "          Playlist";
+            this.button6.Text = "          Tìm kiếm";
             this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button6.UseVisualStyleBackColor = false;
             // 
             // btnLocal
             // 
-            this.btnLocal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(26)))), ((int)(((byte)(31)))));
+            this.btnLocal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnLocal.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnLocal.FlatAppearance.BorderSize = 0;
             this.btnLocal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLocal.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLocal.Image = global::MusicPlayer.Properties.Resources.icons8_monitor_24px;
+            this.btnLocal.Image = global::MusicPlayer.Properties.Resources.icons8_music_24px;
             this.btnLocal.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLocal.Location = new System.Drawing.Point(0, 220);
+            this.btnLocal.Location = new System.Drawing.Point(0, 61);
             this.btnLocal.Margin = new System.Windows.Forms.Padding(0);
             this.btnLocal.Name = "btnLocal";
             this.btnLocal.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
             this.btnLocal.Size = new System.Drawing.Size(212, 53);
             this.btnLocal.TabIndex = 8;
-            this.btnLocal.Text = "          Trong máy";
+            this.btnLocal.Text = "          Nhạc của tôi";
             this.btnLocal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLocal.UseVisualStyleBackColor = false;
             this.btnLocal.Click += new System.EventHandler(this.btnLocal_Click);
@@ -495,68 +511,10 @@ namespace MusicPlayer
             // 
             this.panel5.BackColor = System.Drawing.Color.Gray;
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(0, 219);
+            this.panel5.Location = new System.Drawing.Point(0, 60);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(212, 1);
             this.panel5.TabIndex = 7;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(26)))), ((int)(((byte)(31)))));
-            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Image = global::MusicPlayer.Properties.Resources.icons8_list_24px;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(0, 166);
-            this.button2.Margin = new System.Windows.Forms.Padding(0);
-            this.button2.Name = "button2";
-            this.button2.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
-            this.button2.Size = new System.Drawing.Size(212, 53);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "          Thể loại";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(26)))), ((int)(((byte)(31)))));
-            this.button3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Image = global::MusicPlayer.Properties.Resources.icons8_search_24px;
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(0, 113);
-            this.button3.Margin = new System.Windows.Forms.Padding(0);
-            this.button3.Name = "button3";
-            this.button3.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
-            this.button3.Size = new System.Drawing.Size(212, 53);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "          Tìm kiếm";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.UseVisualStyleBackColor = false;
-            // 
-            // btnHome
-            // 
-            this.btnHome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnHome.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnHome.FlatAppearance.BorderSize = 0;
-            this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHome.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHome.Image = global::MusicPlayer.Properties.Resources.icons8_home_24px;
-            this.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHome.Location = new System.Drawing.Point(0, 60);
-            this.btnHome.Margin = new System.Windows.Forms.Padding(0);
-            this.btnHome.Name = "btnHome";
-            this.btnHome.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
-            this.btnHome.Size = new System.Drawing.Size(212, 53);
-            this.btnHome.TabIndex = 1;
-            this.btnHome.Text = "          Trang chủ";
-            this.btnHome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHome.UseVisualStyleBackColor = false;
-            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // panel2
             // 
@@ -620,16 +578,28 @@ namespace MusicPlayer
             this.tabPageMedia.ThemeColorA = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(158)))), ((int)(((byte)(255)))));
             this.tabPageMedia.ThemeColorB = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(64)))), ((int)(((byte)(158)))), ((int)(((byte)(255)))));
             this.tabPageMedia.TitleTextState = ReaLTaiizor.Controls.HopeTabPage.TextState.Normal;
+            this.tabPageMedia.Visible = false;
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(28)))), ((int)(((byte)(34)))));
+            this.tabPage1.Controls.Add(this.flpPlaying);
             this.tabPage1.Location = new System.Drawing.Point(0, 40);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(749, 474);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Danh sách phát";
+            // 
+            // flpPlaying
+            // 
+            this.flpPlaying.AutoScroll = true;
+            this.flpPlaying.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpPlaying.Location = new System.Drawing.Point(3, 3);
+            this.flpPlaying.Name = "flpPlaying";
+            this.flpPlaying.Size = new System.Drawing.Size(743, 468);
+            this.flpPlaying.TabIndex = 0;
+            this.flpPlaying.Resize += new System.EventHandler(this.flpPlaying_Resize);
             // 
             // tabPage2
             // 
@@ -641,15 +611,9 @@ namespace MusicPlayer
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Lời bài hát";
             // 
-            // mPlayer
+            // tTrackBar
             // 
-            this.mPlayer.Enabled = true;
-            this.mPlayer.Location = new System.Drawing.Point(15, 57);
-            this.mPlayer.Name = "mPlayer";
-            this.mPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("mPlayer.OcxState")));
-            this.mPlayer.Size = new System.Drawing.Size(14, 16);
-            this.mPlayer.TabIndex = 5;
-            this.mPlayer.Visible = false;
+            this.tTrackBar.Tick += new System.EventHandler(this.tTrackBar_Tick);
             // 
             // MainForm
             // 
@@ -678,7 +642,7 @@ namespace MusicPlayer
             ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPlay)).EndInit();
             this.panel12.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mPlayer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panelMenu.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -686,7 +650,7 @@ namespace MusicPlayer
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelContainer.ResumeLayout(false);
             this.tabPageMedia.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.mPlayer)).EndInit();
+            this.tabPage1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -698,9 +662,6 @@ namespace MusicPlayer
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnHome;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button btnLocal;
         private System.Windows.Forms.Panel panel5;
@@ -725,11 +686,12 @@ namespace MusicPlayer
         private System.Windows.Forms.Label lbSongName;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Button button1;
         private ReaLTaiizor.Controls.HopeTabPage tabPageMedia;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private AxWMPLib.AxWindowsMediaPlayer mPlayer;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.FlowLayoutPanel flpPlaying;
     }
 }
