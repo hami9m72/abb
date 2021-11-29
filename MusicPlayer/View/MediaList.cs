@@ -13,21 +13,29 @@ namespace MusicPlayer.View
 {
     public partial class MediaList : UserControl
     {
-        private Song song;
+        private Media media;
         public MediaList()
         {
             InitializeComponent();
         }
 
-        public MediaList(Image img, Song s)
+        public MediaList(Media media)
         {
             InitializeComponent();
-            pbImg.BackgroundImage = img;
-            song = s;
-            lbName.Text = song.title;
-            lbArtist.Text = song.artistsNames;
-            label1.Text = TimeSpan.FromSeconds(song.duration).ToString(@"mm\:ss");
-            //lbGen.Text = song.genres[0].name;
+            this.media = media;
+            lbName.Text = media.title;
+            lbArtist.Text = media.artistNames;
+            lbDuraton.Text = TimeSpan.FromSeconds(media.duration).ToString(@"mm\:ss");
+
+            if (media.type == "song")
+            {
+                Song s = media as Song;
+                if (s.thumbImg is string)
+                    pbImg.LoadAsync(s.thumbImg.ToString());
+                else
+                    pbImg.BackgroundImage = s.thumbImg as Image;
+            }
+
         }
 
         private void panel1_MouseEnter(object sender, EventArgs e)
@@ -42,7 +50,8 @@ namespace MusicPlayer.View
 
         private void pbImg_Click(object sender, EventArgs e)
         {
-            MainForm.Instance.SetMedia(song);
+            MainForm.Instance.AddMediaToCurrPlaylist(media);
+            MainForm.Instance.PlayMedia();
         }
     }
 }

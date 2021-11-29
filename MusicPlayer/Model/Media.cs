@@ -16,5 +16,11 @@ namespace MusicPlayer.Model
         public string type;
         public string srcLink;
         public int releaseDate;// unix timestamp
+
+        public override bool Equals(object obj)
+        {
+            return obj is Media media &&
+                   srcLink == media.srcLink;
+        }
     }
 }

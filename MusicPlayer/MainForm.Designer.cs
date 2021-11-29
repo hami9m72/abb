@@ -72,9 +72,8 @@ namespace MusicPlayer
             this.hopeTabPage1 = new ReaLTaiizor.Controls.HopeTabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.pCurrentPlaylist = new ReaLTaiizor.Controls.PoisonPanel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.mPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.rtbSong = new System.Windows.Forms.RichTextBox();
@@ -85,7 +84,6 @@ namespace MusicPlayer
             this.panelL2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.tTrackBar = new System.Windows.Forms.Timer(this.components);
-            this.poisonPanel1 = new ReaLTaiizor.Controls.PoisonPanel();
             this.panel1.SuspendLayout();
             this.tlpMedia.SuspendLayout();
             this.panelSongInfo.SuspendLayout();
@@ -110,7 +108,6 @@ namespace MusicPlayer
             this.hopeTabPage1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel6.SuspendLayout();
-            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mPlayer)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -163,8 +160,8 @@ namespace MusicPlayer
             // 
             // lbSongName
             // 
-            this.lbSongName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.lbSongName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lbSongName.AutoSize = true;
             this.lbSongName.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -214,7 +211,7 @@ namespace MusicPlayer
             // trackBar
             // 
             this.trackBar.AlwaysValueVisible = false;
-            this.trackBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.trackBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar.BallonArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.trackBar.BallonColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -389,7 +386,6 @@ namespace MusicPlayer
             this.pictureBox3.TabIndex = 2;
             this.pictureBox3.TabStop = false;
             this.pictureBox3.Visible = false;
-            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // pictureBox2
             // 
@@ -756,7 +752,7 @@ namespace MusicPlayer
             // 
             // panel6
             // 
-            this.panel6.Controls.Add(this.poisonPanel1);
+            this.panel6.Controls.Add(this.pCurrentPlaylist);
             this.panel6.Controls.Add(this.panel3);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel6.Location = new System.Drawing.Point(470, 0);
@@ -764,35 +760,32 @@ namespace MusicPlayer
             this.panel6.Size = new System.Drawing.Size(279, 452);
             this.panel6.TabIndex = 1;
             // 
+            // pCurrentPlaylist
+            // 
+            this.pCurrentPlaylist.AutoScroll = true;
+            this.pCurrentPlaylist.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(28)))), ((int)(((byte)(34)))));
+            this.pCurrentPlaylist.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pCurrentPlaylist.HorizontalScrollbar = true;
+            this.pCurrentPlaylist.HorizontalScrollbarBarColor = true;
+            this.pCurrentPlaylist.HorizontalScrollbarHighlightOnWheel = false;
+            this.pCurrentPlaylist.HorizontalScrollbarSize = 10;
+            this.pCurrentPlaylist.Location = new System.Drawing.Point(0, 51);
+            this.pCurrentPlaylist.Name = "pCurrentPlaylist";
+            this.pCurrentPlaylist.Size = new System.Drawing.Size(279, 401);
+            this.pCurrentPlaylist.TabIndex = 5;
+            this.pCurrentPlaylist.UseCustomBackColor = true;
+            this.pCurrentPlaylist.VerticalScrollbar = true;
+            this.pCurrentPlaylist.VerticalScrollbarBarColor = true;
+            this.pCurrentPlaylist.VerticalScrollbarHighlightOnWheel = false;
+            this.pCurrentPlaylist.VerticalScrollbarSize = 10;
+            // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.button5);
-            this.panel3.Controls.Add(this.button1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(279, 51);
             this.panel3.TabIndex = 0;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(126, 9);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 32);
-            this.button5.TabIndex = 3;
-            this.button5.Text = "button5";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(45, 9);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 32);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // mPlayer
             // 
@@ -901,25 +894,6 @@ namespace MusicPlayer
             // 
             this.tTrackBar.Tick += new System.EventHandler(this.tTrackBar_Tick);
             // 
-            // poisonPanel1
-            // 
-            this.poisonPanel1.AutoScroll = true;
-            this.poisonPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(28)))), ((int)(((byte)(34)))));
-            this.poisonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.poisonPanel1.HorizontalScrollbar = true;
-            this.poisonPanel1.HorizontalScrollbarBarColor = true;
-            this.poisonPanel1.HorizontalScrollbarHighlightOnWheel = false;
-            this.poisonPanel1.HorizontalScrollbarSize = 10;
-            this.poisonPanel1.Location = new System.Drawing.Point(0, 51);
-            this.poisonPanel1.Name = "poisonPanel1";
-            this.poisonPanel1.Size = new System.Drawing.Size(279, 401);
-            this.poisonPanel1.TabIndex = 5;
-            this.poisonPanel1.UseCustomBackColor = true;
-            this.poisonPanel1.VerticalScrollbar = true;
-            this.poisonPanel1.VerticalScrollbarBarColor = true;
-            this.poisonPanel1.VerticalScrollbarHighlightOnWheel = false;
-            this.poisonPanel1.VerticalScrollbarSize = 10;
-            // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -961,7 +935,6 @@ namespace MusicPlayer
             this.hopeTabPage1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.mPlayer)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
@@ -1024,9 +997,7 @@ namespace MusicPlayer
         private System.Windows.Forms.RichTextBox rtbSong;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private ReaLTaiizor.Controls.PoisonPanel poisonPanel1;
+        private ReaLTaiizor.Controls.PoisonPanel pCurrentPlaylist;
     }
 }

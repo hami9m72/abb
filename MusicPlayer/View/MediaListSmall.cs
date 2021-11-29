@@ -13,22 +13,27 @@ namespace MusicPlayer.View
 {
     public partial class MediaListSmall : UserControl
     {
-        private Song song;
+        private Media media;
         public MediaListSmall()
         {
             InitializeComponent();
         }
-        public MediaListSmall(Song s)
+        public MediaListSmall(Media media)
         {
             InitializeComponent();
-            song = s;
-            label1.Text = song.title;
-            label2.Text = song.artistsNames;
-            label3.Text = TimeSpan.FromSeconds(song.duration).ToString(@"mm\:ss");
-            if (s.thumbnailMImg != null)
-                pictureBox1.BackgroundImage = s.thumbnailMImg;
-            else
-                pictureBox1.LoadAsync(s.thumbnailM);
+            this.media = media;
+            lbTitle.Text = media.title;
+            lbArtist.Text = media.artistNames;
+            lbDuration.Text = TimeSpan.FromSeconds(media.duration).ToString(@"mm\:ss");
+            if (media.type == "song")
+            {
+                Song s = media as Song;
+                if (s.thumbImg is string)
+                    pbThumb.LoadAsync(s.thumbImg as string);
+                else
+                    pbThumb.BackgroundImage = s.thumbImg as Image;
+            }
+
         }
 
     }

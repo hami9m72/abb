@@ -1,6 +1,6 @@
 ﻿using MusicPlayer.Model;
 using MusicPlayer.Service;
-
+using MusicPlayer.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,8 +20,8 @@ namespace MusicPlayer
         private static MainForm instance;
         public static MainForm Instance { get => instance; }
 
-        private Playlist playlist;
-        private int currIdx=-1;
+        public Playlist playlist;
+        public int currIdx = -1;
 
         public MainForm()
         {
@@ -29,8 +29,8 @@ namespace MusicPlayer
             this.Padding = new Padding(borderSize);//Border size
             btnHome_Click(btnHome, null);
             instance = this;
-            playlist = new Playlist("C0","current");
-            
+            playlist = new Playlist("C0", "current");
+
         }
 
 
@@ -196,22 +196,33 @@ namespace MusicPlayer
         {
             ClearAllMenuCheck();
             ActiveMenu(sender as Button);
-            //HomeView view;
-            //if (panelContainer.Controls["HomeView"] == null)
-            //{
-            //    view = new HomeView();
-            //    panelContainer.Controls.Add(view);
-            //}
-            //else
-            //    view = panelContainer.Controls["HomeView"] as HomeView;
-            //view.Dock = DockStyle.Fill;
-            //view.BringToFront();
+            HomeView view;
+            if (panelContainer.Controls["HomeView"] == null)
+            {
+                view = new HomeView();
+                panelContainer.Controls.Add(view);
+            }
+            else
+                view = panelContainer.Controls["HomeView"] as HomeView;
+            view.Dock = DockStyle.Fill;
+            view.BringToFront();
         }
 
-        
-        public void AddMediaToCurrPlaylist(Song song)
+
+        public void AddMediaToCurrPlaylist(Media media)
         {
-            playlist.medias.Add(song);
+
+            int i = 0;
+            foreach (var item in playlist.medias)
+            {
+                if (item.Equals(media))
+                {
+                    currIdx = i;
+                    return;
+                }
+                i++;
+            }
+            playlist.medias.Add(media);
             currIdx++;
         }
 
@@ -229,7 +240,7 @@ namespace MusicPlayer
             if (playlist.medias[currIdx].type == "song")
             {
                 Song song = playlist.medias[currIdx] as Song;
-                if (song.id != "")
+                if (song.hasLyric)
                 {
                     lyric = await MediaService.GetSongLyric(song.id);
                     startTime = lyric.sentences[idx].words[0].startTime;
@@ -246,17 +257,19 @@ namespace MusicPlayer
                     rtbSong.SelectAll();
                     rtbSong.SelectionAlignment = HorizontalAlignment.Center;
                 }
-                else
+
+                if (song.isLocal)
                 {
                     pbSong.Image = null;
                     pbSong.BackgroundImage = song.thumbImg as Image;
                 }
-
+                else
+                    pbSong.LoadAsync(song.thumbImg.ToString());
 
                 mPlayer.URL = song.srcLink;
                 lbSongName.Text = song.title + "\n" + song.artistNames;
-                mPlayer.Ctlcontrols.play();                
-            }            
+                mPlayer.Ctlcontrols.play();
+            }
         }
 
         #region Load Lyric
@@ -502,18 +515,18 @@ namespace MusicPlayer
 
         private void btnLocal_Click(object sender, EventArgs e)
         {
-            //ClearAllMenuCheck();
-            //ActiveMenu(sender as Button);
-            //LocalView view;
-            //if (panelContainer.Controls["LocalView"] == null)
-            //{
-            //    view = new LocalView();
-            //    panelContainer.Controls.Add(view);
-            //}
-            //else
-            //    view = panelContainer.Controls["LocalView"] as LocalView;
-            //view.Dock = DockStyle.Fill;
-            //view.BringToFront();
+            ClearAllMenuCheck();
+            ActiveMenu(sender as Button);
+            LocalView view;
+            if (panelContainer.Controls["LocalView"] == null)
+            {
+                view = new LocalView();
+                panelContainer.Controls.Add(view);
+            }
+            else
+                view = panelContainer.Controls["LocalView"] as LocalView;
+            view.Dock = DockStyle.Fill;
+            view.BringToFront();
         }
 
         private void trackbarVolume_MouseMove(object sender, MouseEventArgs e)
@@ -524,32 +537,18 @@ namespace MusicPlayer
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+
+        public void LoadViewCurrentPlaylist()
         {
-
-
+            pCurrentPlaylist.Controls.Clear();
+            for (int i = playlist.medias.Count - 1; i > -1; i--)
+            {
+                var view = new MediaListSmall(playlist.medias[i]);
+                view.Dock = DockStyle.Top;
+                pCurrentPlaylist.Controls.Add(view);
+            }
         }
 
-        private void LoadSongs()
-        {
-            //poisonPanel1.Controls.Clear();
-            //foreach (Song s in songs)
-            //{
-            //    MediaListSmall v = new MediaListSmall(s);
-            //    v.Dock = DockStyle.Top;
-            //    poisonPanel1.Controls.Add(v);
-            //}
-        }
-        private void button5_Click(object sender, EventArgs e)
-        {
-            panel6.Visible = !panel6.Visible;
-            pictureBox3.Visible = true;
-        }
 
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-            panel6.Visible = !panel6.Visible;
-            pictureBox3.Visible = false;
-        }
     }
 }

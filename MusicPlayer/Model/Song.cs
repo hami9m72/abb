@@ -13,6 +13,7 @@ namespace MusicPlayer.Model
         public List<Artist> artists;
         public List<Genre> genres;
         public Album album;
+        public bool hasLyric;
 
         public Song()
         {

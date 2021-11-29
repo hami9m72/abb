@@ -20,6 +20,10 @@ namespace MusicPlayer.Utils
             return t.ToString(@"hh\:mm\:ss");
         }
 
+        public static bool NotNullAndNotEmpty(string s)
+        {
+            return s != null && s != "";
+        }
         public static async Task<Image> GetImageFromURL(string url)
         {
             HttpClient httpClient = new HttpClient();

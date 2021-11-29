@@ -15,12 +15,17 @@ namespace MusicPlayer.View
 {
     public partial class LocalView : UserControl
     {
+        private Playlist playlist;
         public LocalView()
         {
             InitializeComponent();
+            playlist = new Playlist("local", "Local Playlist");
+            playlist.medias = new List<Media>();
             LoadLocalSong(Helper.defaultPath);
             poisonPanel1.MouseWheel += PoisonPanel1_MouseWheel;
         }
+
+
 
         private void LoadLocalSong(string path)
         {
@@ -28,52 +33,45 @@ namespace MusicPlayer.View
             string[] files = Directory.GetFiles(path, "*.*", SearchOption.AllDirectories)
                                     .Where(f => extensions.Contains(Path.GetExtension(f).ToLower())).ToArray();
 
-            for (int i = 0; i < files.Length; i++)
+            for (int i = files.Length - 1; i > -1; i--)
             {
+                Media media = null;
                 var tfile = TagLib.File.Create(files[i]);
-                Image pic;
                 if (tfile is TagLib.Mpeg.AudioFile)
                 {
+                    Song song = new Song();
                     if (tfile.Tag.Pictures.Length > 0 && tfile.Tag.Pictures != null)
                     {
                         MemoryStream ms = new MemoryStream(tfile.Tag.Pictures[0].Data.Data);
-                        pic = Image.FromStream(ms);
+                        song.thumbImg = Image.FromStream(ms);
                     }
                     else
-                        pic = Properties.Resources.icons8_music_48px_1;
-                }
-                else
-                    pic = Properties.Resources.icons8_video_48px;
+                        song.thumbImg = Properties.Resources.icons8_music_48px_1;
+                    if (tfile.Tag.Genres != null && tfile.Tag.Genres.Length > 0)
+                    {
+                        song.genres = new List<Genre>();
+                        foreach (var item in tfile.Tag.Genres)
+                        {
+                            var gen = new Genre("", item);
+                        }
+                    }
 
-                string songName = "";
-                if (tfile.Tag.Title != null)
-                    songName = tfile.Tag.Title;
-                else
-                    songName = Path.GetFileNameWithoutExtension(files[i]);
 
-                string artistName = "";
-                if (tfile.Tag.JoinedPerformers != null)
-                    artistName = tfile.Tag.JoinedPerformers;
-
-                Song song = new Song();
-                song.streaming = new Streaming();
-                song.streaming._128 = files[i];
-                song.thumbnailMImg = pic;
-                song.title = songName;
-                song.artistsNames = artistName;
-                song.genres = new List<Genre>();
-                song.duration = (int)tfile.Properties.Duration.TotalSeconds;
-                foreach (var item in tfile.Tag.Genres)
-                {
-                    var gen = new Genre();
-                    gen.name = item;
-                    song.genres.Add(gen);
+                    song.title = Helper.NotNullAndNotEmpty(tfile.Tag.Title) ? tfile.Tag.Title : Path.GetFileNameWithoutExtension(files[i]);
+                    song.artistNames = Helper.NotNullAndNotEmpty(tfile.Tag.JoinedPerformers) ? tfile.Tag.JoinedPerformers : "Unknown";
+                    song.srcLink = files[i];
+                    song.duration = (int)tfile.Properties.Duration.TotalSeconds;
+                    song.isLocal = true;
+                    media = song;
                 }
 
-                var view = new MediaList(pic, song);
+                playlist.medias.Add(media);
+                var view = new MediaList(media);
                 view.Dock = DockStyle.Top;
                 poisonPanel1.Controls.Add(view);
             }
+
+            playlist.medias.Reverse();
         }
 
         private void PoisonPanel1_MouseWheel(object sender, MouseEventArgs e)
@@ -82,6 +80,14 @@ namespace MusicPlayer.View
             poisonScrollBar1.SmallChange = poisonPanel1.VerticalScroll.SmallChange;
             poisonScrollBar1.LargeChange = poisonPanel1.VerticalScroll.LargeChange;
             poisonScrollBar1.Value = poisonPanel1.VerticalScroll.Value;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MainForm.Instance.playlist = playlist;
+            MainForm.Instance.currIdx = 0;
+            MainForm.Instance.PlayMedia();
+            MainForm.Instance.LoadViewCurrentPlaylist();
         }
     }
 }

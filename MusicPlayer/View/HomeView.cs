@@ -42,7 +42,8 @@ namespace MusicPlayer.View
         private async void pb1_Click(object sender, EventArgs e)
         {
             Song song = await MediaService.GetSongDetail((sender as PictureBox).Tag.ToString());
-            MainForm.Instance.SetMedia(song);
+            MainForm.Instance.AddMediaToCurrPlaylist(song);
+            MainForm.Instance.PlayMedia();
         }
     }
 }

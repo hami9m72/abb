@@ -65,7 +65,8 @@ namespace MusicPlayer.Service
                     releaseDate = Convert.ToInt32(data["releaseDate"].ToString()),
                     artists = artists,
                     album = album,
-                    genres = genres
+                    genres = genres,
+                    hasLyric = data["hasLyric"].ToString() == "True"
                 };
                 return song;
             }
