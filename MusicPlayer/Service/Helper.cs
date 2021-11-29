@@ -68,7 +68,11 @@ namespace MusicPlayer.Utils
             return result;
         }
 
-
+        public static Image LoadImageFromByteArray(byte[] arr)
+        {
+            MemoryStream ms = new MemoryStream(arr);
+            return Image.FromStream(ms);
+        }
 
     }
 }

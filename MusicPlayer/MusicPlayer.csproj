@@ -63,19 +63,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\DataRepo.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Album.cs" />
-    <Compile Include="Model\Artist.cs" />
-    <Compile Include="Model\Genre.cs" />
     <Compile Include="Model\Lyric.cs" />
-    <Compile Include="Model\Media.cs" />
-    <Compile Include="Model\Playlist.cs" />
-    <Compile Include="Model\Song.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\Helper.cs" />
@@ -98,12 +93,6 @@
     <Compile Include="View\MediaList.Designer.cs">
       <DependentUpon>MediaList.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\MediaListSmall.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="View\MediaListSmall.Designer.cs">
-      <DependentUpon>MediaListSmall.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -125,9 +114,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\MediaList.resx">
       <DependentUpon>MediaList.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\MediaListSmall.resx">
-      <DependentUpon>MediaListSmall.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -234,5 +220,6 @@
   <ItemGroup>
     <None Include="Resources\icons8_less_than_50px.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

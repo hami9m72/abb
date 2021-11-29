@@ -1,4 +1,5 @@
 ﻿using MusicPlayer.Model;
+using MusicPlayer.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,45 +14,30 @@ namespace MusicPlayer.View
 {
     public partial class MediaList : UserControl
     {
-        private Media media;
+        TagLib.File song;
         public MediaList()
         {
             InitializeComponent();
         }
-
-        public MediaList(Media media)
+        public MediaList(TagLib.File song)
         {
             InitializeComponent();
-            this.media = media;
-            lbName.Text = media.title;
-            lbArtist.Text = media.artistNames;
-            lbDuraton.Text = TimeSpan.FromSeconds(media.duration).ToString(@"mm\:ss");
-
-            if (media.type == "song")
+            this.song = song;
+            if (song.Tag.Pictures.Length > 0 && song.Tag.Pictures != null)
             {
-                Song s = media as Song;
-                if (s.thumbImg is string)
-                    pbImg.LoadAsync(s.thumbImg.ToString());
-                else
-                    pbImg.BackgroundImage = s.thumbImg as Image;
+                pbImg.BackgroundImage = Helper.LoadImageFromByteArray(song.Tag.Pictures[0].Data.Data);
+                pbImg.BackgroundImageLayout = ImageLayout.Stretch;
             }
-
+            lbYear.Text = song.Tag.Year == 0 ? "" : song.Tag.Year.ToString();
+            lbGenre.Text = song.Tag.JoinedGenres;
+            lbAlbum.Text = song.Tag.Album;
+            lbName.Text = song.Tag.Title;
+            lbArtist.Text = song.Tag.JoinedPerformers;
+            lbDuration.Text = TimeSpan.FromSeconds(song.Properties.Duration.TotalSeconds).ToString(@"mm\:ss");
         }
 
-        private void panel1_MouseEnter(object sender, EventArgs e)
-        {
-            pbImg.Image = Properties.Resources.icons8_play_32px;
-        }
 
-        private void panel1_MouseLeave(object sender, EventArgs e)
-        {
-            pbImg.Image = null;
-        }
 
-        private void pbImg_Click(object sender, EventArgs e)
-        {
-            MainForm.Instance.AddMediaToCurrPlaylist(media);
-            MainForm.Instance.PlayMedia();
-        }
+
     }
 }
