@@ -1,4 +1,4 @@
-﻿using MusicPlayer.Data;
+﻿
 using MusicPlayer.Model;
 using MusicPlayer.Utils;
 using System;
@@ -25,9 +25,6 @@ namespace MusicPlayer.View
         private void LocalView_Load(object sender, EventArgs e)
         {
             LoadLocalSong("C:\\Users\\DAT\\Desktop\\music\\Top 100 VPop");
-            DataRepo.isPlaying = playlist;
-            DataRepo.idxPlaying = 0;
-            DataRepo.NormalPlaying();
         }
         private void LoadLocalSong(string path)
         {
@@ -35,12 +32,14 @@ namespace MusicPlayer.View
             string[] files = Directory.GetFiles(path, "*.*", SearchOption.AllDirectories)
                                     .Where(f => extensions.Contains(Path.GetExtension(f).ToLower()) && (TagLib.File.Create(f) is TagLib.Mpeg.AudioFile))
                                     .ToArray();
+
             List<Song> tmp = new List<Song>();
             for (int i = files.Length - 1; i > -1; i--)
             {
                 var tfile = TagLib.File.Create(files[i]);
                 SongLocal song = new SongLocal(tfile);
-                var view = new MediaList(song, i, this);
+                var view = new MediaList1(song, i, playlist);
+                view.parent = this;
                 view.Dock = DockStyle.Top;
                 panelSong.Controls.Add(view);
                 tmp.Add(song);
@@ -49,14 +48,18 @@ namespace MusicPlayer.View
                 playlist.files.Add(tmp[i]);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        public Panel GetPanelSong()
         {
-            DataRepo.ShufferPlaying();
-            DataRepo.idxPlaying = 0;
+            return panelSong;
+        }
+
+        private void btnShuffer_Click(object sender, EventArgs e)
+        {
+            MainForm.Instance.isPlaying = playlist;
+            MainForm.Instance.ShufferPlaying();
+            MainForm.Instance.counter = 0;
             MainForm.Instance.PlayMedia();
             MainForm.Instance.LoadViewPlaying();
         }
-
-
     }
 }

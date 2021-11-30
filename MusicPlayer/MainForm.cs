@@ -1,4 +1,4 @@
-﻿using MusicPlayer.Data;
+﻿
 using MusicPlayer.Model;
 using MusicPlayer.Service;
 using MusicPlayer.Utils;
@@ -21,17 +21,21 @@ namespace MusicPlayer
     {
         private static MainForm instance;
         public static MainForm Instance { get => instance; }
+        public Playlist isPlaying;
+        public List<int> playingOrder;
+        public int counter = 0;
 
         public MainForm()
         {
             InitializeComponent();
             instance = this;
             btnLocal_Click(btnLocal, null);
+
         }
         #region Media player
         public void PlayMedia()
         {
-            Song song = DataRepo.GetIsPlayingSong();
+            Song song = isPlaying.files[playingOrder[counter]];
             mPlayer.URL = song.GetSrc();
             if (song.GetThumbImg() is Image)
             {
@@ -116,6 +120,73 @@ namespace MusicPlayer
                 mPlayer.settings.volume = trackbarVolume.Value;
             }
         }
+
+        private void btnPlay_Click(object sender, EventArgs e)
+        {
+            if (isPlaying != null && isPlaying.files.Count > 0)
+            {
+                if (mPlayer.playState == WMPLib.WMPPlayState.wmppsPlaying)
+                    mPlayer.Ctlcontrols.pause();
+                else if (mPlayer.playState == WMPLib.WMPPlayState.wmppsPaused)
+                    mPlayer.Ctlcontrols.play();
+
+            }
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            if (isPlaying != null && isPlaying.files.Count > 0)
+            {
+                counter++;
+                if (counter > isPlaying.files.Count)
+                    counter = 0;
+                PlayMedia();
+            }
+
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            if (isPlaying != null && isPlaying.files.Count > 0)
+            {
+                counter--;
+                if (counter < 0)
+                    counter = isPlaying.files.Count - 1;
+                PlayMedia();
+            }
+        }
+        private void btnShuffer_Click(object sender, EventArgs e)
+        {
+            if (isPlaying != null && isPlaying.files.Count > 0)
+            {
+                if (btnShuffer.Tag.ToString() == "f")
+                {
+                    ShufferPlaying();
+                    LoadViewPlaying();
+                    counter = 0;
+                    PlayMedia();
+                    btnShuffer.BackColor = Color.FromArgb(27, 28, 34);
+                    btnShuffer.BorderSize = 1;
+                    btnShuffer.Tag = "t";
+                }
+                else
+                {
+                    NormalPlaying();
+                    LoadViewPlaying();
+                    counter = 0;
+                    PlayMedia();
+
+                    btnShuffer.BackColor = Color.FromArgb(15, 15, 16);
+                    btnShuffer.BorderSize = 0;
+                    btnShuffer.Tag = "f";
+                }
+
+
+
+            }
+        }
+
+
         #endregion
 
         #region Menu
@@ -175,7 +246,7 @@ namespace MusicPlayer
         }
         #endregion
 
-
+        #region List playing
         private void panelSongInfo_Click(object sender, EventArgs e)
         {
             tabPageMedia.Visible = !tabPageMedia.Visible;
@@ -183,21 +254,31 @@ namespace MusicPlayer
                 tabPageMedia.BringToFront();
         }
 
+        public void NormalPlaying()
+        {
+            playingOrder = Enumerable.Range(0, isPlaying.files.Count).ToList();
+        }
+        public void ShufferPlaying()
+        {
+            NormalPlaying();
+            Helper.Shuffle(playingOrder);
+        }
+
+
         public void LoadViewPlaying()
         {
             panelPlaying.Controls.Clear();
-            if (DataRepo.isPlaying != null)
+            for (int i = playingOrder.Count - 1; i > -1; i--)
             {
-                for (int i = DataRepo.playingOrder.Count - 1; i > -1; i--)
-                {
-                    Song song = DataRepo.isPlaying.files[DataRepo.playingOrder[i]];
-                    var view = new MediaList(song, i);
-                    view.Dock = DockStyle.Top;
-                    panelPlaying.Controls.Add(view);
-                }
+                Song song = isPlaying.files[playingOrder[i]];
+                var view = new MediaList2(song, i);
+                view.Dock = DockStyle.Top;
+                panelPlaying.Controls.Add(view);
             }
-        }
 
+
+        }
+        #endregion
 
     }
 }

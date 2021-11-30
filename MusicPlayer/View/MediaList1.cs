@@ -1,4 +1,4 @@
-﻿using MusicPlayer.Data;
+﻿
 using MusicPlayer.Model;
 using MusicPlayer.Utils;
 using System;
@@ -13,49 +13,72 @@ using System.Windows.Forms;
 
 namespace MusicPlayer.View
 {
-    public partial class MediaList : UserControl
+    public partial class MediaList1 : UserControl
     {
         public Song song;
+        public Playlist local;
         public int idx;
-        Control parent;
-        public MediaList()
+        public LocalView parent;
+        public MediaList1()
         {
             InitializeComponent();
         }
 
-        public MediaList(Song s, int idx, Control parent = null)
+        public MediaList1(Song s, int idx, Playlist local)
         {
             InitializeComponent();
-            song = s;
+            this.song = s;
+            this.local = local;
             this.idx = idx;
-            this.parent = parent;
             lbName.Text = song.GetTitle();
             lbArtist.Text = song.GetArtistNameJoined();
             lbAlbum.Text = song.GetAlbumName();
             lbDuration.Text = song.GetFormatedDuration();
             if (song.GetThumbImg() is Image)
             {
-                pbImg.BackgroundImageLayout = ImageLayout.Stretch;
                 pbImg.BackgroundImage = song.GetThumbImg() as Image;
+                pbImg.BackgroundImageLayout = ImageLayout.Stretch;
             }
-            else if (song.GetThumbImg() is string)
-            {
-                pbImg.BackgroundImage = null;
-                pbImg.SizeMode = PictureBoxSizeMode.StretchImage;
-                pbImg.LoadAsync(song.GetThumbImg().ToString());
-            }
-            ChangeColorLove(song.isLiked);
+
         }
 
         private void pbImg_Click(object sender, EventArgs e)
         {
-            if (parent != null)
+            if (MainForm.Instance.isPlaying != null)
             {
-                DataRepo.NormalPlaying();
-                MainForm.Instance.LoadViewPlaying();
+                int old = MainForm.Instance.playingOrder[MainForm.Instance.counter];
+                var ctls = parent.GetPanelSong().Controls;
+                (ctls[ctls.Count - 1 - old] as MediaList1).DeActiveSongUI();
             }
-            DataRepo.idxPlaying = idx;
+
+            MainForm.Instance.isPlaying = local;
+            MainForm.Instance.NormalPlaying();
+            MainForm.Instance.counter = idx;
             MainForm.Instance.PlayMedia();
+            MainForm.Instance.LoadViewPlaying();
+            ActiveSongUI();
+        }
+
+        public void ActiveSongUI()
+        {
+            foreach (Control c in tableLayoutPanel1.Controls)
+                c.BackColor = Color.FromArgb(15, 15, 16);
+            ChangeColorLabel(Color.FromArgb(1, 241, 250));
+        }
+
+        public void DeActiveSongUI()
+        {
+            foreach (Control c in tableLayoutPanel1.Controls)
+                c.BackColor = Color.FromArgb(37, 38, 44);
+            ChangeColorLabel(Color.White);
+        }
+
+        private void ChangeColorLabel(Color color)
+        {
+            lbName.ForeColor = color;
+            lbArtist.ForeColor = color;
+            lbDuration.ForeColor = color;
+            lbAlbum.ForeColor = color;
         }
 
         private void pbImg_MouseEnter(object sender, EventArgs e)
@@ -70,20 +93,12 @@ namespace MusicPlayer.View
 
         private void ChangeColorLove(bool isLiked)
         {
-            if (isLiked)
-                pbTim.BackgroundImage = Properties.Resources.icons8_heart_24px;
-            else
-                pbTim.BackgroundImage = Properties.Resources.icons8_love_24px;
+
         }
 
         private void pbTim_Click(object sender, EventArgs e)
         {
-            song.isLiked = !song.isLiked;
-            ChangeColorLove(song.isLiked);
-            if (song.isLiked)
-                DataRepo.AddToFavorite(song);
-            else
-                DataRepo.DelFromFavorite(song);
+
         }
 
         private void btnMore_Click(object sender, EventArgs e)

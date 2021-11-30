@@ -1,4 +1,4 @@
-﻿using MusicPlayer.Data;
+﻿
 using MusicPlayer.Model;
 using System;
 using System.Collections.Generic;
@@ -17,16 +17,18 @@ namespace MusicPlayer.View
     {
         public Song song;
         Playlist parent;
+        int idx;
         public MediaSearch()
         {
             InitializeComponent();
         }
 
-        public MediaSearch(Song s, Playlist parent)
+        public MediaSearch(Song s, int idx, Playlist parent)
         {
             InitializeComponent();
             song = s;
             this.parent = parent;
+            this.idx = idx;
             lbName.Text = song.GetTitle();
             lbArtist.Text = song.GetArtistNameJoined();
             if (song.GetThumbImg() is string)
@@ -50,12 +52,11 @@ namespace MusicPlayer.View
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
-            MainForm.Instance.LoadViewPlaying();
-            DataRepo.isPlaying = parent;
-            int idx = parent.files.IndexOf(song);
-            DataRepo.idxPlaying = idx;
-            DataRepo.NormalPlaying();
+            MainForm.Instance.isPlaying = parent;
+            MainForm.Instance.NormalPlaying();
+            MainForm.Instance.counter = idx;
             MainForm.Instance.PlayMedia();
+            MainForm.Instance.LoadViewPlaying();
         }
     }
 }

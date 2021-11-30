@@ -111,5 +111,12 @@ namespace MusicPlayer.Utils
             panel.AutoScroll = true;
         }
 
+        public static async Task<Image> LoadImagefromURL(string url)
+        {
+            var request = WebRequest.Create(url);
+            var response = await request.GetResponseAsync();
+            var stream = response.GetResponseStream();
+            return Image.FromStream(stream);
+        }
     }
 }

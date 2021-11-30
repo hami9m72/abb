@@ -63,7 +63,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\DataRepo.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,11 +90,17 @@
     <Compile Include="View\LocalView.Designer.cs">
       <DependentUpon>LocalView.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\MediaList.cs">
+    <Compile Include="View\MediaList1.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\MediaList.Designer.cs">
-      <DependentUpon>MediaList.cs</DependentUpon>
+    <Compile Include="View\MediaList1.Designer.cs">
+      <DependentUpon>MediaList1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\MediaList2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\MediaList2.Designer.cs">
+      <DependentUpon>MediaList2.cs</DependentUpon>
     </Compile>
     <Compile Include="View\MediaSearch.cs">
       <SubType>UserControl</SubType>
@@ -128,8 +133,11 @@
     <EmbeddedResource Include="View\LocalView.resx">
       <DependentUpon>LocalView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\MediaList.resx">
-      <DependentUpon>MediaList.cs</DependentUpon>
+    <EmbeddedResource Include="View\MediaList1.resx">
+      <DependentUpon>MediaList1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MediaList2.resx">
+      <DependentUpon>MediaList2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\MediaSearch.resx">
       <DependentUpon>MediaSearch.cs</DependentUpon>

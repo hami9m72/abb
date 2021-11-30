@@ -1,7 +1,7 @@
 ﻿
 namespace MusicPlayer.View
 {
-    partial class MediaList
+    partial class MediaList1
     {
         /// <summary> 
         /// Required designer variable.
@@ -268,7 +268,7 @@ namespace MusicPlayer.View
             this.menu.MenuItemTextColor = System.Drawing.Color.White;
             this.menu.Name = "menu";
             this.menu.PrimaryColor = System.Drawing.Color.Black;
-            this.menu.Size = new System.Drawing.Size(181, 52);
+            this.menu.Size = new System.Drawing.Size(117, 30);
             // 
             // helloToolStripMenuItem
             // 
@@ -276,15 +276,15 @@ namespace MusicPlayer.View
             this.helloToolStripMenuItem.Image = global::MusicPlayer.Properties.Resources.icons8_love_24px;
             this.helloToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.helloToolStripMenuItem.Name = "helloToolStripMenuItem";
-            this.helloToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.helloToolStripMenuItem.Size = new System.Drawing.Size(116, 26);
             this.helloToolStripMenuItem.Text = "Hello";
             this.helloToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
-            // MediaList
+            // MediaList1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "MediaList";
+            this.Name = "MediaList1";
             this.Size = new System.Drawing.Size(741, 67);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel6.ResumeLayout(false);

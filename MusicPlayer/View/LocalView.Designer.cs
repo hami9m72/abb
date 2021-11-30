@@ -37,7 +37,7 @@ namespace MusicPlayer.View
             this.panel3 = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnShuffer = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.hopeTabPage1.SuspendLayout();
@@ -118,7 +118,7 @@ namespace MusicPlayer.View
             // 
             this.panel3.Controls.Add(this.button3);
             this.panel3.Controls.Add(this.comboBox1);
-            this.panel3.Controls.Add(this.button1);
+            this.panel3.Controls.Add(this.btnShuffer);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
@@ -140,21 +140,21 @@ namespace MusicPlayer.View
             // 
             this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(147, 9);
+            this.comboBox1.Location = new System.Drawing.Point(149, 9);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 25);
             this.comboBox1.TabIndex = 1;
             // 
-            // button1
+            // btnShuffer
             // 
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(12, 9);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(113, 25);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Phát ngẫu nhiên";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnShuffer.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnShuffer.Location = new System.Drawing.Point(12, 9);
+            this.btnShuffer.Name = "btnShuffer";
+            this.btnShuffer.Size = new System.Drawing.Size(113, 25);
+            this.btnShuffer.TabIndex = 0;
+            this.btnShuffer.Text = "Phát ngẫu nhiên";
+            this.btnShuffer.UseVisualStyleBackColor = true;
+            this.btnShuffer.Click += new System.EventHandler(this.btnShuffer_Click);
             // 
             // tabPage3
             // 
@@ -206,7 +206,7 @@ namespace MusicPlayer.View
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnShuffer;
         private System.Windows.Forms.Panel panelSong;
     }
 }

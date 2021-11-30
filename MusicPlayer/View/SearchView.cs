@@ -1,4 +1,4 @@
-﻿using MusicPlayer.Data;
+﻿
 using MusicPlayer.Model;
 using MusicPlayer.Service;
 using Newtonsoft.Json.Linq;
@@ -40,7 +40,7 @@ namespace MusicPlayer.View
                     for (int i = data["items"].Count() - 1; i > -1; i--)
                     {
                         Song song = new SongOnline(data["items"][i] as JObject);
-                        var view = new MediaSearch(song, search);
+                        var view = new MediaSearch(song, i, search);
                         view.Dock = DockStyle.Top;
                         panelSearch.Controls.Add(view);
                         search.files.Add(song);
