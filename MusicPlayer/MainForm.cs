@@ -131,18 +131,17 @@ namespace MusicPlayer
 
         public void LoadViewPlaying()
         {
-            flpPlaying.Controls.Clear();
+            panelPlaying.Controls.Clear();
             if (DataRepo.isPlaying != null)
             {
-                for (int i = 0; i < DataRepo.playingOrder.Count; i++)
+                for (int i = DataRepo.playingOrder.Count - 1; i > -1; i--)
                 {
                     Song song = DataRepo.isPlaying.files[DataRepo.playingOrder[i]];
                     var view = new MediaList(song, i);
-                    view.Width -= 20;
-                    flpPlaying.Controls.Add(view);
+                    view.Dock = DockStyle.Top;
+                    panelPlaying.Controls.Add(view);
                 }
             }
-            Helper.HideScrollBar(flpPlaying, true, false);
         }
 
 

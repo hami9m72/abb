@@ -33,7 +33,6 @@ namespace MusicPlayer.View
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.flpSong = new System.Windows.Forms.FlowLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -42,6 +41,7 @@ namespace MusicPlayer.View
             this.button1 = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.panelSong = new System.Windows.Forms.Panel();
             this.hopeTabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -98,7 +98,7 @@ namespace MusicPlayer.View
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.flpSong);
+            this.panel1.Controls.Add(this.panelSong);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(10, 0);
@@ -106,16 +106,6 @@ namespace MusicPlayer.View
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(733, 446);
             this.panel1.TabIndex = 0;
-            // 
-            // flpSong
-            // 
-            this.flpSong.AutoScroll = true;
-            this.flpSong.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flpSong.Location = new System.Drawing.Point(0, 43);
-            this.flpSong.Name = "flpSong";
-            this.flpSong.Size = new System.Drawing.Size(733, 403);
-            this.flpSong.TabIndex = 3;
-            this.flpSong.Resize += new System.EventHandler(this.flpSong_Resize);
             // 
             // panel3
             // 
@@ -201,6 +191,15 @@ namespace MusicPlayer.View
             this.tabPage1.Text = "Album";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // panelSong
+            // 
+            this.panelSong.AutoScroll = true;
+            this.panelSong.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelSong.Location = new System.Drawing.Point(0, 43);
+            this.panelSong.Name = "panelSong";
+            this.panelSong.Size = new System.Drawing.Size(733, 403);
+            this.panelSong.TabIndex = 3;
+            // 
             // LocalView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -234,6 +233,6 @@ namespace MusicPlayer.View
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.FlowLayoutPanel flpSong;
+        private System.Windows.Forms.Panel panelSong;
     }
 }

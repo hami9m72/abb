@@ -33,22 +33,20 @@ namespace MusicPlayer.View
         {
             var extensions = Helper.GetAllSupportFile();
             string[] files = Directory.GetFiles(path, "*.*", SearchOption.AllDirectories)
-                                    .Where(f => extensions.Contains(Path.GetExtension(f).ToLower())).ToArray();
-            int idx = 0;
-            for (int i = 0; i < files.Length; i++)
+                                    .Where(f => extensions.Contains(Path.GetExtension(f).ToLower()) && (TagLib.File.Create(f) is TagLib.Mpeg.AudioFile))
+                                    .ToArray();
+            List<Song> tmp = new List<Song>();
+            for (int i = files.Length - 1; i > -1; i--)
             {
                 var tfile = TagLib.File.Create(files[i]);
-                if (tfile is TagLib.Mpeg.AudioFile)
-                {
-                    SongLocal song = new SongLocal(tfile);
-                    var view = new MediaList(song, idx++, this);
-                    view.Width -= 20;
-                    flpSong.Controls.Add(view);
-                    playlist.files.Add(song);
-                }
+                SongLocal song = new SongLocal(tfile);
+                var view = new MediaList(song, i, this);
+                view.Dock = DockStyle.Top;
+                panelSong.Controls.Add(view);
+                tmp.Add(song);
             }
-            Helper.HideScrollBar(flpSong, true, false);
-            Console.WriteLine(idx);
+            for (int i = tmp.Count - 1; i > -1; i--)
+                playlist.files.Add(tmp[i]);
         }
 
         private void flpSong_Resize(object sender, EventArgs e)

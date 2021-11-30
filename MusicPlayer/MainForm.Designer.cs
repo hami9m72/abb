@@ -64,9 +64,9 @@ namespace MusicPlayer
             this.panelContainer = new System.Windows.Forms.Panel();
             this.tabPageMedia = new ReaLTaiizor.Controls.HopeTabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.flpPlaying = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tTrackBar = new System.Windows.Forms.Timer(this.components);
+            this.panelPlaying = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.tlpMedia.SuspendLayout();
             this.panelSongInfo.SuspendLayout();
@@ -135,8 +135,8 @@ namespace MusicPlayer
             // 
             // lbSongName
             // 
-            this.lbSongName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.lbSongName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lbSongName.AutoSize = true;
             this.lbSongName.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -186,7 +186,7 @@ namespace MusicPlayer
             // trackBar
             // 
             this.trackBar.AlwaysValueVisible = false;
-            this.trackBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.trackBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar.BallonArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.trackBar.BallonColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -583,23 +583,13 @@ namespace MusicPlayer
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(28)))), ((int)(((byte)(34)))));
-            this.tabPage1.Controls.Add(this.flpPlaying);
+            this.tabPage1.Controls.Add(this.panelPlaying);
             this.tabPage1.Location = new System.Drawing.Point(0, 40);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(749, 474);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Danh sách phát";
-            // 
-            // flpPlaying
-            // 
-            this.flpPlaying.AutoScroll = true;
-            this.flpPlaying.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flpPlaying.Location = new System.Drawing.Point(3, 3);
-            this.flpPlaying.Name = "flpPlaying";
-            this.flpPlaying.Size = new System.Drawing.Size(743, 468);
-            this.flpPlaying.TabIndex = 0;
-            this.flpPlaying.Resize += new System.EventHandler(this.flpPlaying_Resize);
             // 
             // tabPage2
             // 
@@ -614,6 +604,15 @@ namespace MusicPlayer
             // tTrackBar
             // 
             this.tTrackBar.Tick += new System.EventHandler(this.tTrackBar_Tick);
+            // 
+            // panelPlaying
+            // 
+            this.panelPlaying.AutoScroll = true;
+            this.panelPlaying.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelPlaying.Location = new System.Drawing.Point(3, 3);
+            this.panelPlaying.Name = "panelPlaying";
+            this.panelPlaying.Size = new System.Drawing.Size(743, 468);
+            this.panelPlaying.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -692,6 +691,6 @@ namespace MusicPlayer
         private System.Windows.Forms.TabPage tabPage2;
         private AxWMPLib.AxWindowsMediaPlayer mPlayer;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.FlowLayoutPanel flpPlaying;
+        private System.Windows.Forms.Panel panelPlaying;
     }
 }
