@@ -37,9 +37,8 @@ namespace MusicPlayer.View
             this.panel5 = new System.Windows.Forms.Panel();
             this.lbDuration = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.lbGenre = new System.Windows.Forms.Label();
+            this.pbTim = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.lbYear = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -50,7 +49,7 @@ namespace MusicPlayer.View
             ((System.ComponentModel.ISupportInitialize)(this.pbImg)).BeginInit();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbTim)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -144,7 +143,7 @@ namespace MusicPlayer.View
             // 
             // lbDuration
             // 
-            this.lbDuration.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.lbDuration.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lbDuration.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbDuration.ForeColor = System.Drawing.Color.White;
@@ -158,7 +157,7 @@ namespace MusicPlayer.View
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(38)))), ((int)(((byte)(44)))));
-            this.panel4.Controls.Add(this.lbGenre);
+            this.panel4.Controls.Add(this.pbTim);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(579, 3);
             this.panel4.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
@@ -166,42 +165,25 @@ namespace MusicPlayer.View
             this.panel4.Size = new System.Drawing.Size(106, 61);
             this.panel4.TabIndex = 3;
             // 
-            // lbGenre
+            // pbTim
             // 
-            this.lbGenre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbGenre.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbGenre.ForeColor = System.Drawing.Color.White;
-            this.lbGenre.Location = new System.Drawing.Point(0, 18);
-            this.lbGenre.Name = "lbGenre";
-            this.lbGenre.Size = new System.Drawing.Size(106, 24);
-            this.lbGenre.TabIndex = 2;
-            this.lbGenre.Text = "genre";
-            this.lbGenre.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.pbTim.BackgroundImage = global::MusicPlayer.Properties.Resources.icons8_love_24px;
+            this.pbTim.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pbTim.Location = new System.Drawing.Point(33, 11);
+            this.pbTim.Name = "pbTim";
+            this.pbTim.Size = new System.Drawing.Size(46, 38);
+            this.pbTim.TabIndex = 0;
+            this.pbTim.TabStop = false;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(38)))), ((int)(((byte)(44)))));
-            this.panel3.Controls.Add(this.lbYear);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(455, 3);
             this.panel3.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(124, 61);
             this.panel3.TabIndex = 2;
-            // 
-            // lbYear
-            // 
-            this.lbYear.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbYear.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbYear.ForeColor = System.Drawing.Color.White;
-            this.lbYear.Location = new System.Drawing.Point(0, 18);
-            this.lbYear.Name = "lbYear";
-            this.lbYear.Size = new System.Drawing.Size(124, 24);
-            this.lbYear.TabIndex = 2;
-            this.lbYear.Text = "year";
-            this.lbYear.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel1
             // 
@@ -236,7 +218,7 @@ namespace MusicPlayer.View
             // 
             // lbAlbum
             // 
-            this.lbAlbum.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.lbAlbum.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lbAlbum.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbAlbum.ForeColor = System.Drawing.Color.White;
@@ -269,7 +251,7 @@ namespace MusicPlayer.View
             ((System.ComponentModel.ISupportInitialize)(this.pbImg)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbTim)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -289,11 +271,10 @@ namespace MusicPlayer.View
         private System.Windows.Forms.PictureBox pbImg;
         private System.Windows.Forms.Label lbName;
         private System.Windows.Forms.Label lbDuration;
-        private System.Windows.Forms.Label lbGenre;
-        private System.Windows.Forms.Label lbYear;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label lbAlbum;
         private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.PictureBox pbTim;
     }
 }

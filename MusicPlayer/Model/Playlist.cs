@@ -9,17 +9,18 @@ namespace MusicPlayer.Model
     public class Playlist
     {
         public string name;
-        public List<TagLib.File> files;
+        public List<Song> files;
 
         public Playlist()
         {
 
         }
-
         public Playlist(string name)
         {
             this.name = name;
-            files = new List<TagLib.File>();
+            this.files = new List<Song>();
         }
+
+
     }
 }

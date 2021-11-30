@@ -31,11 +31,11 @@ namespace MusicPlayer
         #region Media player
         public void PlayMedia()
         {
-            TagLib.File song = DataRepo.GetIsPlayingSong();
-            mPlayer.URL = song.Name;
-            if (song.Tag.Pictures.Length > 0)
+            Song song = DataRepo.GetIsPlayingSong();
+            mPlayer.URL = song.GetSrc();
+            if (song.GetThumbImg() is Image)
             {
-                pbSong.BackgroundImage = Helper.LoadImageFromByteArray(song.Tag.Pictures[0].Data.Data);
+                pbSong.BackgroundImage = song.GetThumbImg() as Image;
                 pbSong.BackgroundImageLayout = ImageLayout.Stretch;
             }
             else
@@ -43,7 +43,7 @@ namespace MusicPlayer
                 pbSong.BackgroundImage = Properties.Resources.icons8_music_48px_1;
                 pbSong.BackgroundImageLayout = ImageLayout.Center;
             }
-            lbSongName.Text = song.Tag.Title + "\n" + song.Tag.JoinedPerformers;
+            lbSongName.Text = song.GetTitle() + "\n" + song.GetArtistNameJoined();
         }
         private void mPlayer_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
         {
@@ -134,19 +134,23 @@ namespace MusicPlayer
             flpPlaying.Controls.Clear();
             if (DataRepo.isPlaying != null)
             {
-                for (int i = 0; i < DataRepo.isPlaying.files.Count; i++)
+                for (int i = 0; i < DataRepo.playingOrder.Count; i++)
                 {
-                    var view = new MediaList(DataRepo.isPlaying.files[i], i, DataRepo.isPlaying);
-                    view.Width = view.Width - 20;
-                    flpPlaying.Controls.Add(view);
+                    Song song = DataRepo.isPlaying.files[DataRepo.playingOrder[i]];
+                    flpPlaying.Controls.Add(new MediaList(song, i));
                 }
             }
             Helper.HideScrollBar(flpPlaying, true, false);
         }
+
+
+
+
+
         private void flpPlaying_Resize(object sender, EventArgs e)
         {
-            foreach (Control c in flpPlaying.Controls)
-                c.Width = flpPlaying.Width - 20;
+            //foreach (Control c in flpPlaying.Controls)
+            //    c.Width = flpPlaying.Width - 20;
         }
 
 

@@ -72,6 +72,8 @@
     </Compile>
     <Compile Include="Model\Lyric.cs" />
     <Compile Include="Model\Playlist.cs" />
+    <Compile Include="Model\Song.cs" />
+    <Compile Include="Model\SongLocal.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\Helper.cs" />
@@ -226,6 +228,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8_music_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_heart_24px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

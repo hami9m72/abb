@@ -21,11 +21,14 @@ namespace MusicPlayer.View
         {
             InitializeComponent();
             playlist = new Playlist("local");
-            DataRepo.isPlaying = playlist;
-            LoadLocalSong("C:\\Users\\DAT\\Desktop\\music\\Top 100 VPop");
-            MainForm.Instance.LoadViewPlaying();
         }
-
+        private void LocalView_Load(object sender, EventArgs e)
+        {
+            LoadLocalSong("C:\\Users\\DAT\\Desktop\\music\\Top 100 VPop");
+            DataRepo.isPlaying = playlist;
+            DataRepo.idxPlaying = 0;
+            DataRepo.NormalPlaying();
+        }
         private void LoadLocalSong(string path)
         {
             var extensions = Helper.GetAllSupportFile();
@@ -37,32 +40,28 @@ namespace MusicPlayer.View
                 var tfile = TagLib.File.Create(files[i]);
                 if (tfile is TagLib.Mpeg.AudioFile)
                 {
-                    var view = new MediaList(tfile, idx++, playlist);
+                    SongLocal song = new SongLocal(tfile);
+                    var view = new MediaList(song, idx++, this);
                     view.Width -= 20;
                     flpSong.Controls.Add(view);
-                    playlist.files.Add(tfile);
+                    playlist.files.Add(song);
                 }
             }
             Helper.HideScrollBar(flpSong, true, false);
-
+            Console.WriteLine(idx);
         }
 
         private void flpSong_Resize(object sender, EventArgs e)
         {
-            foreach (Control c in flpSong.Controls)
-                c.Width = flpSong.Width - 20;
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Playlist temp = new Playlist("shuffer");
-            foreach (var it in playlist.files)
-                temp.files.Add(it);
-            Helper.Shuffle(temp.files);
-            DataRepo.isPlaying = temp;
-            DataRepo.idxPlaying = 0;
-            MainForm.Instance.PlayMedia();
+            DataRepo.ShufferPlaying();
             MainForm.Instance.LoadViewPlaying();
         }
+
+
     }
 }

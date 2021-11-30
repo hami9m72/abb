@@ -15,38 +15,40 @@ namespace MusicPlayer.View
 {
     public partial class MediaList : UserControl
     {
-        Playlist parent;
-        TagLib.File song;
-        int idx;
+        public Song song;
+        public int idx;
+        Control parent;
         public MediaList()
         {
             InitializeComponent();
         }
-        public MediaList(TagLib.File song, int idx, Playlist parent)
+
+        public MediaList(Song s, int idx, Control parent = null)
         {
             InitializeComponent();
-            this.parent = parent;
+            song = s;
             this.idx = idx;
-            this.song = song;
-            if (song.Tag.Pictures.Length > 0 && song.Tag.Pictures != null)
+            this.parent = parent;
+            lbName.Text = song.GetTitle();
+            lbArtist.Text = song.GetArtistNameJoined();
+            lbAlbum.Text = song.GetAlbumName();
+            lbDuration.Text = song.GetFormatedDuration();
+            if (song.GetThumbImg() is Image)
             {
-                pbImg.BackgroundImage = Helper.LoadImageFromByteArray(song.Tag.Pictures[0].Data.Data);
                 pbImg.BackgroundImageLayout = ImageLayout.Stretch;
+                pbImg.BackgroundImage = song.GetThumbImg() as Image;
             }
-            lbYear.Text = song.Tag.Year == 0 ? "" : song.Tag.Year.ToString();
-            lbGenre.Text = song.Tag.JoinedGenres;
-            lbAlbum.Text = song.Tag.Album;
-            lbName.Text = song.Tag.Title;
-            lbArtist.Text = song.Tag.JoinedPerformers;
-            lbDuration.Text = TimeSpan.FromSeconds(song.Properties.Duration.TotalSeconds).ToString(@"mm\:ss");
         }
 
         private void pbImg_Click(object sender, EventArgs e)
         {
-            DataRepo.isPlaying = parent;
-            DataRepo.idxPlaying = idx;
+            if (parent != null)
+            {
+                DataRepo.NormalPlaying();
+                MainForm.Instance.LoadViewPlaying();
+            }
+            DataRepo.idxPlaying = DataRepo.playingOrder[idx];
             MainForm.Instance.PlayMedia();
-            MainForm.Instance.LoadViewPlaying();
         }
 
         private void pbImg_MouseEnter(object sender, EventArgs e)
