@@ -19,7 +19,7 @@ namespace MusicPlayer.Data
 
         public static Song GetIsPlayingSong()
         {
-            return isPlaying.files[idxPlaying];
+            return isPlaying.files[playingOrder[idxPlaying]];
         }
 
         public static void ShufferPlaying()

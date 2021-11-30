@@ -47,7 +47,7 @@ namespace MusicPlayer.View
                 DataRepo.NormalPlaying();
                 MainForm.Instance.LoadViewPlaying();
             }
-            DataRepo.idxPlaying = DataRepo.playingOrder[idx];
+            DataRepo.idxPlaying = idx;
             MainForm.Instance.PlayMedia();
         }
 

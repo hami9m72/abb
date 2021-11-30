@@ -137,7 +137,9 @@ namespace MusicPlayer
                 for (int i = 0; i < DataRepo.playingOrder.Count; i++)
                 {
                     Song song = DataRepo.isPlaying.files[DataRepo.playingOrder[i]];
-                    flpPlaying.Controls.Add(new MediaList(song, i));
+                    var view = new MediaList(song, i);
+                    view.Width -= 20;
+                    flpPlaying.Controls.Add(view);
                 }
             }
             Helper.HideScrollBar(flpPlaying, true, false);

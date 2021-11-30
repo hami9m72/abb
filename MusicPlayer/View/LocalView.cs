@@ -59,6 +59,8 @@ namespace MusicPlayer.View
         private void button1_Click(object sender, EventArgs e)
         {
             DataRepo.ShufferPlaying();
+            DataRepo.idxPlaying = 0;
+            MainForm.Instance.PlayMedia();
             MainForm.Instance.LoadViewPlaying();
         }
 
