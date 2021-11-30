@@ -38,6 +38,12 @@ namespace MusicPlayer
                 pbSong.BackgroundImage = song.GetThumbImg() as Image;
                 pbSong.BackgroundImageLayout = ImageLayout.Stretch;
             }
+            else if (song.GetThumbImg() is string)
+            {
+                pbSong.BackgroundImage = null;
+                pbSong.SizeMode = PictureBoxSizeMode.StretchImage;
+                pbSong.LoadAsync(song.GetThumbImg().ToString());
+            }
             else
             {
                 pbSong.BackgroundImage = Properties.Resources.icons8_music_48px_1;
@@ -71,7 +77,43 @@ namespace MusicPlayer
             if (mPlayer.playState == WMPLib.WMPPlayState.wmppsPlaying)
             {
                 lbMinTime.Text = mPlayer.Ctlcontrols.currentPositionString;
-                trackBar.Value = (int)mPlayer.Ctlcontrols.currentPosition;
+                if (barChange)
+                    trackBar.Value = (int)mPlayer.Ctlcontrols.currentPosition;
+            }
+        }
+
+        private bool barChange = true;
+        private void trackBar_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (mPlayer.currentMedia != null)
+            {
+                double cur = mPlayer.Ctlcontrols.currentItem.duration * e.X / (trackBar.Width - 15);
+                mPlayer.Ctlcontrols.currentPosition = cur;
+                lbMinTime.Text = mPlayer.Ctlcontrols.currentPositionString;
+                barChange = true;
+            }
+        }
+        private void trackBar_MouseMove(object sender, MouseEventArgs e)
+        {
+
+            if (mPlayer.currentMedia != null && e.Button == MouseButtons.Left)
+            {
+                barChange = false;
+            }
+        }
+
+        private void trackbarVolume_MouseUp(object sender, MouseEventArgs e)
+        {
+            int newVol = 100 * e.X / (trackbarVolume.Width - 15);
+            mPlayer.settings.volume = newVol;
+            trackbarVolume.Value = newVol;
+        }
+
+        private void trackbarVolume_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                mPlayer.settings.volume = trackbarVolume.Value;
             }
         }
         #endregion
@@ -118,7 +160,19 @@ namespace MusicPlayer
             ActiveMenu(sender as Button, view);
         }
 
-
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            ClearMenu();
+            SearchView view;
+            if (!panelContainer.Controls.ContainsKey("SearchView"))
+            {
+                view = new SearchView();
+                panelContainer.Controls.Add(view);
+            }
+            else
+                view = panelContainer.Controls["SearchView"] as SearchView;
+            ActiveMenu(sender as Button, view);
+        }
         #endregion
 
 
@@ -142,16 +196,6 @@ namespace MusicPlayer
                     panelPlaying.Controls.Add(view);
                 }
             }
-        }
-
-
-
-
-
-        private void flpPlaying_Resize(object sender, EventArgs e)
-        {
-            //foreach (Control c in flpPlaying.Controls)
-            //    c.Width = flpPlaying.Width - 20;
         }
 
 

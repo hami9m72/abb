@@ -49,11 +49,6 @@ namespace MusicPlayer.View
                 playlist.files.Add(tmp[i]);
         }
 
-        private void flpSong_Resize(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             DataRepo.ShufferPlaying();

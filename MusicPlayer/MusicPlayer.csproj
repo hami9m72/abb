@@ -74,6 +74,7 @@
     <Compile Include="Model\Playlist.cs" />
     <Compile Include="Model\Song.cs" />
     <Compile Include="Model\SongLocal.cs" />
+    <Compile Include="Model\SongOnline.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\Helper.cs" />
@@ -96,6 +97,18 @@
     <Compile Include="View\MediaList.Designer.cs">
       <DependentUpon>MediaList.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\MediaSearch.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\MediaSearch.Designer.cs">
+      <DependentUpon>MediaSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\SearchView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\SearchView.Designer.cs">
+      <DependentUpon>SearchView.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -117,6 +130,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\MediaList.resx">
       <DependentUpon>MediaList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MediaSearch.resx">
+      <DependentUpon>MediaSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SearchView.resx">
+      <DependentUpon>SearchView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -231,6 +250,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8_heart_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_download_24px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

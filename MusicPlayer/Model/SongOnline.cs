@@ -1,54 +1,54 @@
-﻿using MusicPlayer.Utils;
+﻿using MusicPlayer.Service;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TagLib;
 
 namespace MusicPlayer.Model
 {
-    public class SongLocal : Song
+    public class SongOnline : Song
     {
-        public File file;
+        public JObject data;
 
-        public SongLocal(File file)
+        public SongOnline(JObject data)
         {
-            this.file = file;
+            this.data = data;
         }
 
         public override string GetAlbumName()
         {
-            return file.Tag.Album;
+            if (data["album"] != null)
+                return data["album"]["title"].ToString();
+            return "";
         }
 
         public override string GetArtistNameJoined()
         {
-            return file.Tag.JoinedPerformers;
+            return data["artistsNames"].ToString();
         }
 
         public override int GetDuration()
         {
-            return (int)file.Properties.Duration.TotalSeconds;
+            return Convert.ToInt32(data["duration"].ToString());
         }
 
 
 
         public override string GetSrc()
         {
-            return file.Name;
+            return data["streamLink"].ToString();
         }
 
         public override object GetThumbImg()
         {
-            if (file.Tag.Pictures.Length > 0)
-                return Helper.LoadImageFromByteArray(file.Tag.Pictures[0].Data.Data);
-            return null;
+            return data["thumbnailM"].ToString();
         }
 
         public override string GetTitle()
         {
-            return file.Tag.Title;
+            return data["title"].ToString();
         }
     }
 }

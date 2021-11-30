@@ -15,6 +15,9 @@ namespace MusicPlayer.Model
         public abstract string GetSrc();
         public abstract object GetThumbImg();
         public abstract int GetDuration();
-        public abstract string GetFormatedDuration();
+        public string GetFormatedDuration()
+        {
+            return TimeSpan.FromSeconds(GetDuration()).ToString(@"mm\:ss");
+        }
     }
 }

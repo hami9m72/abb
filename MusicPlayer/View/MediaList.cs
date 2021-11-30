@@ -38,6 +38,13 @@ namespace MusicPlayer.View
                 pbImg.BackgroundImageLayout = ImageLayout.Stretch;
                 pbImg.BackgroundImage = song.GetThumbImg() as Image;
             }
+            else if (song.GetThumbImg() is string)
+            {
+                pbImg.BackgroundImage = null;
+                pbImg.SizeMode = PictureBoxSizeMode.StretchImage;
+                pbImg.LoadAsync(song.GetThumbImg().ToString());
+            }
+            ChangeColorLove(song.isLiked);
         }
 
         private void pbImg_Click(object sender, EventArgs e)
@@ -59,6 +66,29 @@ namespace MusicPlayer.View
         private void pbImg_MouseLeave(object sender, EventArgs e)
         {
             pbImg.Image = null;
+        }
+
+        private void ChangeColorLove(bool isLiked)
+        {
+            if (isLiked)
+                pbTim.BackgroundImage = Properties.Resources.icons8_heart_24px;
+            else
+                pbTim.BackgroundImage = Properties.Resources.icons8_love_24px;
+        }
+
+        private void pbTim_Click(object sender, EventArgs e)
+        {
+            song.isLiked = !song.isLiked;
+            ChangeColorLove(song.isLiked);
+            if (song.isLiked)
+                DataRepo.AddToFavorite(song);
+            else
+                DataRepo.DelFromFavorite(song);
+        }
+
+        private void btnMore_Click(object sender, EventArgs e)
+        {
+            menu.Show(btnMore, 0, btnMore.Height);
         }
     }
 }

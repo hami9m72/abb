@@ -14,7 +14,6 @@ namespace MusicPlayer.Data
         public static int idxPlaying = -1;
         public static List<int> playingOrder;
 
-
         public static Playlist favorite = new Playlist("favorite");
 
         public static Song GetIsPlayingSong()
@@ -36,8 +35,8 @@ namespace MusicPlayer.Data
 
         public static void AddToFavorite(Song song)
         {
-            favorite.files.Add(song);
-
+            if (!favorite.files.Contains(song))
+                favorite.files.Add(song);
         }
 
         public static bool DelFromFavorite(Song song)

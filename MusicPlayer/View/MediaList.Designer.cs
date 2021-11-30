@@ -29,29 +29,35 @@ namespace MusicPlayer.View
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.lbArtist = new System.Windows.Forms.Label();
             this.pbImg = new System.Windows.Forms.PictureBox();
             this.lbName = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.lbDuration = new System.Windows.Forms.Label();
+            this.btnMore = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pbTim = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.lbDuration = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbAlbum = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.menu = new RJCodeAdvance.RJControls.RJDropdownMenu(this.components);
+            this.helloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImg)).BeginInit();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbTim)).BeginInit();
+            this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -59,10 +65,10 @@ namespace MusicPlayer.View
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(26)))), ((int)(((byte)(31)))));
             this.tableLayoutPanel1.ColumnCount = 7;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.5F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.5F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutPanel1.Controls.Add(this.panel6, 0, 0);
@@ -90,7 +96,7 @@ namespace MusicPlayer.View
             this.panel6.Location = new System.Drawing.Point(30, 3);
             this.panel6.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(266, 61);
+            this.panel6.Size = new System.Drawing.Size(347, 61);
             this.panel6.TabIndex = 5;
             // 
             // lbArtist
@@ -133,7 +139,7 @@ namespace MusicPlayer.View
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(38)))), ((int)(((byte)(44)))));
-            this.panel5.Controls.Add(this.lbDuration);
+            this.panel5.Controls.Add(this.btnMore);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(685, 3);
             this.panel5.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
@@ -141,49 +147,60 @@ namespace MusicPlayer.View
             this.panel5.Size = new System.Drawing.Size(45, 61);
             this.panel5.TabIndex = 4;
             // 
-            // lbDuration
+            // btnMore
             // 
-            this.lbDuration.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbDuration.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDuration.ForeColor = System.Drawing.Color.White;
-            this.lbDuration.Location = new System.Drawing.Point(0, 18);
-            this.lbDuration.Name = "lbDuration";
-            this.lbDuration.Size = new System.Drawing.Size(45, 24);
-            this.lbDuration.TabIndex = 3;
-            this.lbDuration.Text = "duration";
-            this.lbDuration.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnMore.Location = new System.Drawing.Point(0, 10);
+            this.btnMore.Name = "btnMore";
+            this.btnMore.Size = new System.Drawing.Size(40, 38);
+            this.btnMore.TabIndex = 0;
+            this.btnMore.UseVisualStyleBackColor = true;
+            this.btnMore.Click += new System.EventHandler(this.btnMore_Click);
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(38)))), ((int)(((byte)(44)))));
             this.panel4.Controls.Add(this.pbTim);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(579, 3);
+            this.panel4.Location = new System.Drawing.Point(640, 3);
             this.panel4.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(106, 61);
+            this.panel4.Size = new System.Drawing.Size(45, 61);
             this.panel4.TabIndex = 3;
             // 
             // pbTim
             // 
             this.pbTim.BackgroundImage = global::MusicPlayer.Properties.Resources.icons8_love_24px;
             this.pbTim.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pbTim.Location = new System.Drawing.Point(33, 11);
+            this.pbTim.Location = new System.Drawing.Point(3, 8);
             this.pbTim.Name = "pbTim";
-            this.pbTim.Size = new System.Drawing.Size(46, 38);
+            this.pbTim.Size = new System.Drawing.Size(37, 38);
             this.pbTim.TabIndex = 0;
             this.pbTim.TabStop = false;
+            this.pbTim.Click += new System.EventHandler(this.pbTim_Click);
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(38)))), ((int)(((byte)(44)))));
+            this.panel3.Controls.Add(this.lbDuration);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(455, 3);
+            this.panel3.Location = new System.Drawing.Point(585, 3);
             this.panel3.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(124, 61);
+            this.panel3.Size = new System.Drawing.Size(55, 61);
             this.panel3.TabIndex = 2;
+            // 
+            // lbDuration
+            // 
+            this.lbDuration.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbDuration.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDuration.ForeColor = System.Drawing.Color.White;
+            this.lbDuration.Location = new System.Drawing.Point(-4, 18);
+            this.lbDuration.Name = "lbDuration";
+            this.lbDuration.Size = new System.Drawing.Size(55, 24);
+            this.lbDuration.TabIndex = 3;
+            this.lbDuration.Text = "duration";
+            this.lbDuration.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel1
             // 
@@ -210,10 +227,10 @@ namespace MusicPlayer.View
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(38)))), ((int)(((byte)(44)))));
             this.panel2.Controls.Add(this.lbAlbum);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(296, 3);
+            this.panel2.Location = new System.Drawing.Point(377, 3);
             this.panel2.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(159, 61);
+            this.panel2.Size = new System.Drawing.Size(208, 61);
             this.panel2.TabIndex = 1;
             // 
             // lbAlbum
@@ -224,7 +241,7 @@ namespace MusicPlayer.View
             this.lbAlbum.ForeColor = System.Drawing.Color.White;
             this.lbAlbum.Location = new System.Drawing.Point(0, 18);
             this.lbAlbum.Name = "lbAlbum";
-            this.lbAlbum.Size = new System.Drawing.Size(159, 24);
+            this.lbAlbum.Size = new System.Drawing.Size(208, 24);
             this.lbAlbum.TabIndex = 1;
             this.lbAlbum.Text = "album";
             this.lbAlbum.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -239,6 +256,30 @@ namespace MusicPlayer.View
             this.panel7.Size = new System.Drawing.Size(11, 61);
             this.panel7.TabIndex = 6;
             // 
+            // menu
+            // 
+            this.menu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(38)))), ((int)(((byte)(44)))));
+            this.menu.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menu.IsMainMenu = false;
+            this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.helloToolStripMenuItem});
+            this.menu.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+            this.menu.MenuItemHeight = 25;
+            this.menu.MenuItemTextColor = System.Drawing.Color.White;
+            this.menu.Name = "menu";
+            this.menu.PrimaryColor = System.Drawing.Color.Black;
+            this.menu.Size = new System.Drawing.Size(181, 52);
+            // 
+            // helloToolStripMenuItem
+            // 
+            this.helloToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.helloToolStripMenuItem.Image = global::MusicPlayer.Properties.Resources.icons8_love_24px;
+            this.helloToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.helloToolStripMenuItem.Name = "helloToolStripMenuItem";
+            this.helloToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.helloToolStripMenuItem.Text = "Hello";
+            this.helloToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
             // MediaList
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -252,9 +293,11 @@ namespace MusicPlayer.View
             this.panel5.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbTim)).EndInit();
+            this.panel3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.menu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -276,5 +319,8 @@ namespace MusicPlayer.View
         private System.Windows.Forms.Label lbAlbum;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.PictureBox pbTim;
+        private System.Windows.Forms.Button btnMore;
+        private RJCodeAdvance.RJControls.RJDropdownMenu menu;
+        private System.Windows.Forms.ToolStripMenuItem helloToolStripMenuItem;
     }
 }

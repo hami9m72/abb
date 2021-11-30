@@ -19,7 +19,9 @@ namespace MusicPlayer.Service
             // Add our custom headers
             requestMessage.Headers.Add("User-Agent", "PostmanRuntime/7.28.4");
             HttpResponseMessage response = await httpClient.SendAsync(requestMessage);
-            return JObject.Parse(await response.Content.ReadAsStringAsync());
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                return JObject.Parse(await response.Content.ReadAsStringAsync());
+            return null;
         }
 
         //public static async Task<Song> GetSongDetail(string songId)
@@ -91,19 +93,19 @@ namespace MusicPlayer.Service
         //    }
         //}
 
-        ////public static async Task<Streaming> GetSongStream(string songId)
-        ////{
-        ////    try
-        ////    {
-        ////        var data = await GetDataFromURL($"https://dat-zing-mp3-api.herokuapp.com/song/stream/{songId}");
-        ////        return JsonConvert.DeserializeObject<Streaming>(data.ToString());
-        ////    }
-        ////    catch (Exception ex)
-        ////    {
-        ////        Console.WriteLine(ex.Message);
-        ////        return null;
-        ////    }
-        ////}
+        //public static async Task<Streaming> GetSongStream(string songId)
+        //{
+        //    try
+        //    {
+        //        var data = await GetDataFromURL($"https://dat-zing-mp3-api.herokuapp.com/song/stream/{songId}");
+        //        return JsonConvert.DeserializeObject<Streaming>(data.ToString());
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.Message);
+        //        return null;
+        //    }
+        //}
 
         //public static async Task<List<Song>> GetSongs(List<string> lstID)
         //{
