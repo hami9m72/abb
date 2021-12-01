@@ -34,10 +34,15 @@ namespace MusicPlayer.Model
             return Convert.ToInt32(data["duration"].ToString());
         }
 
-
+        public override string GetEncodedId()
+        {
+            return data["encodeId"].ToString();
+        }
 
         public override string GetSrc()
         {
+            if (data["streamLink"] == null)
+                return "";
             return data["streamLink"].ToString();
         }
 
@@ -49,6 +54,14 @@ namespace MusicPlayer.Model
         public override string GetTitle()
         {
             return data["title"].ToString();
+        }
+
+        public override void SetSrc(string src)
+        {
+            if (GetSrc() == "")
+            {
+                data["streamLink"] = src;
+            }
         }
     }
 }

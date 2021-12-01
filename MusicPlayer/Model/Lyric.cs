@@ -15,6 +15,8 @@ namespace MusicPlayer.Model
         public List<string> defaultVBGUrls { get; set; }
         public int BGMode { get; set; }
 
+        public bool hasLocalLyric = false;
+        public string localLyric = "";
     }
 
     public class Word

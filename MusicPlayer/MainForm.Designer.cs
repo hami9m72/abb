@@ -60,18 +60,20 @@ namespace MusicPlayer
             this.btnBack = new RJCodeAdvance.RJControls.RJCircularPictureBox();
             this.btnPlay = new RJCodeAdvance.RJControls.RJCircularPictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.panelTitle1 = new System.Windows.Forms.Panel();
             this.panelContainer = new System.Windows.Forms.Panel();
             this.tabPageMedia = new ReaLTaiizor.Controls.HopeTabPage();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPlaying = new System.Windows.Forms.TabPage();
             this.panelPlaying = new System.Windows.Forms.Panel();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.tabLyric = new System.Windows.Forms.TabPage();
+            this.panelTitle2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.btnMax = new System.Windows.Forms.Button();
+            this.btnMin = new System.Windows.Forms.Button();
+            this.rtbLyric = new System.Windows.Forms.RichTextBox();
+            this.timerLyric = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.tlpMedia.SuspendLayout();
             this.panelSongInfo.SuspendLayout();
@@ -89,10 +91,11 @@ namespace MusicPlayer
             ((System.ComponentModel.ISupportInitialize)(this.btnBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPlay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.panel3.SuspendLayout();
+            this.panelTitle1.SuspendLayout();
             this.panelContainer.SuspendLayout();
             this.tabPageMedia.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.tabPlaying.SuspendLayout();
+            this.tabLyric.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -322,7 +325,7 @@ namespace MusicPlayer
             // 
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Controls.Add(this.panel4);
+            this.panel2.Controls.Add(this.panelTitle2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
@@ -551,16 +554,17 @@ namespace MusicPlayer
             this.pictureBox2.TabIndex = 4;
             this.pictureBox2.TabStop = false;
             // 
-            // panel3
+            // panelTitle1
             // 
-            this.panel3.Controls.Add(this.button5);
-            this.panel3.Controls.Add(this.button4);
-            this.panel3.Controls.Add(this.button3);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(212, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(749, 25);
-            this.panel3.TabIndex = 3;
+            this.panelTitle1.Controls.Add(this.btnMin);
+            this.panelTitle1.Controls.Add(this.btnMax);
+            this.panelTitle1.Controls.Add(this.btnExit);
+            this.panelTitle1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTitle1.Location = new System.Drawing.Point(212, 0);
+            this.panelTitle1.Name = "panelTitle1";
+            this.panelTitle1.Size = new System.Drawing.Size(749, 25);
+            this.panelTitle1.TabIndex = 3;
+            this.panelTitle1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTitleBar_MouseDown);
             // 
             // panelContainer
             // 
@@ -575,8 +579,8 @@ namespace MusicPlayer
             // tabPageMedia
             // 
             this.tabPageMedia.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(28)))), ((int)(((byte)(34)))));
-            this.tabPageMedia.Controls.Add(this.tabPage1);
-            this.tabPageMedia.Controls.Add(this.tabPage2);
+            this.tabPageMedia.Controls.Add(this.tabPlaying);
+            this.tabPageMedia.Controls.Add(this.tabLyric);
             this.tabPageMedia.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabPageMedia.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.tabPageMedia.ForeColorA = System.Drawing.Color.White;
@@ -593,17 +597,18 @@ namespace MusicPlayer
             this.tabPageMedia.ThemeColorB = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(64)))), ((int)(((byte)(158)))), ((int)(((byte)(255)))));
             this.tabPageMedia.TitleTextState = ReaLTaiizor.Controls.HopeTabPage.TextState.Normal;
             this.tabPageMedia.Visible = false;
+            this.tabPageMedia.SelectedIndexChanged += new System.EventHandler(this.tabPageMedia_SelectedIndexChanged);
             // 
-            // tabPage1
+            // tabPlaying
             // 
-            this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(28)))), ((int)(((byte)(34)))));
-            this.tabPage1.Controls.Add(this.panelPlaying);
-            this.tabPage1.Location = new System.Drawing.Point(0, 40);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(749, 449);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Danh sách phát";
+            this.tabPlaying.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(28)))), ((int)(((byte)(34)))));
+            this.tabPlaying.Controls.Add(this.panelPlaying);
+            this.tabPlaying.Location = new System.Drawing.Point(0, 40);
+            this.tabPlaying.Name = "tabPlaying";
+            this.tabPlaying.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPlaying.Size = new System.Drawing.Size(749, 449);
+            this.tabPlaying.TabIndex = 0;
+            this.tabPlaying.Text = "Danh sách phát";
             // 
             // panelPlaying
             // 
@@ -614,23 +619,25 @@ namespace MusicPlayer
             this.panelPlaying.Size = new System.Drawing.Size(743, 443);
             this.panelPlaying.TabIndex = 0;
             // 
-            // tabPage2
+            // tabLyric
             // 
-            this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(28)))), ((int)(((byte)(34)))));
-            this.tabPage2.Location = new System.Drawing.Point(0, 40);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(749, 474);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Lời bài hát";
+            this.tabLyric.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(28)))), ((int)(((byte)(34)))));
+            this.tabLyric.Controls.Add(this.rtbLyric);
+            this.tabLyric.Location = new System.Drawing.Point(0, 40);
+            this.tabLyric.Name = "tabLyric";
+            this.tabLyric.Padding = new System.Windows.Forms.Padding(3);
+            this.tabLyric.Size = new System.Drawing.Size(749, 449);
+            this.tabLyric.TabIndex = 1;
+            this.tabLyric.Text = "Lời bài hát";
             // 
-            // panel4
+            // panelTitle2
             // 
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(212, 25);
-            this.panel4.TabIndex = 0;
+            this.panelTitle2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTitle2.Location = new System.Drawing.Point(0, 0);
+            this.panelTitle2.Name = "panelTitle2";
+            this.panelTitle2.Size = new System.Drawing.Size(212, 25);
+            this.panelTitle2.TabIndex = 0;
+            this.panelTitle2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTitleBar_MouseDown);
             // 
             // label1
             // 
@@ -653,41 +660,67 @@ namespace MusicPlayer
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             // 
-            // button3
+            // btnExit
             // 
-            this.button3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(699, 0);
-            this.button3.Margin = new System.Windows.Forms.Padding(0);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(50, 25);
-            this.button3.TabIndex = 0;
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnExit.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.Image = global::MusicPlayer.Properties.Resources.icons8_delete_16px;
+            this.btnExit.Location = new System.Drawing.Point(699, 0);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(0);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(50, 25);
+            this.btnExit.TabIndex = 0;
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // button4
+            // btnMax
             // 
-            this.button4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(649, 0);
-            this.button4.Margin = new System.Windows.Forms.Padding(0);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(50, 25);
-            this.button4.TabIndex = 1;
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnMax.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnMax.FlatAppearance.BorderSize = 0;
+            this.btnMax.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMax.Image = global::MusicPlayer.Properties.Resources.icons8_rectangular_16px_1;
+            this.btnMax.Location = new System.Drawing.Point(649, 0);
+            this.btnMax.Margin = new System.Windows.Forms.Padding(0);
+            this.btnMax.Name = "btnMax";
+            this.btnMax.Size = new System.Drawing.Size(50, 25);
+            this.btnMax.TabIndex = 1;
+            this.btnMax.UseVisualStyleBackColor = true;
+            this.btnMax.Click += new System.EventHandler(this.btnMax_Click);
             // 
-            // button5
+            // btnMin
             // 
-            this.button5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Location = new System.Drawing.Point(599, 0);
-            this.button5.Margin = new System.Windows.Forms.Padding(0);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(50, 25);
-            this.button5.TabIndex = 2;
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnMin.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnMin.FlatAppearance.BorderSize = 0;
+            this.btnMin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMin.Image = global::MusicPlayer.Properties.Resources.icons8_minus_16px;
+            this.btnMin.Location = new System.Drawing.Point(599, 0);
+            this.btnMin.Margin = new System.Windows.Forms.Padding(0);
+            this.btnMin.Name = "btnMin";
+            this.btnMin.Size = new System.Drawing.Size(50, 25);
+            this.btnMin.TabIndex = 2;
+            this.btnMin.UseVisualStyleBackColor = true;
+            this.btnMin.Click += new System.EventHandler(this.btnMin_Click);
+            // 
+            // rtbLyric
+            // 
+            this.rtbLyric.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(28)))), ((int)(((byte)(34)))));
+            this.rtbLyric.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtbLyric.DetectUrls = false;
+            this.rtbLyric.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtbLyric.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtbLyric.ForeColor = System.Drawing.Color.White;
+            this.rtbLyric.Location = new System.Drawing.Point(3, 3);
+            this.rtbLyric.Name = "rtbLyric";
+            this.rtbLyric.ReadOnly = true;
+            this.rtbLyric.Size = new System.Drawing.Size(743, 443);
+            this.rtbLyric.TabIndex = 1;
+            this.rtbLyric.Text = "";
+            // 
+            // timerLyric
+            // 
+            this.timerLyric.Interval = 200;
+            this.timerLyric.Tick += new System.EventHandler(this.timerLyric_Tick);
             // 
             // MainForm
             // 
@@ -695,13 +728,15 @@ namespace MusicPlayer
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(28)))), ((int)(((byte)(34)))));
             this.ClientSize = new System.Drawing.Size(961, 600);
             this.Controls.Add(this.panelContainer);
-            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panelTitle1);
             this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.panel1);
+            this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.Resize += new System.EventHandler(this.MainForm_Resize);
             this.panel1.ResumeLayout(false);
             this.tlpMedia.ResumeLayout(false);
             this.panelSongInfo.ResumeLayout(false);
@@ -722,10 +757,11 @@ namespace MusicPlayer
             ((System.ComponentModel.ISupportInitialize)(this.btnBack)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPlay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.panel3.ResumeLayout(false);
+            this.panelTitle1.ResumeLayout(false);
             this.panelContainer.ResumeLayout(false);
             this.tabPageMedia.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
+            this.tabPlaying.ResumeLayout(false);
+            this.tabLyric.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -764,15 +800,17 @@ namespace MusicPlayer
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Panel panelTitle2;
+        private System.Windows.Forms.Panel panelTitle1;
+        private System.Windows.Forms.Button btnMin;
+        private System.Windows.Forms.Button btnMax;
+        private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Panel panelContainer;
         private ReaLTaiizor.Controls.HopeTabPage tabPageMedia;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPlaying;
         private System.Windows.Forms.Panel panelPlaying;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabLyric;
+        private System.Windows.Forms.RichTextBox rtbLyric;
+        private System.Windows.Forms.Timer timerLyric;
     }
 }

@@ -10,6 +10,8 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TagLib;
+using TagLib.Id3v2;
 
 namespace MusicPlayer.View
 {
@@ -18,6 +20,7 @@ namespace MusicPlayer.View
         public Song song;
         Playlist parent;
         int idx;
+        string localpath = "";
         public MediaSearch()
         {
             InitializeComponent();
@@ -43,11 +46,22 @@ namespace MusicPlayer.View
             var dialog = new FolderBrowserDialog();
             if (dialog.ShowDialog() == DialogResult.OK)
             {
+                localpath = dialog.SelectedPath + "\\" + song.GetTitle() + "-" + song.GetArtistNameJoined() + ".mp3";
                 using (var client = new WebClient())
                 {
-                    client.DownloadFileAsync(new Uri(song.GetSrc()), dialog.SelectedPath + "\\" + song.GetTitle() + "-" + song.GetArtistNameJoined() + ".mp3");
+                    client.DownloadFileCompleted += Client_DownloadFileCompleted;
+                    client.DownloadFileAsync(new Uri(song.GetSrc()), localpath);
                 }
             }
+        }
+
+        private void Client_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
+        {
+            var tfile = File.Create(localpath);
+            TagLib.Id3v2.Tag t = (TagLib.Id3v2.Tag)tfile.GetTag(TagTypes.Id3v2); // You can add a true parameter to the GetTag function if the file doesn't already have a tag.
+            PrivateFrame p = PrivateFrame.Get(t, "EncodedId", true);
+            p.PrivateData = Encoding.Unicode.GetBytes(song.GetEncodedId());
+            tfile.Save(); // This is optional.
         }
 
         private void btnPlay_Click(object sender, EventArgs e)

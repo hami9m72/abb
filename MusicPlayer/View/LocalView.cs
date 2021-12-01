@@ -11,6 +11,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TagLib;
+using TagLib.Id3v2;
 
 namespace MusicPlayer.View
 {

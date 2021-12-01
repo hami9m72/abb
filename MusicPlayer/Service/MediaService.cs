@@ -79,19 +79,19 @@ namespace MusicPlayer.Service
         //    }
         //}
 
-        //public static async Task<Lyric> GetSongLyric(string songId)
-        //{
-        //    try
-        //    {
-        //        var data = await GetDataFromURL($"https://dat-zing-mp3-api.herokuapp.com/song/lyric/{songId}");
-        //        return JsonConvert.DeserializeObject<Lyric>(data.ToString());
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine(ex.Message);
-        //        return null;
-        //    }
-        //}
+        public static async Task<Lyric> GetSongLyric(string songId)
+        {
+            try
+            {
+                var data = await GetDataFromURL($"https://dat-zing-mp3-api.herokuapp.com/song/lyric/{songId}");
+                return JsonConvert.DeserializeObject<Lyric>(data.ToString());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
 
         //public static async Task<Streaming> GetSongStream(string songId)
         //{
