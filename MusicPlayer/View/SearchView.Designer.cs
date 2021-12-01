@@ -30,23 +30,58 @@ namespace MusicPlayer.View
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtSearch = new RJCodeAdvance.RJControls.RJTextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.panelSearch = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.txtSearch = new RJCodeAdvance.RJControls.RJTextBox();
+            this.panelSearch = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnSearch);
             this.panel1.Controls.Add(this.txtSearch);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(749, 67);
             this.panel1.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(16, 23);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(76, 21);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Tìm kiếm";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(633, 25);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "Load More";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.btnSearch.BackgroundImage = global::MusicPlayer.Properties.Resources.icons8_search_24px;
+            this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.Location = new System.Drawing.Point(346, 22);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(30, 26);
+            this.btnSearch.TabIndex = 1;
+            this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // txtSearch
             // 
@@ -55,30 +90,21 @@ namespace MusicPlayer.View
             this.txtSearch.BorderFocusColor = System.Drawing.Color.HotPink;
             this.txtSearch.BorderRadius = 0;
             this.txtSearch.BorderSize = 2;
-            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtSearch.Location = new System.Drawing.Point(26, 16);
+            this.txtSearch.Location = new System.Drawing.Point(99, 22);
             this.txtSearch.Margin = new System.Windows.Forms.Padding(4);
             this.txtSearch.Multiline = false;
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txtSearch.Padding = new System.Windows.Forms.Padding(10, 2, 10, 2);
             this.txtSearch.PasswordChar = false;
             this.txtSearch.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txtSearch.PlaceholderText = "";
-            this.txtSearch.Size = new System.Drawing.Size(250, 29);
+            this.txtSearch.PlaceholderText = "Nhập tên bài hát hoặc nghệ sĩ";
+            this.txtSearch.Size = new System.Drawing.Size(250, 26);
             this.txtSearch.TabIndex = 0;
             this.txtSearch.Texts = "";
             this.txtSearch.UnderlinedStyle = false;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(283, 19);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
             // 
             // panelSearch
             // 
@@ -89,15 +115,6 @@ namespace MusicPlayer.View
             this.panelSearch.Name = "panelSearch";
             this.panelSearch.Size = new System.Drawing.Size(749, 425);
             this.panelSearch.TabIndex = 1;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(388, 19);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Load More";
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // SearchView
             // 
@@ -110,6 +127,7 @@ namespace MusicPlayer.View
             this.Name = "SearchView";
             this.Size = new System.Drawing.Size(749, 492);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -118,8 +136,9 @@ namespace MusicPlayer.View
 
         private System.Windows.Forms.Panel panel1;
         private RJCodeAdvance.RJControls.RJTextBox txtSearch;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Panel panelSearch;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label1;
     }
 }

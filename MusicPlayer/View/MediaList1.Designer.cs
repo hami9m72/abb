@@ -286,6 +286,7 @@ namespace MusicPlayer.View
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "MediaList1";
             this.Size = new System.Drawing.Size(741, 67);
+            this.Load += new System.EventHandler(this.MediaList1_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();

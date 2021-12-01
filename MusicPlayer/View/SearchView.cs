@@ -28,7 +28,9 @@ namespace MusicPlayer.View
             search = new Playlist("search");
         }
 
-        private async void button1_Click(object sender, EventArgs e)
+
+
+        private async void btnSearch_Click(object sender, EventArgs e)
         {
             panelSearch.Controls.Clear();
             string keyword = txtSearch.Texts.Trim();
@@ -46,21 +48,16 @@ namespace MusicPlayer.View
                         search.files.Add(song);
                     }
                     search.files.Reverse();
-
-
-                    //int total = Convert.ToInt32(data["total"].ToString());
-                    //if (total > 100)
-                    //    total = 100;
-
-
-                    //int i = Convert.ToInt32(data["delItem"].ToString());
-                    //while (i < total)
-                    //{
-                    //    var data2 = await MediaService.GetDataFromURL($"http://localhost:3000/song/search2?q={keyword}&page={++page}");
-
-                    //}
                 }
 
+            }
+        }
+
+        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return)
+            {
+                btnSearch_Click(null, null);
             }
         }
     }

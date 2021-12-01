@@ -19,6 +19,8 @@ namespace MusicPlayer.View
         public Playlist local;
         public int idx;
         public LocalView parent;
+
+
         public MediaList1()
         {
             InitializeComponent();
@@ -30,6 +32,9 @@ namespace MusicPlayer.View
             this.song = s;
             this.local = local;
             this.idx = idx;
+        }
+        private void MediaList1_Load(object sender, EventArgs e)
+        {
             lbName.Text = song.GetTitle();
             lbArtist.Text = song.GetArtistNameJoined();
             lbAlbum.Text = song.GetAlbumName();
@@ -39,9 +44,11 @@ namespace MusicPlayer.View
                 pbImg.BackgroundImage = song.GetThumbImg() as Image;
                 pbImg.BackgroundImageLayout = ImageLayout.Stretch;
             }
-
+            if (song.isLiked)
+                pbTim.BackgroundImage = Properties.Resources.icons8_heart_24px;
+            else
+                pbTim.BackgroundImage = Properties.Resources.icons8_love_24px;
         }
-
         private void pbImg_Click(object sender, EventArgs e)
         {
             if (MainForm.Instance.isPlaying != null)
@@ -91,19 +98,35 @@ namespace MusicPlayer.View
             pbImg.Image = null;
         }
 
-        private void ChangeColorLove(bool isLiked)
+        public void UpdateLikedUI()
         {
-
+            if (song.isLiked)
+            {
+                MainForm.Instance.favorite.files.Add(song);
+                pbTim.BackgroundImage = Properties.Resources.icons8_heart_24px;
+            }
+            else
+            {
+                MainForm.Instance.favorite.files.Remove(song);
+                pbTim.BackgroundImage = Properties.Resources.icons8_love_24px;
+            }
         }
 
         private void pbTim_Click(object sender, EventArgs e)
         {
-
+            song.isLiked = !song.isLiked;
+            UpdateLikedUI();
+            if (MainForm.Instance.playingOrder != null)
+            {
+                MainForm.Instance.UpdateLikedSong(MainForm.Instance.playingOrder[idx]);
+            }
         }
 
         private void btnMore_Click(object sender, EventArgs e)
         {
             menu.Show(btnMore, 0, btnMore.Height);
         }
+
+
     }
 }

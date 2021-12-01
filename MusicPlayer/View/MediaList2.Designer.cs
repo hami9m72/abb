@@ -31,6 +31,7 @@ namespace MusicPlayer.View
         {
             this.components = new System.ComponentModel.Container();
             this.menu = new RJCodeAdvance.RJControls.RJDropdownMenu(this.components);
+            this.helloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel7 = new System.Windows.Forms.Panel();
             this.lbAlbum = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -39,25 +40,24 @@ namespace MusicPlayer.View
             this.lbDuration = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.pbTim = new System.Windows.Forms.PictureBox();
             this.btnMore = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.lbArtist = new System.Windows.Forms.Label();
             this.lbName = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pbImg = new System.Windows.Forms.PictureBox();
-            this.pbTim = new System.Windows.Forms.PictureBox();
-            this.helloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.menu.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbTim)).BeginInit();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbTim)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menu
@@ -73,6 +73,16 @@ namespace MusicPlayer.View
             this.menu.Name = "menu";
             this.menu.PrimaryColor = System.Drawing.Color.Black;
             this.menu.Size = new System.Drawing.Size(117, 30);
+            // 
+            // helloToolStripMenuItem
+            // 
+            this.helloToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.helloToolStripMenuItem.Image = global::MusicPlayer.Properties.Resources.icons8_love_24px;
+            this.helloToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.helloToolStripMenuItem.Name = "helloToolStripMenuItem";
+            this.helloToolStripMenuItem.Size = new System.Drawing.Size(116, 26);
+            this.helloToolStripMenuItem.Text = "Hello";
+            this.helloToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // panel7
             // 
@@ -163,6 +173,17 @@ namespace MusicPlayer.View
             this.panel4.Size = new System.Drawing.Size(45, 61);
             this.panel4.TabIndex = 3;
             // 
+            // pbTim
+            // 
+            this.pbTim.BackgroundImage = global::MusicPlayer.Properties.Resources.icons8_love_24px;
+            this.pbTim.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pbTim.Location = new System.Drawing.Point(3, 8);
+            this.pbTim.Name = "pbTim";
+            this.pbTim.Size = new System.Drawing.Size(37, 38);
+            this.pbTim.TabIndex = 0;
+            this.pbTim.TabStop = false;
+            this.pbTim.Click += new System.EventHandler(this.pbTim_Click);
+            // 
             // btnMore
             // 
             this.btnMore.Location = new System.Drawing.Point(0, 10);
@@ -217,6 +238,21 @@ namespace MusicPlayer.View
             this.panel6.Size = new System.Drawing.Size(346, 61);
             this.panel6.TabIndex = 5;
             // 
+            // pbImg
+            // 
+            this.pbImg.BackgroundImage = global::MusicPlayer.Properties.Resources.icons8_music_48px_1;
+            this.pbImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pbImg.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pbImg.Location = new System.Drawing.Point(0, 0);
+            this.pbImg.Name = "pbImg";
+            this.pbImg.Size = new System.Drawing.Size(66, 61);
+            this.pbImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbImg.TabIndex = 1;
+            this.pbImg.TabStop = false;
+            this.pbImg.Click += new System.EventHandler(this.pbImg_Click);
+            this.pbImg.MouseEnter += new System.EventHandler(this.pbImg_MouseEnter);
+            this.pbImg.MouseLeave += new System.EventHandler(this.pbImg_MouseLeave);
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(26)))), ((int)(((byte)(31)))));
@@ -243,41 +279,6 @@ namespace MusicPlayer.View
             this.tableLayoutPanel1.Size = new System.Drawing.Size(741, 67);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
-            // pbImg
-            // 
-            this.pbImg.BackgroundImage = global::MusicPlayer.Properties.Resources.icons8_music_48px_1;
-            this.pbImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pbImg.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pbImg.Location = new System.Drawing.Point(0, 0);
-            this.pbImg.Name = "pbImg";
-            this.pbImg.Size = new System.Drawing.Size(66, 61);
-            this.pbImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pbImg.TabIndex = 1;
-            this.pbImg.TabStop = false;
-            this.pbImg.Click += new System.EventHandler(this.pbImg_Click);
-            this.pbImg.MouseEnter += new System.EventHandler(this.pbImg_MouseEnter);
-            this.pbImg.MouseLeave += new System.EventHandler(this.pbImg_MouseLeave);
-            // 
-            // pbTim
-            // 
-            this.pbTim.BackgroundImage = global::MusicPlayer.Properties.Resources.icons8_love_24px;
-            this.pbTim.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pbTim.Location = new System.Drawing.Point(3, 8);
-            this.pbTim.Name = "pbTim";
-            this.pbTim.Size = new System.Drawing.Size(37, 38);
-            this.pbTim.TabIndex = 0;
-            this.pbTim.TabStop = false;
-            // 
-            // helloToolStripMenuItem
-            // 
-            this.helloToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.helloToolStripMenuItem.Image = global::MusicPlayer.Properties.Resources.icons8_love_24px;
-            this.helloToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.helloToolStripMenuItem.Name = "helloToolStripMenuItem";
-            this.helloToolStripMenuItem.Size = new System.Drawing.Size(116, 26);
-            this.helloToolStripMenuItem.Text = "Hello";
-            this.helloToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
             // MediaList2
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -291,12 +292,12 @@ namespace MusicPlayer.View
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbTim)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbTim)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

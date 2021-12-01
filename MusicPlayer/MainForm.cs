@@ -21,16 +21,19 @@ namespace MusicPlayer
     {
         private static MainForm instance;
         public static MainForm Instance { get => instance; }
+
         public Playlist isPlaying;
         public List<int> playingOrder;
         public int counter = 0;
+
+        public Playlist favorite;
 
         public MainForm()
         {
             InitializeComponent();
             instance = this;
             btnLocal_Click(btnLocal, null);
-
+            favorite = new Playlist("fav");
         }
         #region Media player
         public void PlayMedia()
@@ -137,10 +140,22 @@ namespace MusicPlayer
         {
             if (isPlaying != null && isPlaying.files.Count > 0)
             {
+                int old = counter;
                 counter++;
-                if (counter > isPlaying.files.Count)
+                if (counter >= isPlaying.files.Count)
                     counter = 0;
                 PlayMedia();
+                var ctls2 = panelPlaying.Controls;
+                (ctls2[ctls2.Count - 1 - playingOrder[old]] as MediaList2).DeActiveSongUI();
+                (ctls2[ctls2.Count - 1 - playingOrder[counter]] as MediaList2).ActiveSongUI();
+                if (isPlaying.name == "local")
+                {
+                    var ctls = (panelContainer.Controls["LocalView"] as LocalView).GetPanelSong().Controls;
+                    (ctls[ctls.Count - 1 - playingOrder[old]] as MediaList1).DeActiveSongUI();
+                    (ctls[ctls.Count - 1 - playingOrder[counter]] as MediaList1).ActiveSongUI();
+                }
+
+
             }
 
         }
@@ -149,10 +164,20 @@ namespace MusicPlayer
         {
             if (isPlaying != null && isPlaying.files.Count > 0)
             {
+                int old = counter;
                 counter--;
                 if (counter < 0)
                     counter = isPlaying.files.Count - 1;
                 PlayMedia();
+                var ctls2 = panelPlaying.Controls;
+                (ctls2[ctls2.Count - 1 - playingOrder[old]] as MediaList2).DeActiveSongUI();
+                (ctls2[ctls2.Count - 1 - playingOrder[counter]] as MediaList2).ActiveSongUI();
+                if (isPlaying.name == "local")
+                {
+                    var ctls = (panelContainer.Controls["LocalView"] as LocalView).GetPanelSong().Controls;
+                    (ctls[ctls.Count - 1 - playingOrder[old]] as MediaList1).DeActiveSongUI();
+                    (ctls[ctls.Count - 1 - playingOrder[counter]] as MediaList1).ActiveSongUI();
+                }
             }
         }
         private void btnShuffer_Click(object sender, EventArgs e)
@@ -216,20 +241,7 @@ namespace MusicPlayer
             ActiveMenu(sender as Button, view);
         }
 
-        private void btnHome_Click(object sender, EventArgs e)
-        {
-            ClearMenu();
 
-            HomeView view;
-            if (!panelContainer.Controls.ContainsKey("HomeView"))
-            {
-                view = new HomeView();
-                panelContainer.Controls.Add(view);
-            }
-            else
-                view = panelContainer.Controls["HomeView"] as HomeView;
-            ActiveMenu(sender as Button, view);
-        }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -263,7 +275,30 @@ namespace MusicPlayer
             NormalPlaying();
             Helper.Shuffle(playingOrder);
         }
+        public Panel GetPanelPlaying()
+        {
+            return panelPlaying;
+        }
+        public void UpdateLikedSong(int id)
+        {
+            if (panelPlaying.Controls.Count > 0)
+            {
+                var mediaView = panelPlaying.Controls[id] as MediaList2;
+                mediaView.UpdateLikedUI();
+            }
+        }
 
+        public void UpdateLikedSong2(int id)
+        {
+            var view = panelContainer.Controls["LocalView"] as LocalView;
+            var ctls = view.GetPanelSong().Controls;
+            if (ctls.Count > 0)
+            {
+                var mediaView = ctls[ctls.Count - 1 - id] as MediaList1;
+                mediaView.UpdateLikedUI();
+            }
+
+        }
 
         public void LoadViewPlaying()
         {
