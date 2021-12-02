@@ -156,8 +156,8 @@ namespace MusicPlayer
                     counter = 0;
                 PlayMedia();
                 var ctls2 = panelPlaying.Controls;
-                (ctls2[ctls2.Count - 1 - playingOrder[old]] as MediaList2).DeActiveSongUI();
-                (ctls2[ctls2.Count - 1 - playingOrder[counter]] as MediaList2).ActiveSongUI();
+                (ctls2[ctls2.Count - 1 - old] as MediaList2).DeActiveSongUI();
+                (ctls2[ctls2.Count - 1 - counter] as MediaList2).ActiveSongUI();
                 if (isPlaying.name == "local")
                 {
                     var ctls = (panelContainer.Controls["LocalView"] as LocalView).GetPanelSong().Controls;
@@ -179,54 +179,61 @@ namespace MusicPlayer
                 if (counter < 0)
                     counter = isPlaying.files.Count - 1;
                 PlayMedia();
-                var ctls2 = panelPlaying.Controls;
-                (ctls2[ctls2.Count - 1 - playingOrder[old]] as MediaList2).DeActiveSongUI();
-                (ctls2[ctls2.Count - 1 - playingOrder[counter]] as MediaList2).ActiveSongUI();
-                if (isPlaying.name == "local")
-                {
-                    var ctls = (panelContainer.Controls["LocalView"] as LocalView).GetPanelSong().Controls;
-                    (ctls[ctls.Count - 1 - playingOrder[old]] as MediaList1).DeActiveSongUI();
-                    (ctls[ctls.Count - 1 - playingOrder[counter]] as MediaList1).ActiveSongUI();
-                }
+                UpdateIsPlayingSongUI(old, counter);
             }
         }
         private void btnShuffer_Click(object sender, EventArgs e)
         {
             if (isPlaying != null && isPlaying.files.Count > 0)
             {
+
                 if (btnShuffer.Tag.ToString() == "f")
                 {
-                    ShufferPlaying();
-                    LoadViewPlaying();
+                    int old = playingOrder[counter];
+                    ShufferPlaying(playingOrder[counter]);
                     counter = 0;
-                    PlayMedia();
+                    LoadViewPlaying();
+                    var ctls2 = panelPlaying.Controls;
+                    (ctls2[ctls2.Count - 1] as MediaList2).ActiveSongUI();
+                    (ctls2[ctls2.Count - 1 - old] as MediaList2).DeActiveSongUI();
+                    //PlayMedia();
                     btnShuffer.BackColor = Color.FromArgb(27, 28, 34);
                     btnShuffer.BorderSize = 1;
                     btnShuffer.Tag = "t";
                 }
                 else
                 {
-                    NormalPlaying();
-                    LoadViewPlaying();
+                    NormalPlaying(counter);
                     counter = 0;
-                    PlayMedia();
+                    LoadViewPlaying();
+                    //PlayMedia();
 
                     btnShuffer.BackColor = Color.FromArgb(15, 15, 16);
                     btnShuffer.BorderSize = 0;
                     btnShuffer.Tag = "f";
                 }
-
-
-
             }
         }
 
+        private void UpdateIsPlayingSongUI(int oldVal, int newVal)
+        {
+            var ctls2 = panelPlaying.Controls;
+            (ctls2[ctls2.Count - 1 - playingOrder[oldVal]] as MediaList2).DeActiveSongUI();
+            (ctls2[ctls2.Count - 1 - playingOrder[newVal]] as MediaList2).ActiveSongUI();
+            if (isPlaying.name == "local")
+            {
+                var ctls = (panelContainer.Controls["LocalView"] as LocalView).GetPanelSong().Controls;
+                (ctls[ctls.Count - 1 - playingOrder[oldVal]] as MediaList1).DeActiveSongUI();
+                (ctls[ctls.Count - 1 - playingOrder[newVal]] as MediaList1).ActiveSongUI();
+            }
+        }
 
         #endregion
 
         #region Menu
         private void ClearMenu()
         {
+
             foreach (Button menuButton in panelMenu.Controls.OfType<Button>())
                 menuButton.BackColor = Color.FromArgb(25, 26, 31);
         }
@@ -252,7 +259,6 @@ namespace MusicPlayer
         }
 
 
-
         private void btnSearch_Click(object sender, EventArgs e)
         {
             ClearMenu();
@@ -266,6 +272,49 @@ namespace MusicPlayer
                 view = panelContainer.Controls["SearchView"] as SearchView;
             ActiveMenu(sender as Button, view);
         }
+
+        private void btnFav_Click(object sender, EventArgs e)
+        {
+            ClearMenu();
+            FavoriteView view;
+            if (!panelContainer.Controls.ContainsKey("FavoriteView"))
+            {
+                view = new FavoriteView();
+                panelContainer.Controls.Add(view);
+            }
+            else
+                view = panelContainer.Controls["FavoriteView"] as FavoriteView;
+            ActiveMenu(sender as Button, view);
+        }
+
+        private void btnSetting_Click(object sender, EventArgs e)
+        {
+            ClearMenu();
+            SettingView view;
+            if (!panelContainer.Controls.ContainsKey("SettingView"))
+            {
+                view = new SettingView();
+                panelContainer.Controls.Add(view);
+            }
+            else
+                view = panelContainer.Controls["SettingView"] as SettingView;
+            ActiveMenu(sender as Button, view);
+        }
+
+        private void btnKaraoke_Click(object sender, EventArgs e)
+        {
+            ClearMenu();
+            KaraokeView view;
+            if (!panelContainer.Controls.ContainsKey("KaraokeView"))
+            {
+                view = new KaraokeView();
+                panelContainer.Controls.Add(view);
+            }
+            else
+                view = panelContainer.Controls["KaraokeView"] as KaraokeView;
+            ActiveMenu(sender as Button, view);
+
+        }
         #endregion
 
         #region List playing
@@ -276,14 +325,31 @@ namespace MusicPlayer
                 tabPageMedia.BringToFront();
         }
 
-        public void NormalPlaying()
+        public void NormalPlaying(int st = -1)
         {
-            playingOrder = Enumerable.Range(0, isPlaying.files.Count).ToList();
+            if (st != -1)
+            {
+                int old = playingOrder[st];
+                playingOrder = Enumerable.Range(0, isPlaying.files.Count).Where(i => i != old).ToList();
+                playingOrder.Insert(0, old);
+            }
+            else
+                playingOrder = Enumerable.Range(0, isPlaying.files.Count).ToList();
         }
-        public void ShufferPlaying()
+        public void ShufferPlaying(int st = -1)
         {
-            NormalPlaying();
-            Helper.Shuffle(playingOrder);
+            if (st != -1)
+            {
+                int old = playingOrder[st];
+                playingOrder = Enumerable.Range(0, isPlaying.files.Count).Where(i => i != old).ToList();
+                Helper.Shuffle(playingOrder);
+                playingOrder.Insert(0, old);
+            }
+            else
+            {
+                NormalPlaying();
+                Helper.Shuffle(playingOrder);
+            }
         }
         public Panel GetPanelPlaying()
         {
@@ -316,7 +382,7 @@ namespace MusicPlayer
             for (int i = playingOrder.Count - 1; i > -1; i--)
             {
                 Song song = isPlaying.files[playingOrder[i]];
-                var view = new MediaList2(song, i);
+                var view = new MediaList2(song, playingOrder[i]);
                 view.Dock = DockStyle.Top;
                 panelPlaying.Controls.Add(view);
             }
@@ -498,6 +564,7 @@ namespace MusicPlayer
                 Lyric lyric = await isPlaying.files[playingOrder[counter]].GetLyric();
                 if (lyric != null)
                 {
+                    rtbLyric.Text = "";
                     if (lyric.hasLocalLyric)
                     {
                         rtbLyric.AppendText(lyric.localLyric);

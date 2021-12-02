@@ -120,6 +120,10 @@ namespace MusicPlayer.View
             {
                 MainForm.Instance.UpdateLikedSong(MainForm.Instance.playingOrder[idx]);
             }
+            if (FavoriteView.Instance != null)
+            {
+                FavoriteView.Instance.ReloadView();
+            }
         }
 
         private void btnMore_Click(object sender, EventArgs e)

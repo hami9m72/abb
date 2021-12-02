@@ -36,19 +36,27 @@ namespace MusicPlayer.View
             string keyword = txtSearch.Texts.Trim();
             if (keyword != "")
             {
-                var data = await MediaService.GetDataFromURL($"http://localhost:3000/song/search2?q={keyword}&page={page}");
-                if (data != null)
+                try
                 {
-                    for (int i = data["items"].Count() - 1; i > -1; i--)
+                    var data = await MediaService.GetDataFromURL($"http://localhost:3000/song/search2?q={keyword}&page={page}");
+                    if (data != null)
                     {
-                        Song song = new SongOnline(data["items"][i] as JObject);
-                        var view = new MediaSearch(song, i, search);
-                        view.Dock = DockStyle.Top;
-                        panelSearch.Controls.Add(view);
-                        search.files.Add(song);
+                        for (int i = data["items"].Count() - 1; i > -1; i--)
+                        {
+                            Song song = new SongOnline(data["items"][i] as JObject);
+                            var view = new MediaSearch(song, i, search);
+                            view.Dock = DockStyle.Top;
+                            panelSearch.Controls.Add(view);
+                            search.files.Add(song);
+                        }
+                        search.files.Reverse();
                     }
-                    search.files.Reverse();
                 }
+                catch (Exception ex)
+                {
+
+                }
+
 
             }
         }

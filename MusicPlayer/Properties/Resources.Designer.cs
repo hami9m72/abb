@@ -63,6 +63,26 @@ namespace MusicPlayer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap empty {
+            get {
+                object obj = ResourceManager.GetObject("empty", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap empty1 {
+            get {
+                object obj = ResourceManager.GetObject("empty1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_bar_chart_24px {
             get {
                 object obj = ResourceManager.GetObject("icons8_bar_chart_24px", resourceCulture);
@@ -166,6 +186,16 @@ namespace MusicPlayer.Properties {
         internal static System.Drawing.Bitmap icons8_love_24px {
             get {
                 object obj = ResourceManager.GetObject("icons8_love_24px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_micro_24px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_micro_24px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -109,6 +109,10 @@ namespace MusicPlayer.View
             {
                 MainForm.Instance.UpdateLikedSong2(MainForm.Instance.playingOrder[idx]);
             }
+            if (FavoriteView.Instance != null)
+            {
+                FavoriteView.Instance.ReloadView();
+            }
         }
         public void UpdateLikedUI()
         {
