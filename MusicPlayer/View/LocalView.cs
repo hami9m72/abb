@@ -1,4 +1,5 @@
 ﻿
+using MusicPlayer.DataRepo;
 using MusicPlayer.Model;
 using MusicPlayer.Utils;
 using System;
@@ -24,12 +25,24 @@ namespace MusicPlayer.View
             InitializeComponent();
             playlist = new Playlist("local");
         }
-        private void LocalView_Load(object sender, EventArgs e)
+        public void LocalView_Load(object sender, EventArgs e)
         {
-            LoadLocalSong("C:\\Users\\DAT\\Desktop\\music\\Top 100 VPop");
+            panelSong.Controls.Clear();
+            if (Data.localPath.Count > 0)
+            {
+
+                foreach (string path in Data.localPath)
+                    LoadLocalSong(path);
+            }
+            else
+            {
+                playlist.files.Clear();
+            }
+
         }
         private void LoadLocalSong(string path)
         {
+
             var extensions = Helper.GetAllSupportFile();
             string[] files = Directory.GetFiles(path, "*.*", SearchOption.AllDirectories)
                                     .Where(f => extensions.Contains(Path.GetExtension(f).ToLower()) && (TagLib.File.Create(f) is TagLib.Mpeg.AudioFile))

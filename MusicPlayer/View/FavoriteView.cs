@@ -21,7 +21,8 @@ namespace MusicPlayer.View
             InitializeComponent();
             instance = this;
             fav = MainForm.Instance.favorite;
-
+            MainForm.Instance.isPlaying = fav;
+            MainForm.Instance.NormalPlaying();
             ReloadView();
 
         }

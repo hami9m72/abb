@@ -21,6 +21,7 @@ namespace MusicPlayer
     {
         private static MainForm instance;
         public static MainForm Instance { get => instance; }
+        public AxWMPLib.AxWindowsMediaPlayer MediaPlayer { get => mPlayer; }
 
         public Playlist isPlaying;
         public List<int> playingOrder;
@@ -315,6 +316,20 @@ namespace MusicPlayer
             ActiveMenu(sender as Button, view);
 
         }
+
+        private void btnPlaylist_Click(object sender, EventArgs e)
+        {
+            ClearMenu();
+            PlaylistView view;
+            if (!panelContainer.Controls.ContainsKey("PlaylistView"))
+            {
+                view = new PlaylistView();
+                panelContainer.Controls.Add(view);
+            }
+            else
+                view = panelContainer.Controls["PlaylistView"] as PlaylistView;
+            ActiveMenu(sender as Button, view);
+        }
         #endregion
 
         #region List playing
@@ -355,26 +370,26 @@ namespace MusicPlayer
         {
             return panelPlaying;
         }
-        public void UpdateLikedSong(int id)
-        {
-            if (panelPlaying.Controls.Count > 0)
-            {
-                var mediaView = panelPlaying.Controls[id] as MediaList2;
-                mediaView.UpdateLikedUI();
-            }
-        }
+        //public void UpdateLikedSong(int id)
+        //{
+        //    if (panelPlaying.Controls.Count > 0)
+        //    {
+        //        var mediaView = panelPlaying.Controls[id] as MediaList2;
+        //        mediaView.UpdateLikedUI();
+        //    }
+        //}
 
-        public void UpdateLikedSong2(int id)
-        {
-            var view = panelContainer.Controls["LocalView"] as LocalView;
-            var ctls = view.GetPanelSong().Controls;
-            if (ctls.Count > 0)
-            {
-                var mediaView = ctls[ctls.Count - 1 - id] as MediaList1;
-                mediaView.UpdateLikedUI();
-            }
+        //public void UpdateLikedSong2(int id)
+        //{
+        //    var view = panelContainer.Controls["LocalView"] as LocalView;
+        //    var ctls = view.GetPanelSong().Controls;
+        //    if (ctls.Count > 0)
+        //    {
+        //        var mediaView = ctls[ctls.Count - 1 - id] as MediaList1;
+        //        mediaView.UpdateLikedUI();
+        //    }
 
-        }
+        //}
 
         public void LoadViewPlaying()
         {
@@ -612,6 +627,9 @@ namespace MusicPlayer
             }
         }
 
-
+        public Control GetContainerView(string name)
+        {
+            return panelContainer.Controls[name];
+        }
     }
 }

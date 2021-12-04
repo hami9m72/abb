@@ -38,7 +38,6 @@ namespace MusicPlayer.View
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnMore = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.pbTim = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lbDuration = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -52,8 +51,6 @@ namespace MusicPlayer.View
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImg)).BeginInit();
             this.panel5.SuspendLayout();
-            this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbTim)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -159,24 +156,12 @@ namespace MusicPlayer.View
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(38)))), ((int)(((byte)(44)))));
-            this.panel4.Controls.Add(this.pbTim);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(640, 3);
             this.panel4.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(45, 61);
             this.panel4.TabIndex = 3;
-            // 
-            // pbTim
-            // 
-            this.pbTim.BackgroundImage = global::MusicPlayer.Properties.Resources.icons8_love_24px;
-            this.pbTim.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pbTim.Location = new System.Drawing.Point(3, 8);
-            this.pbTim.Name = "pbTim";
-            this.pbTim.Size = new System.Drawing.Size(37, 38);
-            this.pbTim.TabIndex = 0;
-            this.pbTim.TabStop = false;
-            this.pbTim.Click += new System.EventHandler(this.pbTim_Click);
             // 
             // panel3
             // 
@@ -292,8 +277,6 @@ namespace MusicPlayer.View
             this.panel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImg)).EndInit();
             this.panel5.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbTim)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -319,7 +302,6 @@ namespace MusicPlayer.View
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label lbAlbum;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.PictureBox pbTim;
         private System.Windows.Forms.Button btnMore;
         private RJCodeAdvance.RJControls.RJDropdownMenu menu;
         private System.Windows.Forms.ToolStripMenuItem helloToolStripMenuItem;

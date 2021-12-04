@@ -19,6 +19,10 @@ namespace DoAnCSharp
         string outpath = "C:\\Users\\DAT\\Desktop\\music";
 
         private WaveIn recorder;
+        // Redefine the capturer instance with a new instance of the LoopbackCapture class
+        WasapiLoopbackCapture CaptureInstance;
+
+
         private BufferedWaveProvider bufferedWaveProvider;
         private SavingWaveProvider savingWaveProvider;
         private WaveOut player;
@@ -58,18 +62,19 @@ namespace DoAnCSharp
             // set up playback
             player = new WaveOut();
             player.DeviceNumber = cbLoa.SelectedIndex;
-            volumeSampleProvider =new VolumeSampleProvider(savingWaveProvider.ToSampleProvider());
+            volumeSampleProvider = new VolumeSampleProvider(savingWaveProvider.ToSampleProvider());
             volumeSampleProvider.Volume = 1.0f;
 
-            
+
             ISampleProvider t = volumeSampleProvider;
-            
-            MixingSampleProvider mixer= new MixingSampleProvider(new[] { t, reader1 });
-            
+
+            MixingSampleProvider mixer = new MixingSampleProvider(new[] { t, reader1 });
+
             player.Init(mixer);
 
             // begin playback & record
             player.Play();
+            RecordSystemSound();
             recorder.StartRecording();
 
             btnStart.Enabled = false;
@@ -81,6 +86,36 @@ namespace DoAnCSharp
             bufferedWaveProvider.AddSamples(waveInEventArgs.Buffer, 0, waveInEventArgs.BytesRecorded);
         }
 
+        private void RecordSystemSound()
+        {
+            // Define the output wav file of the recorded audio
+            string outputFilePath = Path.Combine(outpath, "system_recorded_audio.wav");
+
+            // Redefine the capturer instance with a new instance of the LoopbackCapture class
+            CaptureInstance = new WasapiLoopbackCapture();
+
+            // Redefine the audio writer instance with the given configuration
+            WaveFileWriter RecordedAudioWriter = new WaveFileWriter(outputFilePath, CaptureInstance.WaveFormat);
+
+            // When the capturer receives audio, start writing the buffer into the mentioned file
+            CaptureInstance.DataAvailable += (s, a) =>
+            {
+                // Write buffer into the file of the writer instance
+                RecordedAudioWriter.Write(a.Buffer, 0, a.BytesRecorded);
+            };
+
+            // When the Capturer Stops, dispose instances of the capturer and writer
+            CaptureInstance.RecordingStopped += (s, a) =>
+            {
+                RecordedAudioWriter.Dispose();
+                RecordedAudioWriter = null;
+                CaptureInstance.Dispose();
+            };
+
+            // Start audio recording !
+            CaptureInstance.StartRecording();
+        }
+
         private void btnEnd_Click(object sender, EventArgs e)
         {
             // stop recording
@@ -89,6 +124,7 @@ namespace DoAnCSharp
             player.Stop();
             // finalise the WAV file
             savingWaveProvider.Dispose();
+            CaptureInstance.StopRecording();
 
             btnStart.Enabled = true;
             btnEnd.Enabled = false;

@@ -16,7 +16,7 @@ namespace DoAnCSharp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new karaoke());
+            Application.Run(new Form2());
         }
     }
 }

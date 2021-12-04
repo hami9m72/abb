@@ -34,15 +34,13 @@ namespace MusicPlayer.View
 
         private async void button1_Click(object sender, EventArgs e)
         {
+            MainForm.Instance.MediaPlayer.Ctlcontrols.pause();
             var streamManifest = await youtube.Videos.Streams.GetManifestAsync(vidResult.Id.Value);
             var streamInfo = streamManifest.GetMuxedStreams().GetWithHighestVideoQuality();
             karaoke kara = new karaoke(streamInfo.Url);
             kara.Show(this);
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
 
-        }
     }
 }
