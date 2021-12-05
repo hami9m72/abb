@@ -1,4 +1,5 @@
 ﻿
+using MusicPlayer.DataRepo;
 using MusicPlayer.Model;
 using MusicPlayer.Utils;
 using System;
@@ -32,6 +33,7 @@ namespace MusicPlayer.View
             this.song = s;
             this.local = local;
             this.idx = idx;
+
         }
         private void MediaList1_Load(object sender, EventArgs e)
         {
@@ -128,7 +130,60 @@ namespace MusicPlayer.View
 
         private void btnMore_Click(object sender, EventArgs e)
         {
+            var tmp = menu.Items[0];
+            menu.Items.Clear();
+            menu.Items.Add(tmp);
+            foreach (var playlist in Data.MyPlaylist)
+            {
+                ToolStripMenuItem item = new ToolStripMenuItem(playlist.name);
+                menu.Items.Add(item);
+                item.Click += Item_Click;
+            }
             menu.Show(btnMore, 0, btnMore.Height);
+
+        }
+
+        private void Item_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = sender as ToolStripMenuItem;
+            if (item != null)
+            {
+                int index = (item.Owner).Items.IndexOf(item);
+                if (Data.MyPlaylist[index - 1].files.Contains(song))
+                {
+                    DialogResult dialogResult = MessageBox.Show($"Bài hát này đã có trong playlist. Bạn có muốn thêm nó chứ ?", "Thông báo", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        Data.AddSongToPlayList(index - 1, song);
+                    }
+                }
+                else
+                    Data.AddSongToPlayList(index - 1, song);
+
+
+            }
+
+        }
+
+        private void btnKaraoke_Click(object sender, EventArgs e)
+        {
+            MainForm.Instance.btnKaraoke_Click(null, null);
+            (MainForm.Instance.GetContainerView("KaraokeView") as KaraokeView).Search(song.GetTitle() + " karaoke");
+        }
+
+        private void helloToolStripMenuItem_Click_2(object sender, EventArgs e)
+        {
+            var dialog = new CreatePlaylist();
+            if (dialog.ShowDialog(this) == DialogResult.OK)
+            {
+                Data.CreatePlayList(dialog.result);
+                Data.AddSongToPlayList(Data.MyPlaylist.Count - 1, song);
+                var view = MainForm.Instance.GetContainerView("PlaylistView");
+                if (view != null)
+                {
+                    (view as PlaylistView).LoadPlayList();
+                }
+            }
         }
 
 

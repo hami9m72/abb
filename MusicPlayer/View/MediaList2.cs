@@ -14,8 +14,9 @@ namespace MusicPlayer.View
 {
     public partial class MediaList2 : UserControl
     {
-        Song song;
-        int idx;
+        public Song song;
+        public int idx;
+        public CheckBox Box { get => checkBox1; }
         public MediaList2()
         {
             InitializeComponent();

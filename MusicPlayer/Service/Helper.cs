@@ -119,4 +119,5 @@ namespace MusicPlayer.Utils
             return Image.FromStream(stream);
         }
     }
+
 }

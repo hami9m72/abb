@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MusicPlayer.DataRepo;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,14 +13,106 @@ namespace MusicPlayer.View
 {
     public partial class PlaylistView : UserControl
     {
+        int iPSelect = -1;
         public PlaylistView()
         {
             InitializeComponent();
+            listView1.LargeImageList = imageList1;
+            lbTitle.Text = "";
+            LoadPlayList();
         }
 
-        private void btnAction_Click(object sender, EventArgs e)
+        public void LoadPlayList()
         {
-            menu.Show(btnAction, 0, btnAction.Height);
+            foreach (var playlist in Data.MyPlaylist)
+            {
+                listView1.Items.Add(playlist.name, 0);
+                listView1.View = System.Windows.Forms.View.LargeIcon;
+            }
+        }
+
+        //private void btnAction_Click(object sender, EventArgs e)
+        //{
+        //    menu.Show(btnAction, 0, btnAction.Height);
+        //}
+
+        private void listView1_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            if (e.IsSelected)
+            {
+                iPSelect = e.ItemIndex;
+                panelData.Controls.Clear();
+                e.Item.ImageIndex = 1;
+                var playlist = Data.MyPlaylist[e.ItemIndex];
+                lbTitle.Text = playlist.name;
+                btnMore.Visible = true;
+
+                int i = 0;
+                foreach (var item in playlist.files)
+                {
+                    var view = new MediaList2(item, i++);
+                    view.Dock = DockStyle.Top;
+                    panelData.Controls.Add(view);
+                    view.Box.CheckedChanged += Box_CheckedChanged;
+                }
+                //countBox = playlist.files.Count;
+            }
+            else
+            {
+                e.Item.ImageIndex = 0;
+            }
+        }
+
+
+        int countBox = 0;
+        private void Box_CheckedChanged(object sender, EventArgs e)
+        {
+            var box = sender as CheckBox;
+            if (box.Checked)
+            {
+                btnDel.Visible = true;
+                countBox++;
+            }
+            else
+                countBox--;
+            if (countBox < 1)
+            {
+                btnDel.Visible = false;
+            }
+        }
+
+        private void btnMore_Click(object sender, EventArgs e)
+        {
+            menu.Show(btnMore, 0, btnMore.Height);
+        }
+
+        private void btnDel_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < panelData.Controls.Count; i++)
+            {
+                MediaList2 view = panelData.Controls[i] as MediaList2;
+                if (view.Box.Checked)
+                {
+                    Data.MyPlaylist[iPSelect].files.Remove(view.song);
+                    panelData.Controls.Remove(view);
+                    i--;
+                }
+            }
+
+        }
+
+        private void menuDel_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show($"Bạn có chắc muốn xóa playlist: {Data.MyPlaylist[iPSelect].name}", "Thông báo", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Data.MyPlaylist.RemoveAt(iPSelect);
+                MainForm.Instance.btnPlaylist_Click(null, null);
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                //do something else
+            }
         }
     }
 }

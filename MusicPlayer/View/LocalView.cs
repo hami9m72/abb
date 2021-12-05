@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -42,10 +43,12 @@ namespace MusicPlayer.View
         }
         private void LoadLocalSong(string path)
         {
+            CultureInfo culture = new CultureInfo("vi-VN");
 
             var extensions = Helper.GetAllSupportFile();
             string[] files = Directory.GetFiles(path, "*.*", SearchOption.AllDirectories)
                                     .Where(f => extensions.Contains(Path.GetExtension(f).ToLower()) && (TagLib.File.Create(f) is TagLib.Mpeg.AudioFile))
+                                    .OrderBy(f => f, StringComparer.Create(culture, false))
                                     .ToArray();
 
             List<Song> tmp = new List<Song>();

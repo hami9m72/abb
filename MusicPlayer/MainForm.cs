@@ -1,4 +1,5 @@
 ﻿
+using MusicPlayer.DataRepo;
 using MusicPlayer.Model;
 using MusicPlayer.Service;
 using MusicPlayer.Utils;
@@ -38,6 +39,8 @@ namespace MusicPlayer
             instance = this;
             btnLocal_Click(btnLocal, null);
             favorite = new Playlist("fav");
+            Data.LoadSetting();
+            Data.LoadMyPlayList();
         }
         #region Media player
         public void PlayMedia()
@@ -208,6 +211,8 @@ namespace MusicPlayer
                     counter = 0;
                     LoadViewPlaying();
                     //PlayMedia();
+                    var view = panelPlaying.Controls[panelPlaying.Controls.Count - 1] as MediaList2;
+                    view.ActiveSongUI();
 
                     btnShuffer.BackColor = Color.FromArgb(15, 15, 16);
                     btnShuffer.BorderSize = 0;
@@ -234,7 +239,9 @@ namespace MusicPlayer
         #region Menu
         private void ClearMenu()
         {
-
+            var view = GetContainerView("PlaylistView");
+            if (view != null)
+                view.Dispose();
             foreach (Button menuButton in panelMenu.Controls.OfType<Button>())
                 menuButton.BackColor = Color.FromArgb(25, 26, 31);
         }
@@ -302,7 +309,7 @@ namespace MusicPlayer
             ActiveMenu(sender as Button, view);
         }
 
-        private void btnKaraoke_Click(object sender, EventArgs e)
+        public void btnKaraoke_Click(object sender, EventArgs e)
         {
             ClearMenu();
             KaraokeView view;
@@ -313,11 +320,10 @@ namespace MusicPlayer
             }
             else
                 view = panelContainer.Controls["KaraokeView"] as KaraokeView;
-            ActiveMenu(sender as Button, view);
-
+            ActiveMenu(btnKaraoke, view);
         }
 
-        private void btnPlaylist_Click(object sender, EventArgs e)
+        public void btnPlaylist_Click(object sender, EventArgs e)
         {
             ClearMenu();
             PlaylistView view;
@@ -328,7 +334,7 @@ namespace MusicPlayer
             }
             else
                 view = panelContainer.Controls["PlaylistView"] as PlaylistView;
-            ActiveMenu(sender as Button, view);
+            ActiveMenu(btnPlaylist, view);
         }
         #endregion
 
@@ -545,6 +551,8 @@ namespace MusicPlayer
 
         private void btnExit_Click(object sender, EventArgs e)
         {
+            Data.SaveSetting();
+            Data.SaveMyPlayList();
             Application.Exit();
         }
         private void MainForm_Resize(object sender, EventArgs e)
@@ -630,6 +638,11 @@ namespace MusicPlayer
         public Control GetContainerView(string name)
         {
             return panelContainer.Controls[name];
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -37,7 +37,7 @@ namespace MusicPlayer.View
             MainForm.Instance.MediaPlayer.Ctlcontrols.pause();
             var streamManifest = await youtube.Videos.Streams.GetManifestAsync(vidResult.Id.Value);
             var streamInfo = streamManifest.GetMuxedStreams().GetWithHighestVideoQuality();
-            karaoke kara = new karaoke(streamInfo.Url);
+            karaoke kara = new karaoke(streamInfo.Url, vidResult.Title);
             kara.Show(this);
         }
 

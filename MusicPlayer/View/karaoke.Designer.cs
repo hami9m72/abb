@@ -53,6 +53,7 @@ namespace MusicPlayer.View
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.ColumnCount = 5;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
@@ -131,6 +132,7 @@ namespace MusicPlayer.View
             this.ClientSize = new System.Drawing.Size(766, 527);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.kPlayer);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "karaoke";
             this.Text = "karaoke";
             ((System.ComponentModel.ISupportInitialize)(this.kPlayer)).EndInit();

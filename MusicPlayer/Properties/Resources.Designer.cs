@@ -83,6 +83,26 @@ namespace MusicPlayer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_add_24px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_add_24px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_add_24px_2 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_add_24px_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_bar_chart_24px {
             get {
                 object obj = ResourceManager.GetObject("icons8_bar_chart_24px", resourceCulture);
@@ -123,9 +143,29 @@ namespace MusicPlayer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_Delete_24px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_Delete_24px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_download_24px {
             get {
                 object obj = ResourceManager.GetObject("icons8_download_24px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_edit_24px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_edit_24px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -216,6 +256,16 @@ namespace MusicPlayer.Properties {
         internal static System.Drawing.Bitmap icons8_monitor_24px {
             get {
                 object obj = ResourceManager.GetObject("icons8_monitor_24px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_more_24px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_more_24px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

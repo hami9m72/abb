@@ -13,7 +13,7 @@ namespace MusicPlayer.Model
 
         public Playlist()
         {
-
+            this.files = new List<Song>();
         }
         public Playlist(string name)
         {

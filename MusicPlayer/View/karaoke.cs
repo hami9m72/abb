@@ -1,4 +1,5 @@
-﻿using MusicPlayer.Model;
+﻿using MusicPlayer.DataRepo;
+using MusicPlayer.Model;
 using NAudio.Wave;
 using NAudio.Wave.SampleProviders;
 using System;
@@ -17,7 +18,7 @@ namespace MusicPlayer.View
     public partial class karaoke : Form
     {
         string outpath = "C:\\Users\\DAT\\Desktop\\music";
-
+        string mediaName = "";
         private WaveIn recorder;
         // Redefine the capturer instance with a new instance of the LoopbackCapture class
         WasapiLoopbackCapture CaptureInstance;
@@ -31,12 +32,14 @@ namespace MusicPlayer.View
         {
             InitializeComponent();
         }
-        public karaoke(string url)
+        public karaoke(string url, string mediaName)
         {
             InitializeComponent();
+            CenterToParent();
             kPlayer.settings.autoStart = false;
             kPlayer.URL = url;
-            kPlayer.settings.volume = 0;
+            this.mediaName = mediaName;
+            outpath = Data.karaokePath;
             for (int idx = 0; idx < WaveOut.DeviceCount; ++idx)
             {
                 string devName = WaveOut.GetCapabilities(idx).ProductName;
@@ -57,7 +60,7 @@ namespace MusicPlayer.View
             start = !start;
             if (start)
             {
-
+                kPlayer.Ctlcontrols.stop();
                 btnStart.Text = "Dừng hát";
                 var reader1 = new AudioFileReader(kPlayer.URL);
 
@@ -90,10 +93,12 @@ namespace MusicPlayer.View
                 RecordSystemSound();
                 recorder.StartRecording();
 
-                kPlayer.Ctlcontrols.play();
+
+
             }
             else
             {
+
                 btnStart.Text = "Bắt đầu hát";
                 // stop recording
                 recorder.StopRecording();
@@ -102,19 +107,22 @@ namespace MusicPlayer.View
                 // finalise the WAV file
                 savingWaveProvider.Dispose();
                 CaptureInstance.StopRecording();
+                kPlayer.Ctlcontrols.stop();
             }
 
         }
 
         private void RecorderOnDataAvailable(object sender, WaveInEventArgs waveInEventArgs)
         {
+            kPlayer.settings.volume = 0;
+            kPlayer.Ctlcontrols.play();
             bufferedWaveProvider.AddSamples(waveInEventArgs.Buffer, 0, waveInEventArgs.BytesRecorded);
         }
 
         private void RecordSystemSound()
         {
             // Define the output wav file of the recorded audio
-            string outputFilePath = Path.Combine(outpath, "system_recorded_audio.wav");
+            string outputFilePath = Path.Combine(outpath, $"{mediaName}_mixed.wav");
 
             // Redefine the capturer instance with a new instance of the LoopbackCapture class
             CaptureInstance = new WasapiLoopbackCapture();

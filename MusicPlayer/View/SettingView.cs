@@ -48,5 +48,34 @@ namespace MusicPlayer.View
                     (view as LocalView).LocalView_Load(null, null);
             }
         }
+
+        private void SettingView_Load(object sender, EventArgs e)
+        {
+            cbLocal.Items.AddRange(Data.localPath.ToArray());
+            txtKaraoke.Text = Data.karaokePath;
+            txtDownload.Text = Data.downloadPath;
+            if (cbLocal.Items.Count > 0)
+                cbLocal.SelectedIndex = 0;
+        }
+
+        private void btn3_Click(object sender, EventArgs e)
+        {
+            var f = new FolderBrowserDialog();
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                txtDownload.Text = f.SelectedPath;
+                Data.downloadPath = f.SelectedPath;
+            }
+        }
+
+        private void btn5_Click(object sender, EventArgs e)
+        {
+            var f = new FolderBrowserDialog();
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                txtKaraoke.Text = f.SelectedPath;
+                Data.karaokePath = f.SelectedPath;
+            }
+        }
     }
 }
