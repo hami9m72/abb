@@ -324,7 +324,7 @@ namespace MusicPlayer
             if (GetContainerView("LocalView") != null)
             {
                 var local = (GetContainerView("LocalView") as LocalView).GetPanelSong();
-                if (local != null)
+                if (local != null && isPlaying != null)
                 {
                     var song = isPlaying.files[playingOrder[counter]];
                     foreach (MediaList1 item in local.Controls)
@@ -687,10 +687,14 @@ namespace MusicPlayer
                         rtbLyric.AppendText(lyric.localLyric);
                         return;
                     }
-                    foreach (var item in lyric.sentences)
-                        rtbLyric.AppendText(item.fullSentence() + "\n");
-                    rtbLyric.SelectAll();
-                    rtbLyric.SelectionAlignment = HorizontalAlignment.Center;
+                    if (lyric.sentences != null)
+                    {
+                        foreach (var item in lyric.sentences)
+                            rtbLyric.AppendText(item.fullSentence() + "\n");
+                        rtbLyric.SelectAll();
+                        rtbLyric.SelectionAlignment = HorizontalAlignment.Center;
+                    }
+
                 }
             }
 
