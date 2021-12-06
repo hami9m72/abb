@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,6 +38,8 @@ namespace MusicPlayer.View
         }
         private void MediaList1_Load(object sender, EventArgs e)
         {
+
+
             lbName.Text = song.GetTitle();
             lbArtist.Text = song.GetArtistNameJoined();
             lbAlbum.Text = song.GetAlbumName();
@@ -45,6 +48,11 @@ namespace MusicPlayer.View
             {
                 pbImg.BackgroundImage = song.GetThumbImg() as Image;
                 pbImg.BackgroundImageLayout = ImageLayout.Stretch;
+            }
+
+            if (song.GetTitle() == "" || song.GetTitle() == null)
+            {
+                lbName.Text = Path.GetFileNameWithoutExtension(song.GetSrc());
             }
             //if (song.isLiked)
             //    pbTim.BackgroundImage = Properties.Resources.icons8_heart_24px;

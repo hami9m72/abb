@@ -48,7 +48,7 @@ namespace MusicPlayer.View
             {
                 var extensions = Helper.GetAllSupportFile();
                 var temp = Directory.GetFiles(path, "*.*", SearchOption.AllDirectories)
-                                        .Where(f => extensions.Contains(Path.GetExtension(f).ToLower()) && (TagLib.File.Create(f) is TagLib.Mpeg.AudioFile))
+                                        .Where(f => extensions.Contains(Path.GetExtension(f).ToLower()))
                                         .ToArray();
                 if (temp.Length > 0)
                     files.AddRange(temp);

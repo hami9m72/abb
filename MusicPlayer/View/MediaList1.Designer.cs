@@ -64,8 +64,8 @@ namespace MusicPlayer.View
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(26)))), ((int)(((byte)(31)))));
             this.tableLayoutPanel1.ColumnCount = 7;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.5F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.5F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
@@ -95,7 +95,7 @@ namespace MusicPlayer.View
             this.panel6.Location = new System.Drawing.Point(1, 3);
             this.panel6.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(365, 61);
+            this.panel6.Size = new System.Drawing.Size(366, 61);
             this.panel6.TabIndex = 5;
             // 
             // lbArtist
@@ -140,7 +140,7 @@ namespace MusicPlayer.View
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(38)))), ((int)(((byte)(44)))));
             this.panel5.Controls.Add(this.btnMore);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(685, 3);
+            this.panel5.Location = new System.Drawing.Point(686, 3);
             this.panel5.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(45, 61);
@@ -164,7 +164,7 @@ namespace MusicPlayer.View
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(38)))), ((int)(((byte)(44)))));
             this.panel4.Controls.Add(this.btnKaraoke);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(640, 3);
+            this.panel4.Location = new System.Drawing.Point(641, 3);
             this.panel4.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(45, 61);
@@ -188,7 +188,7 @@ namespace MusicPlayer.View
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(38)))), ((int)(((byte)(44)))));
             this.panel3.Controls.Add(this.lbDuration);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(585, 3);
+            this.panel3.Location = new System.Drawing.Point(586, 3);
             this.panel3.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(55, 61);
@@ -196,7 +196,7 @@ namespace MusicPlayer.View
             // 
             // lbDuration
             // 
-            this.lbDuration.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.lbDuration.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lbDuration.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbDuration.ForeColor = System.Drawing.Color.White;
@@ -233,7 +233,7 @@ namespace MusicPlayer.View
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(38)))), ((int)(((byte)(44)))));
             this.panel2.Controls.Add(this.lbAlbum);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(366, 3);
+            this.panel2.Location = new System.Drawing.Point(367, 3);
             this.panel2.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(219, 61);
@@ -241,7 +241,7 @@ namespace MusicPlayer.View
             // 
             // lbAlbum
             // 
-            this.lbAlbum.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.lbAlbum.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lbAlbum.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbAlbum.ForeColor = System.Drawing.Color.White;
@@ -256,10 +256,10 @@ namespace MusicPlayer.View
             // 
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(38)))), ((int)(((byte)(44)))));
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(730, 3);
+            this.panel7.Location = new System.Drawing.Point(731, 3);
             this.panel7.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(11, 61);
+            this.panel7.Size = new System.Drawing.Size(10, 61);
             this.panel7.TabIndex = 6;
             // 
             // menu

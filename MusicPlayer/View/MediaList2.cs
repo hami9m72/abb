@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,6 +34,7 @@ namespace MusicPlayer.View
                     ActiveSongUI();
             }
 
+
         }
         private async void MediaList2_Load(object sender, EventArgs e)
         {
@@ -50,7 +52,10 @@ namespace MusicPlayer.View
                 pbImg.BackgroundImage = await Helper.LoadImagefromURL(song.GetThumbImg().ToString());
                 pbImg.BackgroundImageLayout = ImageLayout.Stretch;
             }
-
+            if (song.GetTitle() == "" || song.GetTitle() == null)
+            {
+                lbName.Text = Path.GetFileNameWithoutExtension(song.GetSrc());
+            }
             //if (song.isLiked)
             //    pbTim.BackgroundImage = Properties.Resources.icons8_heart_24px;
             //else

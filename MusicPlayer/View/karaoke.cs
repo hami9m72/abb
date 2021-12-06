@@ -114,6 +114,7 @@ namespace MusicPlayer.View
                 savingWaveProvider.Dispose();
                 CaptureInstance.StopRecording();
                 kPlayer.Ctlcontrols.stop();
+                MessageBox.Show($"Karaoke đã được lưu tại\n{Data.karaokePath}", "Thông báo");
             }
 
         }

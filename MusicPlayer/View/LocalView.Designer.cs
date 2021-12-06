@@ -37,6 +37,8 @@ namespace MusicPlayer.View
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.hopeTabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -48,6 +50,8 @@ namespace MusicPlayer.View
             // 
             this.hopeTabPage1.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(28)))), ((int)(((byte)(34)))));
             this.hopeTabPage1.Controls.Add(this.tabPage2);
+            this.hopeTabPage1.Controls.Add(this.tabPage1);
+            this.hopeTabPage1.Controls.Add(this.tabPage3);
             this.hopeTabPage1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.hopeTabPage1.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.hopeTabPage1.ForeColorA = System.Drawing.Color.White;
@@ -143,6 +147,26 @@ namespace MusicPlayer.View
             this.comboBox1.Size = new System.Drawing.Size(121, 25);
             this.comboBox1.TabIndex = 1;
             // 
+            // tabPage1
+            // 
+            this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(28)))), ((int)(((byte)(34)))));
+            this.tabPage1.Location = new System.Drawing.Point(0, 40);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(749, 452);
+            this.tabPage1.TabIndex = 2;
+            this.tabPage1.Text = "Tải xuống";
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(28)))), ((int)(((byte)(34)))));
+            this.tabPage3.Location = new System.Drawing.Point(0, 40);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(749, 452);
+            this.tabPage3.TabIndex = 3;
+            this.tabPage3.Text = "Karaoke";
+            // 
             // LocalView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -173,5 +197,7 @@ namespace MusicPlayer.View
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Panel panelSong;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage3;
     }
 }

@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -68,6 +69,10 @@ namespace MusicPlayer
                 pbSong.BackgroundImageLayout = ImageLayout.Center;
             }
             lbSongName.Text = song.GetTitle() + "\n" + song.GetArtistNameJoined();
+            if (song.GetTitle() == "" || song.GetTitle() == null)
+            {
+                lbSongName.Text = Path.GetFileNameWithoutExtension(song.GetSrc());
+            }
         }
         private void mPlayer_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
         {
