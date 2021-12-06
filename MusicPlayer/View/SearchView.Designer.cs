@@ -31,7 +31,6 @@ namespace MusicPlayer.View
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearch = new RJCodeAdvance.RJControls.RJTextBox();
             this.panelSearch = new System.Windows.Forms.Panel();
@@ -41,7 +40,6 @@ namespace MusicPlayer.View
             // panel1
             // 
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.btnSearch);
             this.panel1.Controls.Add(this.txtSearch);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -60,15 +58,6 @@ namespace MusicPlayer.View
             this.label1.Size = new System.Drawing.Size(76, 21);
             this.label1.TabIndex = 3;
             this.label1.Text = "Tìm kiếm";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(448, 7);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Load More";
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // btnSearch
             // 
@@ -138,7 +127,6 @@ namespace MusicPlayer.View
         private RJCodeAdvance.RJControls.RJTextBox txtSearch;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Panel panelSearch;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label1;
     }
 }

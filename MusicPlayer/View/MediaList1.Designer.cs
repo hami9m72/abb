@@ -33,9 +33,12 @@ namespace MusicPlayer.View
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.lbArtist = new System.Windows.Forms.Label();
+            this.pbImg = new System.Windows.Forms.PictureBox();
             this.lbName = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.btnMore = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnKaraoke = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lbDuration = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -44,26 +47,23 @@ namespace MusicPlayer.View
             this.lbAlbum = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.menu = new RJCodeAdvance.RJControls.RJDropdownMenu(this.components);
-            this.pbImg = new System.Windows.Forms.PictureBox();
-            this.btnMore = new System.Windows.Forms.Button();
-            this.btnKaraoke = new System.Windows.Forms.Button();
             this.helloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbImg)).BeginInit();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.menu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbImg)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(26)))), ((int)(((byte)(31)))));
             this.tableLayoutPanel1.ColumnCount = 7;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.5F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.5F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
@@ -92,10 +92,10 @@ namespace MusicPlayer.View
             this.panel6.Controls.Add(this.pbImg);
             this.panel6.Controls.Add(this.lbName);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(30, 3);
+            this.panel6.Location = new System.Drawing.Point(1, 3);
             this.panel6.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(347, 61);
+            this.panel6.Size = new System.Drawing.Size(365, 61);
             this.panel6.TabIndex = 5;
             // 
             // lbArtist
@@ -108,6 +108,21 @@ namespace MusicPlayer.View
             this.lbArtist.Size = new System.Drawing.Size(43, 17);
             this.lbArtist.TabIndex = 2;
             this.lbArtist.Text = "label1";
+            // 
+            // pbImg
+            // 
+            this.pbImg.BackgroundImage = global::MusicPlayer.Properties.Resources.icons8_music_48px_1;
+            this.pbImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pbImg.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pbImg.Location = new System.Drawing.Point(0, 0);
+            this.pbImg.Name = "pbImg";
+            this.pbImg.Size = new System.Drawing.Size(66, 61);
+            this.pbImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbImg.TabIndex = 1;
+            this.pbImg.TabStop = false;
+            this.pbImg.Click += new System.EventHandler(this.pbImg_Click);
+            this.pbImg.MouseEnter += new System.EventHandler(this.pbImg_MouseEnter);
+            this.pbImg.MouseLeave += new System.EventHandler(this.pbImg_MouseLeave);
             // 
             // lbName
             // 
@@ -131,6 +146,19 @@ namespace MusicPlayer.View
             this.panel5.Size = new System.Drawing.Size(45, 61);
             this.panel5.TabIndex = 4;
             // 
+            // btnMore
+            // 
+            this.btnMore.BackgroundImage = global::MusicPlayer.Properties.Resources.icons8_add_24px;
+            this.btnMore.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnMore.FlatAppearance.BorderSize = 0;
+            this.btnMore.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMore.Location = new System.Drawing.Point(0, 10);
+            this.btnMore.Name = "btnMore";
+            this.btnMore.Size = new System.Drawing.Size(40, 38);
+            this.btnMore.TabIndex = 0;
+            this.btnMore.UseVisualStyleBackColor = true;
+            this.btnMore.Click += new System.EventHandler(this.btnMore_Click);
+            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(38)))), ((int)(((byte)(44)))));
@@ -141,6 +169,19 @@ namespace MusicPlayer.View
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(45, 61);
             this.panel4.TabIndex = 3;
+            // 
+            // btnKaraoke
+            // 
+            this.btnKaraoke.BackgroundImage = global::MusicPlayer.Properties.Resources.icons8_micro_24px;
+            this.btnKaraoke.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnKaraoke.FlatAppearance.BorderSize = 0;
+            this.btnKaraoke.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnKaraoke.Location = new System.Drawing.Point(2, 11);
+            this.btnKaraoke.Name = "btnKaraoke";
+            this.btnKaraoke.Size = new System.Drawing.Size(40, 38);
+            this.btnKaraoke.TabIndex = 1;
+            this.btnKaraoke.UseVisualStyleBackColor = true;
+            this.btnKaraoke.Click += new System.EventHandler(this.btnKaraoke_Click);
             // 
             // panel3
             // 
@@ -174,7 +215,7 @@ namespace MusicPlayer.View
             this.panel1.Location = new System.Drawing.Point(0, 3);
             this.panel1.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(30, 61);
+            this.panel1.Size = new System.Drawing.Size(1, 61);
             this.panel1.TabIndex = 0;
             // 
             // checkBox1
@@ -185,16 +226,17 @@ namespace MusicPlayer.View
             this.checkBox1.Size = new System.Drawing.Size(15, 14);
             this.checkBox1.TabIndex = 0;
             this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.Visible = false;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(38)))), ((int)(((byte)(44)))));
             this.panel2.Controls.Add(this.lbAlbum);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(377, 3);
+            this.panel2.Location = new System.Drawing.Point(366, 3);
             this.panel2.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(208, 61);
+            this.panel2.Size = new System.Drawing.Size(219, 61);
             this.panel2.TabIndex = 1;
             // 
             // lbAlbum
@@ -205,7 +247,7 @@ namespace MusicPlayer.View
             this.lbAlbum.ForeColor = System.Drawing.Color.White;
             this.lbAlbum.Location = new System.Drawing.Point(0, 18);
             this.lbAlbum.Name = "lbAlbum";
-            this.lbAlbum.Size = new System.Drawing.Size(208, 24);
+            this.lbAlbum.Size = new System.Drawing.Size(219, 24);
             this.lbAlbum.TabIndex = 1;
             this.lbAlbum.Text = "album";
             this.lbAlbum.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -234,48 +276,7 @@ namespace MusicPlayer.View
             this.menu.Name = "menu";
             this.menu.PrimaryColor = System.Drawing.Color.Black;
             this.menu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menu.Size = new System.Drawing.Size(181, 26);
-            // 
-            // pbImg
-            // 
-            this.pbImg.BackgroundImage = global::MusicPlayer.Properties.Resources.icons8_music_48px_1;
-            this.pbImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pbImg.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pbImg.Location = new System.Drawing.Point(0, 0);
-            this.pbImg.Name = "pbImg";
-            this.pbImg.Size = new System.Drawing.Size(66, 61);
-            this.pbImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pbImg.TabIndex = 1;
-            this.pbImg.TabStop = false;
-            this.pbImg.Click += new System.EventHandler(this.pbImg_Click);
-            this.pbImg.MouseEnter += new System.EventHandler(this.pbImg_MouseEnter);
-            this.pbImg.MouseLeave += new System.EventHandler(this.pbImg_MouseLeave);
-            // 
-            // btnMore
-            // 
-            this.btnMore.BackgroundImage = global::MusicPlayer.Properties.Resources.icons8_add_24px;
-            this.btnMore.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnMore.FlatAppearance.BorderSize = 0;
-            this.btnMore.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMore.Location = new System.Drawing.Point(0, 10);
-            this.btnMore.Name = "btnMore";
-            this.btnMore.Size = new System.Drawing.Size(40, 38);
-            this.btnMore.TabIndex = 0;
-            this.btnMore.UseVisualStyleBackColor = true;
-            this.btnMore.Click += new System.EventHandler(this.btnMore_Click);
-            // 
-            // btnKaraoke
-            // 
-            this.btnKaraoke.BackgroundImage = global::MusicPlayer.Properties.Resources.icons8_micro_24px;
-            this.btnKaraoke.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnKaraoke.FlatAppearance.BorderSize = 0;
-            this.btnKaraoke.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnKaraoke.Location = new System.Drawing.Point(2, 11);
-            this.btnKaraoke.Name = "btnKaraoke";
-            this.btnKaraoke.Size = new System.Drawing.Size(40, 38);
-            this.btnKaraoke.TabIndex = 1;
-            this.btnKaraoke.UseVisualStyleBackColor = true;
-            this.btnKaraoke.Click += new System.EventHandler(this.btnKaraoke_Click);
+            this.menu.Size = new System.Drawing.Size(162, 30);
             // 
             // helloToolStripMenuItem
             // 
@@ -283,7 +284,7 @@ namespace MusicPlayer.View
             this.helloToolStripMenuItem.Image = global::MusicPlayer.Properties.Resources.icons8_add_24px_2;
             this.helloToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Transparent;
             this.helloToolStripMenuItem.Name = "helloToolStripMenuItem";
-            this.helloToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.helloToolStripMenuItem.Size = new System.Drawing.Size(161, 26);
             this.helloToolStripMenuItem.Text = "Playlist mới";
             this.helloToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.helloToolStripMenuItem.Click += new System.EventHandler(this.helloToolStripMenuItem_Click_2);
@@ -298,6 +299,7 @@ namespace MusicPlayer.View
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbImg)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -305,7 +307,6 @@ namespace MusicPlayer.View
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.menu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbImg)).EndInit();
             this.ResumeLayout(false);
 
         }

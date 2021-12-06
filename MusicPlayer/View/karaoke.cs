@@ -10,6 +10,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -70,9 +71,14 @@ namespace MusicPlayer.View
                 recorder.DeviceNumber = cbMic.SelectedIndex;
                 recorder.DataAvailable += RecorderOnDataAvailable;
 
+
+                string regexSearch = new string(Path.GetInvalidFileNameChars()) + new string(Path.GetInvalidPathChars());
+                Regex r = new Regex(string.Format("[{0}]", Regex.Escape(regexSearch)));
+                mediaName = r.Replace(mediaName, "");
+
                 // set up our signal chain
                 bufferedWaveProvider = new BufferedWaveProvider(recorder.WaveFormat);
-                savingWaveProvider = new SavingWaveProvider(bufferedWaveProvider, Path.Combine(outpath, "temp.wav"));
+                savingWaveProvider = new SavingWaveProvider(bufferedWaveProvider, Path.Combine(outpath, $"{mediaName}_goc.wav"));
 
                 // set up playback
                 player = new WaveOut();

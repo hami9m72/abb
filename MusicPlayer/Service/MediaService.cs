@@ -84,7 +84,9 @@ namespace MusicPlayer.Service
             try
             {
                 var data = await GetDataFromURL($"https://dat-zing-mp3-api.herokuapp.com/song/lyric/{songId}");
-                return JsonConvert.DeserializeObject<Lyric>(data.ToString());
+                if (data != null)
+                    return JsonConvert.DeserializeObject<Lyric>(data.ToString());
+                return null;
             }
             catch (Exception ex)
             {

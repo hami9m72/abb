@@ -29,7 +29,7 @@ namespace MusicPlayer.View
             this.idx = idx;
             if (MainForm.Instance.playingOrder != null)
             {
-                if (idx == MainForm.Instance.playingOrder[MainForm.Instance.counter])
+                if (song == MainForm.Instance.isPlaying.files[MainForm.Instance.playingOrder[MainForm.Instance.counter]])
                     ActiveSongUI();
             }
 
@@ -66,6 +66,7 @@ namespace MusicPlayer.View
 
         public void DeActiveSongUI()
         {
+
             foreach (Control c in tableLayoutPanel1.Controls)
                 c.BackColor = Color.FromArgb(37, 38, 44);
             ChangeColorLabel(Color.White);
@@ -89,6 +90,8 @@ namespace MusicPlayer.View
             }
             MainForm.Instance.counter = idx;
             MainForm.Instance.PlayMedia();
+
+
             ActiveSongUI();
         }
 

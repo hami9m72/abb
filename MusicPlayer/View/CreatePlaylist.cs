@@ -19,6 +19,13 @@ namespace MusicPlayer.View
             CenterToParent();
         }
 
+        public CreatePlaylist(string title)
+        {
+            InitializeComponent();
+            this.Text = title;
+            CenterToParent();
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             result = textBox1.Text;

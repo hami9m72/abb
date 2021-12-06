@@ -410,6 +410,7 @@
     <None Include="Resources\icons8_add_24px_2.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\repeat_one.png" />
     <None Include="Resources\icons8_more_24px.png" />
     <None Include="Resources\icons8_edit_24px.png" />
     <None Include="Resources\icons8_Delete_24px.png" />

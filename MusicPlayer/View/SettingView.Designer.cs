@@ -31,6 +31,8 @@ namespace MusicPlayer.View
         {
             this.hopeTabPage1 = new ReaLTaiizor.Controls.HopeTabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.txtKaraoke = new System.Windows.Forms.TextBox();
+            this.txtDownload = new System.Windows.Forms.TextBox();
             this.btn5 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.btn3 = new System.Windows.Forms.Button();
@@ -39,8 +41,6 @@ namespace MusicPlayer.View
             this.btn1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btn2 = new System.Windows.Forms.Button();
-            this.txtDownload = new System.Windows.Forms.TextBox();
-            this.txtKaraoke = new System.Windows.Forms.TextBox();
             this.hopeTabPage1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.SuspendLayout();
@@ -85,12 +85,32 @@ namespace MusicPlayer.View
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Cài đặt";
             // 
+            // txtKaraoke
+            // 
+            this.txtKaraoke.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtKaraoke.Location = new System.Drawing.Point(32, 224);
+            this.txtKaraoke.Name = "txtKaraoke";
+            this.txtKaraoke.ReadOnly = true;
+            this.txtKaraoke.Size = new System.Drawing.Size(297, 25);
+            this.txtKaraoke.TabIndex = 15;
+            // 
+            // txtDownload
+            // 
+            this.txtDownload.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDownload.Location = new System.Drawing.Point(421, 64);
+            this.txtDownload.Name = "txtDownload";
+            this.txtDownload.ReadOnly = true;
+            this.txtDownload.Size = new System.Drawing.Size(297, 25);
+            this.txtDownload.TabIndex = 14;
+            // 
             // btn5
             // 
+            this.btn5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn5.Location = new System.Drawing.Point(37, 260);
+            this.btn5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btn5.Location = new System.Drawing.Point(32, 260);
             this.btn5.Name = "btn5";
-            this.btn5.Size = new System.Drawing.Size(75, 25);
+            this.btn5.Size = new System.Drawing.Size(75, 29);
             this.btn5.TabIndex = 13;
             this.btn5.Text = "Cập nhật";
             this.btn5.UseVisualStyleBackColor = true;
@@ -100,7 +120,7 @@ namespace MusicPlayer.View
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(32, 187);
+            this.label3.Location = new System.Drawing.Point(32, 188);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(215, 25);
             this.label3.TabIndex = 12;
@@ -108,10 +128,12 @@ namespace MusicPlayer.View
             // 
             // btn3
             // 
+            this.btn3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btn3.Location = new System.Drawing.Point(421, 101);
             this.btn3.Name = "btn3";
-            this.btn3.Size = new System.Drawing.Size(75, 25);
+            this.btn3.Size = new System.Drawing.Size(75, 29);
             this.btn3.TabIndex = 9;
             this.btn3.Text = "Cập nhật";
             this.btn3.UseVisualStyleBackColor = true;
@@ -132,17 +154,19 @@ namespace MusicPlayer.View
             this.cbLocal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLocal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbLocal.FormattingEnabled = true;
-            this.cbLocal.Location = new System.Drawing.Point(37, 70);
+            this.cbLocal.Location = new System.Drawing.Point(37, 64);
             this.cbLocal.Name = "cbLocal";
             this.cbLocal.Size = new System.Drawing.Size(297, 25);
             this.cbLocal.TabIndex = 6;
             // 
             // btn1
             // 
+            this.btn1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn1.Location = new System.Drawing.Point(37, 101);
+            this.btn1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btn1.Location = new System.Drawing.Point(37, 100);
             this.btn1.Name = "btn1";
-            this.btn1.Size = new System.Drawing.Size(75, 25);
+            this.btn1.Size = new System.Drawing.Size(75, 29);
             this.btn1.TabIndex = 5;
             this.btn1.Text = "Thêm";
             this.btn1.UseVisualStyleBackColor = true;
@@ -160,30 +184,17 @@ namespace MusicPlayer.View
             // 
             // btn2
             // 
+            this.btn2.FlatAppearance.BorderColor = System.Drawing.Color.HotPink;
+            this.btn2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn2.ForeColor = System.Drawing.Color.HotPink;
             this.btn2.Location = new System.Drawing.Point(118, 101);
             this.btn2.Name = "btn2";
-            this.btn2.Size = new System.Drawing.Size(75, 25);
+            this.btn2.Size = new System.Drawing.Size(75, 29);
             this.btn2.TabIndex = 3;
             this.btn2.Text = "Xóa";
             this.btn2.UseVisualStyleBackColor = true;
             this.btn2.Click += new System.EventHandler(this.btn2_Click);
-            // 
-            // txtDownload
-            // 
-            this.txtDownload.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDownload.Location = new System.Drawing.Point(421, 70);
-            this.txtDownload.Name = "txtDownload";
-            this.txtDownload.Size = new System.Drawing.Size(297, 25);
-            this.txtDownload.TabIndex = 14;
-            // 
-            // txtKaraoke
-            // 
-            this.txtKaraoke.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKaraoke.Location = new System.Drawing.Point(37, 229);
-            this.txtKaraoke.Name = "txtKaraoke";
-            this.txtKaraoke.Size = new System.Drawing.Size(297, 25);
-            this.txtKaraoke.TabIndex = 15;
             // 
             // SettingView
             // 

@@ -25,15 +25,15 @@ namespace MusicPlayer.View
         {
             InitializeComponent();
             playlist = new Playlist("local");
+            comboBox1.SelectedIndex = 0;
         }
         public void LocalView_Load(object sender, EventArgs e)
         {
             panelSong.Controls.Clear();
             if (Data.localPath.Count > 0)
             {
-
-                foreach (string path in Data.localPath)
-                    LoadLocalSong(path);
+                playlist.files.Clear();
+                LoadLocalSong(Data.localPath);
             }
             else
             {
@@ -41,29 +41,36 @@ namespace MusicPlayer.View
             }
 
         }
-        private void LoadLocalSong(string path)
+        private void LoadLocalSong(List<string> paths)
         {
-            CultureInfo culture = new CultureInfo("vi-VN");
-
-            var extensions = Helper.GetAllSupportFile();
-            string[] files = Directory.GetFiles(path, "*.*", SearchOption.AllDirectories)
-                                    .Where(f => extensions.Contains(Path.GetExtension(f).ToLower()) && (TagLib.File.Create(f) is TagLib.Mpeg.AudioFile))
-                                    .OrderBy(f => f, StringComparer.Create(culture, false))
-                                    .ToArray();
-
-            List<Song> tmp = new List<Song>();
-            for (int i = files.Length - 1; i > -1; i--)
+            List<string> files = new List<string>();
+            foreach (var path in paths)
             {
-                var tfile = TagLib.File.Create(files[i]);
-                SongLocal song = new SongLocal(tfile);
-                var view = new MediaList1(song, i, playlist);
-                view.parent = this;
-                view.Dock = DockStyle.Top;
-                panelSong.Controls.Add(view);
-                tmp.Add(song);
+                var extensions = Helper.GetAllSupportFile();
+                var temp = Directory.GetFiles(path, "*.*", SearchOption.AllDirectories)
+                                        .Where(f => extensions.Contains(Path.GetExtension(f).ToLower()) && (TagLib.File.Create(f) is TagLib.Mpeg.AudioFile))
+                                        .ToArray();
+                if (temp.Length > 0)
+                    files.AddRange(temp);
             }
-            for (int i = tmp.Count - 1; i > -1; i--)
-                playlist.files.Add(tmp[i]);
+            if (files.Count > 0)
+            {
+                CultureInfo culture = new CultureInfo("vi-VN");
+                files = files.OrderBy(f => Path.GetFileName(f), StringComparer.Create(culture, false)).ToList();
+                List<Song> tmp = new List<Song>();
+                for (int i = files.Count - 1; i > -1; i--)
+                {
+                    var tfile = TagLib.File.Create(files[i]);
+                    SongLocal song = new SongLocal(tfile);
+                    var view = new MediaList1(song, i, playlist);
+                    view.parent = this;
+                    view.Dock = DockStyle.Top;
+                    panelSong.Controls.Add(view);
+                    tmp.Add(song);
+                }
+                for (int i = tmp.Count - 1; i > -1; i--)
+                    playlist.files.Add(tmp[i]);
+            }
         }
 
         public Panel GetPanelSong()

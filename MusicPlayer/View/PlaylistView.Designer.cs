@@ -44,9 +44,9 @@ namespace MusicPlayer.View
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.menu = new RJCodeAdvance.RJControls.RJDropdownMenu(this.components);
             this.menuDel = new System.Windows.Forms.ToolStripMenuItem();
-            this.phátPlaylistToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuPlay = new System.Windows.Forms.ToolStripMenuItem();
             this.btnMore = new System.Windows.Forms.Button();
-            this.m = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.panel6 = new System.Windows.Forms.Panel();
             this.btnDel = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
@@ -182,9 +182,9 @@ namespace MusicPlayer.View
             this.menu.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menu.IsMainMenu = true;
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.m,
+            this.menuEdit,
             this.menuDel,
-            this.phátPlaylistToolStripMenuItem});
+            this.menuPlay});
             this.menu.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.menu.MenuItemHeight = 25;
             this.menu.MenuItemTextColor = System.Drawing.Color.White;
@@ -202,12 +202,13 @@ namespace MusicPlayer.View
             this.menuDel.Text = "Xóa";
             this.menuDel.Click += new System.EventHandler(this.menuDel_Click);
             // 
-            // phátPlaylistToolStripMenuItem
+            // menuPlay
             // 
-            this.phátPlaylistToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.phátPlaylistToolStripMenuItem.Name = "phátPlaylistToolStripMenuItem";
-            this.phátPlaylistToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
-            this.phátPlaylistToolStripMenuItem.Text = "Phát playlist";
+            this.menuPlay.ForeColor = System.Drawing.Color.White;
+            this.menuPlay.Name = "menuPlay";
+            this.menuPlay.Size = new System.Drawing.Size(180, 26);
+            this.menuPlay.Text = "Phát playlist";
+            this.menuPlay.Click += new System.EventHandler(this.menuPlay_Click);
             // 
             // btnMore
             // 
@@ -223,15 +224,16 @@ namespace MusicPlayer.View
             this.btnMore.Visible = false;
             this.btnMore.Click += new System.EventHandler(this.btnMore_Click);
             // 
-            // m
+            // menuEdit
             // 
-            this.m.ForeColor = System.Drawing.Color.White;
-            this.m.Image = global::MusicPlayer.Properties.Resources.icons8_edit_24px;
-            this.m.ImageTransparentColor = System.Drawing.Color.Transparent;
-            this.m.Name = "m";
-            this.m.Size = new System.Drawing.Size(180, 26);
-            this.m.Text = "Sửa tên";
-            this.m.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.menuEdit.ForeColor = System.Drawing.Color.White;
+            this.menuEdit.Image = global::MusicPlayer.Properties.Resources.icons8_edit_24px;
+            this.menuEdit.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.menuEdit.Name = "menuEdit";
+            this.menuEdit.Size = new System.Drawing.Size(180, 26);
+            this.menuEdit.Text = "Sửa tên";
+            this.menuEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.menuEdit.Click += new System.EventHandler(this.menuEdit_Click);
             // 
             // panel6
             // 
@@ -301,9 +303,9 @@ namespace MusicPlayer.View
         private System.Windows.Forms.Label lbTitle;
         private System.Windows.Forms.Button btnMore;
         private RJCodeAdvance.RJControls.RJDropdownMenu menu;
-        private System.Windows.Forms.ToolStripMenuItem m;
+        private System.Windows.Forms.ToolStripMenuItem menuEdit;
         private System.Windows.Forms.ToolStripMenuItem menuDel;
-        private System.Windows.Forms.ToolStripMenuItem phátPlaylistToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuPlay;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button btnDel;
     }

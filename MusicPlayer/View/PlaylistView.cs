@@ -47,15 +47,13 @@ namespace MusicPlayer.View
                 lbTitle.Text = playlist.name;
                 btnMore.Visible = true;
 
-                int i = 0;
-                foreach (var item in playlist.files)
+                for (int i = playlist.files.Count - 1; i > -1; i--)
                 {
-                    var view = new MediaList2(item, i++);
+                    var view = new MediaList2(playlist.files[i], i);
                     view.Dock = DockStyle.Top;
                     panelData.Controls.Add(view);
                     view.Box.CheckedChanged += Box_CheckedChanged;
                 }
-                //countBox = playlist.files.Count;
             }
             else
             {
@@ -112,6 +110,38 @@ namespace MusicPlayer.View
             else if (dialogResult == DialogResult.No)
             {
                 //do something else
+            }
+        }
+
+        private void menuEdit_Click(object sender, EventArgs e)
+        {
+            var dialog = new CreatePlaylist("Đổi tên playlist");
+            if (dialog.ShowDialog(this) == DialogResult.OK)
+            {
+                Data.MyPlaylist[iPSelect].name = dialog.result;
+                MainForm.Instance.btnPlaylist_Click(null, null);
+            }
+        }
+
+        private void menuPlay_Click(object sender, EventArgs e)
+        {
+            MainForm.Instance.isPlaying = Data.MyPlaylist[iPSelect];
+            MainForm.Instance.NormalPlaying();
+            MainForm.Instance.counter = 0;
+            MainForm.Instance.PlayMedia();
+            MainForm.Instance.LoadViewPlaying();
+
+            //MainForm.Instance.btnPlaylist_Click(null, null);
+
+            var local = (MainForm.Instance.GetContainerView("LocalView") as LocalView).GetPanelSong();
+            if (local != null)
+            {
+                var song = MainForm.Instance.isPlaying.files[MainForm.Instance.playingOrder[MainForm.Instance.counter]];
+                foreach (MediaList1 item in local.Controls)
+                {
+                    if (item.song != song) item.DeActiveSongUI();
+                    else item.ActiveSongUI();
+                }
             }
         }
     }

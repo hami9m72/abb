@@ -90,9 +90,13 @@ namespace MusicPlayer.DataRepo
                     Playlist playlist = new Playlist(p.Attributes["name"].Value);
                     foreach (XmlNode s in p.ChildNodes)
                     {
-                        TagLib.File file = TagLib.File.Create(s.InnerText);
-                        Song song = new SongLocal(file);
-                        playlist.files.Add(song);
+                        if (File.Exists(s.InnerText))
+                        {
+                            TagLib.File file = TagLib.File.Create(s.InnerText);
+                            Song song = new SongLocal(file);
+                            playlist.files.Add(song);
+                        }
+
                     }
                     MyPlaylist.Add(playlist);
                 }

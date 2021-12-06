@@ -43,7 +43,7 @@ namespace MusicPlayer
             this.lbMinTime = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
             this.btnShuffer = new RJCodeAdvance.RJControls.RJCircularPictureBox();
-            this.rjCircularPictureBox4 = new RJCodeAdvance.RJControls.RJCircularPictureBox();
+            this.btnRepeat = new RJCodeAdvance.RJControls.RJCircularPictureBox();
             this.btnNext = new RJCodeAdvance.RJControls.RJCircularPictureBox();
             this.btnBack = new RJCodeAdvance.RJControls.RJCircularPictureBox();
             this.btnPlay = new RJCodeAdvance.RJControls.RJCircularPictureBox();
@@ -82,7 +82,7 @@ namespace MusicPlayer
             this.panel11.SuspendLayout();
             this.panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnShuffer)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRepeat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNext)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPlay)).BeginInit();
@@ -247,7 +247,7 @@ namespace MusicPlayer
             // panel10
             // 
             this.panel10.Controls.Add(this.btnShuffer);
-            this.panel10.Controls.Add(this.rjCircularPictureBox4);
+            this.panel10.Controls.Add(this.btnRepeat);
             this.panel10.Controls.Add(this.btnNext);
             this.panel10.Controls.Add(this.btnBack);
             this.panel10.Controls.Add(this.btnPlay);
@@ -278,23 +278,26 @@ namespace MusicPlayer
             this.btnShuffer.Tag = "f";
             this.btnShuffer.Click += new System.EventHandler(this.btnShuffer_Click);
             // 
-            // rjCircularPictureBox4
+            // btnRepeat
             // 
-            this.rjCircularPictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.rjCircularPictureBox4.BackgroundImage = global::MusicPlayer.Properties.Resources.icons8_repeat_24px;
-            this.rjCircularPictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.rjCircularPictureBox4.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.rjCircularPictureBox4.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.rjCircularPictureBox4.BorderColor2 = System.Drawing.Color.HotPink;
-            this.rjCircularPictureBox4.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.rjCircularPictureBox4.BorderSize = 0;
-            this.rjCircularPictureBox4.GradientAngle = 50F;
-            this.rjCircularPictureBox4.Location = new System.Drawing.Point(337, 5);
-            this.rjCircularPictureBox4.Name = "rjCircularPictureBox4";
-            this.rjCircularPictureBox4.Size = new System.Drawing.Size(41, 41);
-            this.rjCircularPictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.rjCircularPictureBox4.TabIndex = 24;
-            this.rjCircularPictureBox4.TabStop = false;
+            this.btnRepeat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.btnRepeat.BackgroundImage = global::MusicPlayer.Properties.Resources.icons8_repeat_24px;
+            this.btnRepeat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnRepeat.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
+            this.btnRepeat.BorderColor = System.Drawing.Color.White;
+            this.btnRepeat.BorderColor2 = System.Drawing.Color.White;
+            this.btnRepeat.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.btnRepeat.BorderSize = 0;
+            this.btnRepeat.GradientAngle = 50F;
+            this.btnRepeat.Location = new System.Drawing.Point(337, 5);
+            this.btnRepeat.Name = "btnRepeat";
+            this.btnRepeat.Size = new System.Drawing.Size(41, 41);
+            this.btnRepeat.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.btnRepeat.TabIndex = 24;
+            this.btnRepeat.TabStop = false;
+            this.btnRepeat.Tag = "off";
+            this.btnRepeat.Click += new System.EventHandler(this.btnRepeat_Click);
+            this.btnRepeat.MouseHover += new System.EventHandler(this.btnRepeat_MouseHover);
             // 
             // btnNext
             // 
@@ -750,7 +753,7 @@ namespace MusicPlayer
             this.panel11.PerformLayout();
             this.panel10.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnShuffer)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRepeat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNext)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnBack)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPlay)).EndInit();
@@ -788,7 +791,7 @@ namespace MusicPlayer
         private System.Windows.Forms.Label lbMinTime;
         private System.Windows.Forms.Panel panel10;
         private RJCodeAdvance.RJControls.RJCircularPictureBox btnShuffer;
-        private RJCodeAdvance.RJControls.RJCircularPictureBox rjCircularPictureBox4;
+        private RJCodeAdvance.RJControls.RJCircularPictureBox btnRepeat;
         private RJCodeAdvance.RJControls.RJCircularPictureBox btnNext;
         private RJCodeAdvance.RJControls.RJCircularPictureBox btnBack;
         private RJCodeAdvance.RJControls.RJCircularPictureBox btnPlay;

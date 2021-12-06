@@ -1,4 +1,5 @@
 ﻿
+using MusicPlayer.DataRepo;
 using MusicPlayer.Model;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,8 @@ namespace MusicPlayer.View
         public Song song;
         Playlist parent;
         int idx;
-        string localpath = "";
+        string filepath = "";
+        string downpath = "";
         public MediaSearch()
         {
             InitializeComponent();
@@ -32,6 +34,7 @@ namespace MusicPlayer.View
             song = s;
             this.parent = parent;
             this.idx = idx;
+            downpath = Data.downloadPath;
             lbName.Text = song.GetTitle();
             lbArtist.Text = song.GetArtistNameJoined();
             if (song.GetThumbImg() is string)
@@ -43,21 +46,30 @@ namespace MusicPlayer.View
 
         private void btnDownload_Click(object sender, EventArgs e)
         {
-            var dialog = new FolderBrowserDialog();
-            if (dialog.ShowDialog() == DialogResult.OK)
+            if (downpath == "")
             {
-                localpath = dialog.SelectedPath + "\\" + song.GetTitle() + "-" + song.GetArtistNameJoined() + ".mp3";
-                using (var client = new WebClient())
+                var dialog = new FolderBrowserDialog();
+                if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    client.DownloadFileCompleted += Client_DownloadFileCompleted;
-                    client.DownloadFileAsync(new Uri(song.GetSrc()), localpath);
+                    downpath = dialog.SelectedPath;
+                    Data.downloadPath = dialog.SelectedPath;
+                    filepath = dialog.SelectedPath + "\\" + song.GetTitle() + "-" + song.GetArtistNameJoined() + ".mp3";
                 }
+            }
+            else
+                filepath = downpath + "\\" + song.GetTitle() + "-" + song.GetArtistNameJoined() + ".mp3";
+            using (var client = new WebClient())
+            {
+                MessageBox.Show($"Download vào thư mục {Data.downloadPath}", "Thông báo");
+                client.DownloadFileCompleted += Client_DownloadFileCompleted;
+                client.DownloadFileAsync(new Uri(song.GetSrc()), filepath);
             }
         }
 
         private void Client_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
         {
-            var tfile = File.Create(localpath);
+            MessageBox.Show("Download thành công", "Thông báo");
+            var tfile = File.Create(filepath);
             TagLib.Id3v2.Tag t = (TagLib.Id3v2.Tag)tfile.GetTag(TagTypes.Id3v2); // You can add a true parameter to the GetTag function if the file doesn't already have a tag.
             PrivateFrame p = PrivateFrame.Get(t, "EncodedId", true);
             p.PrivateData = Encoding.Unicode.GetBytes(song.GetEncodedId());
