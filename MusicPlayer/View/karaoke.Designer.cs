@@ -65,7 +65,7 @@ namespace MusicPlayer.View
             this.tableLayoutPanel1.Controls.Add(this.btnStart, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label1, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.cbLoa, 2, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(223, 492);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(223, 496);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -96,9 +96,10 @@ namespace MusicPlayer.View
             // btnStart
             // 
             this.btnStart.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStart.Location = new System.Drawing.Point(3, 3);
+            this.btnStart.Location = new System.Drawing.Point(0, 0);
+            this.btnStart.Margin = new System.Windows.Forms.Padding(0);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(106, 22);
+            this.btnStart.Size = new System.Drawing.Size(106, 28);
             this.btnStart.TabIndex = 2;
             this.btnStart.Text = "Bắt đầu hát";
             this.btnStart.UseVisualStyleBackColor = true;

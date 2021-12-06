@@ -20,28 +20,68 @@ namespace MusicPlayer.View
 {
     public partial class LocalView : UserControl
     {
-        Playlist playlist;
+        Playlist playlist1;
+        Playlist playlist2;
+        Playlist playlist3;
+
         public LocalView()
         {
             InitializeComponent();
-            playlist = new Playlist("local");
+            playlist1 = new Playlist("local");
+            playlist2 = new Playlist("downloaded");
+            playlist3 = new Playlist("karaoke");
             comboBox1.SelectedIndex = 0;
         }
         public void LocalView_Load(object sender, EventArgs e)
         {
+            LoadTabLocal();
+            LoadTabDownload();
+            LoadTabKaraoke();
+        }
+
+        public void LoadTabLocal()
+        {
             panelSong.Controls.Clear();
             if (Data.localPath.Count > 0)
             {
-                playlist.files.Clear();
-                LoadLocalSong(Data.localPath);
+                playlist1.files.Clear();
+                LoadLocalSong(Data.localPath, panelSong, playlist1);
             }
             else
             {
-                playlist.files.Clear();
+                playlist1.files.Clear();
             }
-
         }
-        private void LoadLocalSong(List<string> paths)
+
+        public void LoadTabDownload()
+        {
+            panelDownload.Controls.Clear();
+            if (Data.downloadPath != "")
+            {
+                playlist2.files.Clear();
+                LoadLocalSong(new List<string> { Data.downloadPath }, panelDownload, playlist2);
+            }
+            else
+            {
+                playlist2.files.Clear();
+            }
+        }
+
+        public void LoadTabKaraoke()
+        {
+            panelKaraoke.Controls.Clear();
+            if (Data.downloadPath != "")
+            {
+                playlist3.files.Clear();
+                LoadLocalSong(new List<string> { Data.karaokePath }, panelKaraoke, playlist3);
+            }
+            else
+            {
+                playlist3.files.Clear();
+            }
+        }
+
+        private void LoadLocalSong(List<string> paths, Panel panel, Playlist p)
         {
             List<string> files = new List<string>();
             foreach (var path in paths)
@@ -62,14 +102,14 @@ namespace MusicPlayer.View
                 {
                     var tfile = TagLib.File.Create(files[i]);
                     SongLocal song = new SongLocal(tfile);
-                    var view = new MediaList1(song, i, playlist);
+                    var view = new MediaList1(song, i, p);
                     view.parent = this;
                     view.Dock = DockStyle.Top;
-                    panelSong.Controls.Add(view);
+                    panel.Controls.Add(view);
                     tmp.Add(song);
                 }
                 for (int i = tmp.Count - 1; i > -1; i--)
-                    playlist.files.Add(tmp[i]);
+                    p.files.Add(tmp[i]);
             }
         }
 
@@ -80,7 +120,7 @@ namespace MusicPlayer.View
 
         private void btnShuffer_Click(object sender, EventArgs e)
         {
-            MainForm.Instance.isPlaying = playlist;
+            MainForm.Instance.isPlaying = playlist1;
             MainForm.Instance.ShufferPlaying();
             MainForm.Instance.counter = 0;
             MainForm.Instance.PlayMedia();

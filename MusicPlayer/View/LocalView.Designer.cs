@@ -38,12 +38,16 @@ namespace MusicPlayer.View
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.panelDownload = new System.Windows.Forms.Panel();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.panelKaraoke = new System.Windows.Forms.Panel();
             this.hopeTabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // hopeTabPage1
@@ -122,6 +126,7 @@ namespace MusicPlayer.View
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(733, 43);
             this.panel3.TabIndex = 2;
+            this.panel3.Visible = false;
             // 
             // label1
             // 
@@ -150,6 +155,7 @@ namespace MusicPlayer.View
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(28)))), ((int)(((byte)(34)))));
+            this.tabPage1.Controls.Add(this.panelDownload);
             this.tabPage1.Location = new System.Drawing.Point(0, 40);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -157,15 +163,32 @@ namespace MusicPlayer.View
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "Tải xuống";
             // 
+            // panelDownload
+            // 
+            this.panelDownload.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelDownload.Location = new System.Drawing.Point(3, 3);
+            this.panelDownload.Name = "panelDownload";
+            this.panelDownload.Size = new System.Drawing.Size(743, 446);
+            this.panelDownload.TabIndex = 0;
+            // 
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(28)))), ((int)(((byte)(34)))));
+            this.tabPage3.Controls.Add(this.panelKaraoke);
             this.tabPage3.Location = new System.Drawing.Point(0, 40);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(749, 452);
             this.tabPage3.TabIndex = 3;
             this.tabPage3.Text = "Karaoke";
+            // 
+            // panelKaraoke
+            // 
+            this.panelKaraoke.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelKaraoke.Location = new System.Drawing.Point(3, 3);
+            this.panelKaraoke.Name = "panelKaraoke";
+            this.panelKaraoke.Size = new System.Drawing.Size(743, 446);
+            this.panelKaraoke.TabIndex = 1;
             // 
             // LocalView
             // 
@@ -183,6 +206,8 @@ namespace MusicPlayer.View
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -199,5 +224,7 @@ namespace MusicPlayer.View
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Panel panelDownload;
+        private System.Windows.Forms.Panel panelKaraoke;
     }
 }

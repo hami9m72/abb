@@ -104,7 +104,6 @@ namespace MusicPlayer.View
             }
             else
             {
-
                 btnStart.Text = "Bắt đầu hát";
                 // stop recording
                 recorder.StopRecording();
@@ -115,6 +114,8 @@ namespace MusicPlayer.View
                 CaptureInstance.StopRecording();
                 kPlayer.Ctlcontrols.stop();
                 MessageBox.Show($"Karaoke đã được lưu tại\n{Data.karaokePath}", "Thông báo");
+                var view = MainForm.Instance.GetContainerView("LocalView") as LocalView;
+                view.LoadTabKaraoke();
             }
 
         }

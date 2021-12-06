@@ -78,9 +78,9 @@ namespace MusicPlayer.View
 
         public void ActiveSongUI()
         {
-            foreach (Control c in tableLayoutPanel1.Controls)
-                c.BackColor = Color.FromArgb(15, 15, 16);
-            ChangeColorLabel(Color.FromArgb(1, 241, 250));
+            //foreach (Control c in tableLayoutPanel1.Controls)
+            //    c.BackColor = Color.FromArgb(15, 15, 16);
+            //ChangeColorLabel(Color.FromArgb(1, 241, 250));
         }
 
         public void DeActiveSongUI()

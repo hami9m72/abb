@@ -247,7 +247,7 @@ namespace MusicPlayer.View
             this.lbAlbum.ForeColor = System.Drawing.Color.White;
             this.lbAlbum.Location = new System.Drawing.Point(0, 18);
             this.lbAlbum.Name = "lbAlbum";
-            this.lbAlbum.Size = new System.Drawing.Size(219, 24);
+            this.lbAlbum.Size = new System.Drawing.Size(219, 20);
             this.lbAlbum.TabIndex = 1;
             this.lbAlbum.Text = "album";
             this.lbAlbum.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

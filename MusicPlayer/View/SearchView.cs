@@ -38,6 +38,7 @@ namespace MusicPlayer.View
             {
                 try
                 {
+                    // https://dat-zing-mp3-api.herokuapp.com/song/search2?q={keyword}&page={page} link api bị zing chặn IP quốc tế nên phải dùng server VN --> dùng local host
                     var data = await MediaService.GetDataFromURL($"http://localhost:3000/song/search2?q={keyword}&page={page}");
                     if (data != null)
                     {

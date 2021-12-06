@@ -60,7 +60,7 @@ namespace MusicPlayer.View
                 filepath = downpath + "\\" + song.GetTitle() + "-" + song.GetArtistNameJoined() + ".mp3";
             using (var client = new WebClient())
             {
-                MessageBox.Show($"Download vào thư mục {Data.downloadPath}", "Thông báo");
+                //essageBox.Show($"Download vào thư mục {Data.downloadPath}", "Thông báo");
                 client.DownloadFileCompleted += Client_DownloadFileCompleted;
                 client.DownloadFileAsync(new Uri(song.GetSrc()), filepath);
             }
@@ -74,6 +74,8 @@ namespace MusicPlayer.View
             PrivateFrame p = PrivateFrame.Get(t, "EncodedId", true);
             p.PrivateData = Encoding.Unicode.GetBytes(song.GetEncodedId());
             tfile.Save(); // This is optional.
+            var view = MainForm.Instance.GetContainerView("LocalView") as LocalView;
+            view.LoadTabDownload();
         }
 
         private void btnPlay_Click(object sender, EventArgs e)
