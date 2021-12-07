@@ -1,6 +1,7 @@
 ﻿
 using MusicPlayer.DataRepo;
 using MusicPlayer.Model;
+using MusicPlayer.Service;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -44,7 +45,7 @@ namespace MusicPlayer.View
             }
         }
 
-        private void btnDownload_Click(object sender, EventArgs e)
+        private async void btnDownload_Click(object sender, EventArgs e)
         {
             if (downpath == "")
             {
@@ -58,12 +59,29 @@ namespace MusicPlayer.View
             }
             else
                 filepath = downpath + "\\" + song.GetTitle() + "-" + song.GetArtistNameJoined() + ".mp3";
-            using (var client = new WebClient())
+            try
             {
-                //essageBox.Show($"Download vào thư mục {Data.downloadPath}", "Thông báo");
-                client.DownloadFileCompleted += Client_DownloadFileCompleted;
-                client.DownloadFileAsync(new Uri(song.GetSrc()), filepath);
+                var data = await MediaService.GetDataFromURL($"https://dat-zing-mp3-api.herokuapp.com/song/stream/{song.GetEncodedId()}");
+                if (data != null)
+                {
+                    using (var client = new WebClient())
+                    {
+                        song.SetSrc(data["128"].ToString());
+                        client.DownloadFileCompleted += Client_DownloadFileCompleted;
+                        client.DownloadFileAsync(new Uri(song.GetSrc()), filepath);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Có lỗi xảy ra.\nVui lòng thử lại sau", "Thông báo");
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Download lỗi:\n{ex.Message}", "Thông báo");
+            }
+
+
         }
 
         private void Client_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
@@ -85,6 +103,12 @@ namespace MusicPlayer.View
             MainForm.Instance.counter = idx;
             MainForm.Instance.PlayMedia();
             MainForm.Instance.LoadViewPlaying();
+        }
+
+        private async void MediaSearch_Load(object sender, EventArgs e)
+        {
+            //string url = await MediaService.GetSongStream(song.GetEncodedId());
+            //song.SetSrc(url);
         }
     }
 }

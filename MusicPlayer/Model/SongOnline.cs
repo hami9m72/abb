@@ -46,6 +46,8 @@ namespace MusicPlayer.Model
             return data["streamLink"].ToString();
         }
 
+
+
         public override object GetThumbImg()
         {
             return data["thumbnailM"].ToString();
