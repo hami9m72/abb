@@ -42,15 +42,27 @@ namespace MusicPlayer.View
 
         private async void btnSearch_Click(object sender, EventArgs e)
         {
-            panelResult.Controls.Clear();
-            var t = await youtube.Search.GetVideosAsync(txtSearch.Texts).CollectAsync(20);
-            for (int i = t.Count - 1; i > -1; i--)
+            if (txtSearch.Texts != "")
             {
-                var view = new KaraokeItem(t[i]);
-                view.Dock = DockStyle.Top;
-                panelResult.Controls.Add(view);
+                panelResult.Controls.Clear();
+                var t = await youtube.Search.GetVideosAsync(txtSearch.Texts).CollectAsync(20);
+                for (int i = t.Count - 1; i > -1; i--)
+                {
+                    var view = new KaraokeItem(t[i]);
+                    view.Dock = DockStyle.Top;
+                    panelResult.Controls.Add(view);
+                }
             }
 
+
+        }
+
+        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return)
+            {
+                btnSearch_Click(null, null);
+            }
         }
     }
 }

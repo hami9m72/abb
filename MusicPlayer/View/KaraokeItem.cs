@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MusicPlayer.DataRepo;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -35,6 +36,14 @@ namespace MusicPlayer.View
         private async void button1_Click(object sender, EventArgs e)
         {
             MainForm.Instance.MediaPlayer.Ctlcontrols.pause();
+            if (Data.karaokePath == "")
+            {
+                var dialog = new FolderBrowserDialog();
+                if (dialog.ShowDialog() == DialogResult.OK)
+                    Data.karaokePath = dialog.SelectedPath;
+                else
+                    return;
+            }
             var streamManifest = await youtube.Videos.Streams.GetManifestAsync(vidResult.Id.Value);
             var streamInfo = streamManifest.GetMuxedStreams().GetWithHighestVideoQuality();
             karaoke kara = new karaoke(streamInfo.Url, vidResult.Title);

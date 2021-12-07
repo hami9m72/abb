@@ -60,7 +60,7 @@ namespace MusicPlayer.View
             this.Controls.Add(this.textBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "CreatePlaylist";
-            this.Text = "CreatePlaylist";
+            this.Text = "Tạo Playlist";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -191,6 +191,7 @@ namespace MusicPlayer.View
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "MediaSearch";
             this.Size = new System.Drawing.Size(749, 58);
+            this.Load += new System.EventHandler(this.MediaSearch_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel6.ResumeLayout(false);

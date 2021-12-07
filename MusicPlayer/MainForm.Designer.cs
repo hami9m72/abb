@@ -675,7 +675,6 @@ namespace MusicPlayer
             this.tabPageMedia.ThemeColorB = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(64)))), ((int)(((byte)(158)))), ((int)(((byte)(255)))));
             this.tabPageMedia.TitleTextState = ReaLTaiizor.Controls.HopeTabPage.TextState.Normal;
             this.tabPageMedia.Visible = false;
-            this.tabPageMedia.SelectedIndexChanged += new System.EventHandler(this.tabPageMedia_SelectedIndexChanged);
             // 
             // tabPlaying
             // 

@@ -92,6 +92,7 @@ namespace MusicPlayer
             }
             else if (mPlayer.playState == WMPLib.WMPPlayState.wmppsStopped)
             {
+                btnPlay.BackgroundImage = Properties.Resources.icons8_play_32px;
                 tTrackBar.Stop();
                 timerLyric.Stop();
                 trackBar.Value = 0;
@@ -729,14 +730,6 @@ namespace MusicPlayer
 
         #endregion
 
-        private void tabPageMedia_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (tabPageMedia.SelectedTab == tabPageMedia.TabPages["tabLyric"])
-            {
-
-
-            }
-        }
 
         public Control GetContainerView(string name)
         {

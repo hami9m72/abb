@@ -38,7 +38,7 @@ namespace MusicPlayer.View
             {
                 try
                 {
-                    
+
                     var data = await MediaService.GetDataFromURL($"https://dat-zing-mp3-api.herokuapp.com/song/search1?q={keyword}&page={page}");
                     if (data != null)
                     {
@@ -52,10 +52,15 @@ namespace MusicPlayer.View
                         }
                         search.files.Reverse();
                     }
+                    else
+                    {
+                        MessageBox.Show("Không tìm thấy kết quả", "Thông báo");
+                    }
                 }
                 catch (Exception ex)
                 {
-
+                    Console.WriteLine(ex.Message);
+                    MessageBox.Show("Lỗi hệ thống tìm kiếm", "Thông báo");
                 }
 
 

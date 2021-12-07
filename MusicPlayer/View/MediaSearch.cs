@@ -45,7 +45,7 @@ namespace MusicPlayer.View
             }
         }
 
-        private async void btnDownload_Click(object sender, EventArgs e)
+        private void btnDownload_Click(object sender, EventArgs e)
         {
             if (downpath == "")
             {
@@ -61,12 +61,11 @@ namespace MusicPlayer.View
                 filepath = downpath + "\\" + song.GetTitle() + "-" + song.GetArtistNameJoined() + ".mp3";
             try
             {
-                var data = await MediaService.GetDataFromURL($"https://dat-zing-mp3-api.herokuapp.com/song/stream/{song.GetEncodedId()}");
-                if (data != null)
+
+                if (song.GetSrc() != "" && song.GetSrc() != null)
                 {
                     using (var client = new WebClient())
                     {
-                        song.SetSrc(data["128"].ToString());
                         client.DownloadFileCompleted += Client_DownloadFileCompleted;
                         client.DownloadFileAsync(new Uri(song.GetSrc()), filepath);
                     }
@@ -98,6 +97,15 @@ namespace MusicPlayer.View
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
+            if (song.GetSrc() == "" || song.GetSrc() == null)
+            {
+                var streamLink = MediaService.GetDataFromURL($"https://dat-zing-mp3-api.herokuapp.com/song/stream/{song.GetEncodedId()}").Result;
+                if (streamLink != null)
+                {
+                    song.SetSrc(streamLink["128"].ToString());
+                }
+            }
+
             MainForm.Instance.isPlaying = parent;
             MainForm.Instance.NormalPlaying();
             MainForm.Instance.counter = idx;
@@ -107,8 +115,11 @@ namespace MusicPlayer.View
 
         private async void MediaSearch_Load(object sender, EventArgs e)
         {
-            //string url = await MediaService.GetSongStream(song.GetEncodedId());
-            //song.SetSrc(url);
+            var streamLink = await MediaService.GetDataFromURL($"https://dat-zing-mp3-api.herokuapp.com/song/stream/{song.GetEncodedId()}");
+            if (streamLink != null)
+            {
+                song.SetSrc(streamLink["128"].ToString());
+            }
         }
     }
 }

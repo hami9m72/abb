@@ -32,8 +32,8 @@ namespace MusicPlayer.View
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.panelResult = new System.Windows.Forms.Panel();
             this.txtSearch = new RJCodeAdvance.RJControls.RJTextBox();
+            this.panelResult = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,15 +72,6 @@ namespace MusicPlayer.View
             this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // panelResult
-            // 
-            this.panelResult.AutoScroll = true;
-            this.panelResult.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelResult.Location = new System.Drawing.Point(0, 60);
-            this.panelResult.Name = "panelResult";
-            this.panelResult.Size = new System.Drawing.Size(749, 432);
-            this.panelResult.TabIndex = 1;
-            // 
             // txtSearch
             // 
             this.txtSearch.BackColor = System.Drawing.SystemColors.Window;
@@ -102,6 +93,16 @@ namespace MusicPlayer.View
             this.txtSearch.TabIndex = 4;
             this.txtSearch.Texts = "";
             this.txtSearch.UnderlinedStyle = false;
+            this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
+            // 
+            // panelResult
+            // 
+            this.panelResult.AutoScroll = true;
+            this.panelResult.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelResult.Location = new System.Drawing.Point(0, 60);
+            this.panelResult.Name = "panelResult";
+            this.panelResult.Size = new System.Drawing.Size(749, 432);
+            this.panelResult.TabIndex = 1;
             // 
             // KaraokeView
             // 

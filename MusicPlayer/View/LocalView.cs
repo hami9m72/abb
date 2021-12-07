@@ -45,7 +45,8 @@ namespace MusicPlayer.View
             if (Data.localPath.Count > 0)
             {
                 playlist1.files.Clear();
-                LoadLocalSong(Data.localPath, panelSong, playlist1);
+                if (Data.localPath.Count > 0)
+                    LoadLocalSong(Data.localPath, panelSong, playlist1);
             }
             else
             {
@@ -59,7 +60,8 @@ namespace MusicPlayer.View
             if (Data.downloadPath != "")
             {
                 playlist2.files.Clear();
-                LoadLocalSong(new List<string> { Data.downloadPath }, panelDownload, playlist2);
+                if (Data.downloadPath != "")
+                    LoadLocalSong(new List<string> { Data.downloadPath }, panelDownload, playlist2);
             }
             else
             {
@@ -73,7 +75,8 @@ namespace MusicPlayer.View
             if (Data.downloadPath != "")
             {
                 playlist3.files.Clear();
-                LoadLocalSong(new List<string> { Data.karaokePath }, panelKaraoke, playlist3);
+                if (Data.karaokePath != "")
+                    LoadLocalSong(new List<string> { Data.karaokePath }, panelKaraoke, playlist3);
             }
             else
             {

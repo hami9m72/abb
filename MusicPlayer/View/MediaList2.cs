@@ -95,8 +95,6 @@ namespace MusicPlayer.View
             }
             MainForm.Instance.counter = idx;
             MainForm.Instance.PlayMedia();
-
-
             ActiveSongUI();
         }
 
