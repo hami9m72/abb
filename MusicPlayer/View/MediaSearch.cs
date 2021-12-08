@@ -95,22 +95,32 @@ namespace MusicPlayer.View
             view.LoadTabDownload();
         }
 
-        private void btnPlay_Click(object sender, EventArgs e)
+        private async void btnPlay_Click(object sender, EventArgs e)
         {
-            if (song.GetSrc() == "" || song.GetSrc() == null)
+            try
             {
-                var streamLink = MediaService.GetDataFromURL($"https://dat-zing-mp3-api.herokuapp.com/song/stream/{song.GetEncodedId()}").Result;
-                if (streamLink != null)
+                if (song.GetSrc() == "" || song.GetSrc() == null)
                 {
-                    song.SetSrc(streamLink["128"].ToString());
+                    var streamLink = await MediaService.GetDataFromURL($"https://dat-zing-mp3-api.herokuapp.com/song/stream/{song.GetEncodedId()}");
+                    if (streamLink != null)
+                    {
+                        song.SetSrc(streamLink["128"].ToString());
+                    }
                 }
+                MainForm.Instance.isPlaying = parent;
+                MainForm.Instance.NormalPlaying();
+                MainForm.Instance.counter = idx;
+                MainForm.Instance.PlayMedia();
+                MainForm.Instance.LoadViewPlaying();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                MessageBox.Show("Có lỗi xảy ra khi get link stream bài hát", "Thông báo");
             }
 
-            MainForm.Instance.isPlaying = parent;
-            MainForm.Instance.NormalPlaying();
-            MainForm.Instance.counter = idx;
-            MainForm.Instance.PlayMedia();
-            MainForm.Instance.LoadViewPlaying();
+
+
         }
 
         private async void MediaSearch_Load(object sender, EventArgs e)

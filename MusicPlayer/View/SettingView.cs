@@ -34,7 +34,9 @@ namespace MusicPlayer.View
                 var view = MainForm.Instance.GetContainerView("LocalView");
                 if (view != null)
                     (view as LocalView).LocalView_Load(null, null);
+                Data.SaveSetting();
             }
+
         }
 
         private void btn2_Click(object sender, EventArgs e)
@@ -45,7 +47,7 @@ namespace MusicPlayer.View
                 cbLocal.Items.RemoveAt(cbLocal.SelectedIndex);
                 var view = MainForm.Instance.GetContainerView("LocalView");
                 if (view != null)
-                    (view as LocalView).LocalView_Load(null, null);
+                    (view as LocalView).LoadTabLocal();
             }
         }
 
@@ -65,7 +67,12 @@ namespace MusicPlayer.View
             {
                 txtDownload.Text = f.SelectedPath;
                 Data.downloadPath = f.SelectedPath;
+                Data.SaveSetting();
+                var view = MainForm.Instance.GetContainerView("LocalView");
+                if (view != null)
+                    (view as LocalView).LoadTabDownload();
             }
+
         }
 
         private void btn5_Click(object sender, EventArgs e)
@@ -75,6 +82,10 @@ namespace MusicPlayer.View
             {
                 txtKaraoke.Text = f.SelectedPath;
                 Data.karaokePath = f.SelectedPath;
+                Data.SaveSetting();
+                var view = MainForm.Instance.GetContainerView("LocalView");
+                if (view != null)
+                    (view as LocalView).LoadTabKaraoke();
             }
         }
     }
