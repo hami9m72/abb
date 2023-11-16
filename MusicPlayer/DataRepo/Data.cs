@@ -55,6 +55,10 @@ namespace MusicPlayer.DataRepo
         {
             MyPlaylist[idx].files.Add(song);
         }
+        public static void DeleteSongToPlayList(int idx, Song song)
+        {
+            MyPlaylist[idx].files.Remove(song);
+        }
         public static void SaveMyPlayList()
         {
             XmlDocument xmlDoc = new XmlDocument();

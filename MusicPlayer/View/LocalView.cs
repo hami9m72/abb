@@ -129,5 +129,10 @@ namespace MusicPlayer.View
             MainForm.Instance.PlayMedia();
             MainForm.Instance.LoadViewPlaying();
         }
+
+        private void panelSong_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

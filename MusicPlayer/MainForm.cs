@@ -408,7 +408,7 @@ namespace MusicPlayer
             ActiveMenu(sender as Button, view);
         }
 
-        public void btnKaraoke_Click(object sender, EventArgs e)
+       /* public void btnKaraoke_Click(object sender, EventArgs e)
         {
             ClearMenu();
             KaraokeView view;
@@ -421,11 +421,12 @@ namespace MusicPlayer
                 view = panelContainer.Controls["KaraokeView"] as KaraokeView;
             ActiveMenu(btnKaraoke, view);
         }
-
+       */
         public void btnPlaylist_Click(object sender, EventArgs e)
         {
             ClearMenu();
             PlaylistView view;
+            
             if (!panelContainer.Controls.ContainsKey("PlaylistView"))
             {
                 view = new PlaylistView();
@@ -736,6 +737,14 @@ namespace MusicPlayer
             return panelContainer.Controls[name];
         }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void btnKaraoke_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

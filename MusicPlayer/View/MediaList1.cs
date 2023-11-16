@@ -9,20 +9,23 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace MusicPlayer.View
 {
+
     public partial class MediaList1 : UserControl
     {
         public Song song;
         public Playlist local;
         public int idx;
         public LocalView parent;
-
-
+        public bool IsLike = false;
+        
         public MediaList1()
         {
             InitializeComponent();
@@ -38,12 +41,10 @@ namespace MusicPlayer.View
         }
         private void MediaList1_Load(object sender, EventArgs e)
         {
-
-
             lbName.Text = song.GetTitle();
             lbArtist.Text = song.GetArtistNameJoined();
             lbAlbum.Text = song.GetAlbumName();
-            lbDuration.Text = song.GetFormatedDuration();
+           
             if (song.GetThumbImg() is Image)
             {
                 pbImg.BackgroundImage = song.GetThumbImg() as Image;
@@ -54,6 +55,7 @@ namespace MusicPlayer.View
             {
                 lbName.Text = Path.GetFileNameWithoutExtension(song.GetSrc());
             }
+
             //if (song.isLiked)
             //    pbTim.BackgroundImage = Properties.Resources.icons8_heart_24px;
             //else
@@ -74,6 +76,7 @@ namespace MusicPlayer.View
             MainForm.Instance.PlayMedia();
             MainForm.Instance.LoadViewPlaying();
             ActiveSongUI();
+            Data.AddSongToPlayList(Data.MyPlaylist.Count - Data.MyPlaylist.Count + 1, song);
         }
 
         public void ActiveSongUI()
@@ -94,7 +97,6 @@ namespace MusicPlayer.View
         {
             lbName.ForeColor = color;
             lbArtist.ForeColor = color;
-            lbDuration.ForeColor = color;
             lbAlbum.ForeColor = color;
         }
 
@@ -175,7 +177,7 @@ namespace MusicPlayer.View
 
         private void btnKaraoke_Click(object sender, EventArgs e)
         {
-            MainForm.Instance.btnKaraoke_Click(null, null);
+            //MainForm.Instance.btnKaraoke_Click(null, null);
             (MainForm.Instance.GetContainerView("KaraokeView") as KaraokeView).Search(song.GetTitle() + " karaoke");
         }
 
@@ -194,6 +196,24 @@ namespace MusicPlayer.View
             }
         }
 
+        private void btnSeeInfo_Click(object sender, EventArgs e)
+        {
+            SeeInfo infoSong = new SeeInfo(song);
+            infoSong.Show();
+            
+        }
 
+        private void btnHeart2_Click(object sender, EventArgs e)
+        {
+            //Data.CreatePlayList("Like");
+            btnHeart2.Visible = false;
+            Data.AddSongToPlayList(Data.MyPlaylist.Count - Data.MyPlaylist.Count, song);
+        }
+
+        private void btnHeart1_Click(object sender, EventArgs e)
+        {
+            btnHeart2.Visible = true;
+            Data.DeleteSongToPlayList(Data.MyPlaylist.Count - Data.MyPlaylist.Count, song);
+        }
     }
 }
